@@ -1,0 +1,312 @@
+﻿http://ricette-calorie.com/
+
+Ricetta 1
+	Id: 1
+	Nome: Pizzette di zucchine
+	Descrizione: 	Per questa ricetta scegliete zucchine tonde e non troppo grandi.
+					Lavate e tagliate le zucchine a rondelle e grigliatele.
+					Sistemate le rondelle di zucchine su una teglia ricoperta con della carta da forno.
+					Mettete un cucchiaino scarso di passata su ogni rondella, aggiungete un pizzico di sale, l'origano, la mozzarella tagliata a cubetti piccolini e per finire qualche fogliolina di basilico.
+					Infornate per 5 minuti in forno già caldo  e le vostre zucchine sono pronte.
+					Aspettate qualche minuto prima di servirle, sono ottime anche fredde!
+	Numero persone: 4
+	Calorie: 81 Kcal
+	Tempo: 40 minuti
+	Portata: Antipasto
+	Ingredienti:	Zucchine	(200g);
+					Mozzarella	(50g);
+					Passata di pomodoro			(2 - cucchiaio);
+					Olio extravergine d'oliva	(1 - cucchiaio);
+					Sale		(-2 - quanto basta);			//se ingrediente -2 allora "Quanto basta"
+					Basilico	(-2 - quanto basta);
+					Origano		(-2 - quanto basta);
+	Bevanda: Vino bianco;
+	Foto: "1.jpg";
+	
+	
+Ricetta 2
+	Id: 2
+	Nome: Ricetta Muffin salati al pomodoro
+	Descrizione: 	In una zuppiera, sbattere e frullare tutti insieme uova, farina, burro, sale e latte.
+					Aggiungere la mozzarella dura tagliata a pezzetti, i pomodori tagliati a pezzetti (devono essere belli asciutti), l'origano e infinite la bustina di lievito pizzaiolo. (NON LIEVITO DI BIRRA)  
+					Imburrare uno stampo per 12 muffin con farina e burro.
+					Inserire l'impasto.
+					Cuocere a 180 gradi in forno per circa 20 minuti.
+					In alternativa ai pomodori, i muffin salati si possono condire con vari tipi di formaggi e affettati (consigliatissimo lo speck tagliato a cubetti).
+	Numero persone: 6
+	Calorie: 394 Kcal
+	Tempo: 40 minuti
+	Portata: Antipasto
+	Ingredienti:	Farina	(300g);
+					Pomodoro	(2 - pezzi);
+					Uova		(4 - pezzi);
+					Latte	(1 - bicchiere);
+					Mozzarella	(100g);
+					Burro		(100g);
+					Lievito 	(15g);
+					Sale		(-2 - quanto basta);			//se ingrediente -2 allora "Quanto basta"
+					Origano		(-2 - quanto basta);
+	Bevanda: Vino bianco;
+	Foto: "2.jpg";
+	
+	
+Ricetta 3
+	Id: 3
+	Nome: Bruschetta al pomodoro;
+	Descrizione: 	Lava i pomodori ed asciugali.
+					Poi tagliali a fette, sgocciolali e togli loro i semi.
+					Fai tostare, da entrambe le parti, le fette di pane casereccio in una piastra elettrica oppure in una padella antiaderente.
+					Pulisci i due spicchi d'aglio e passali, soffregandoli, sopra le fette di pane caldo.
+					Quindi condisci con l'olio extravergine di oliva.
+					Posa le fette di pomodoro su ogni fetta di pane e sopra queste sistemaci le foglie di basilico spezzettato con le mani.
+					Infine aggiungi un poco di sale.
+	Numero persone: 6
+	Calorie: 240 Kcal
+	Tempo: 15 minuti
+	Portata: Antipasto
+	Ingredienti:	Pane casareccio (240g);
+					Pomodori	(4 - pezzi);
+					Olio extravergine d'oliva	(3 - cucchiaio);
+					Basilico	(-2 - quanto basta);
+					Aglio		(-2 - quanto basta);
+					Sale		(-2 - quanto basta);
+	Bevanda: Vino bianco;
+	Foto: "3.jpg";	
+	
+Ricetta 11
+	Id: 11
+	Nome: Pasta al farro con verdure;
+	Descrizione: 	Preparate le verdure, la ricetta consiglia di fare un ciabotto light tagliando tutta la verdura;
+					Mettete sul fuoco l'acqua per la pasta e dopo 7 minuti scolate e unite le verdure alla pasta.
+					A fine cottura se gradite aggiungete un filo di olio extra vergine di oliva e del peperoncino fresco.
+	Numero persone: 2
+	Calorie: 377 Kcal
+	Tempo: 30 minuti
+	Portata: Primo
+	Ingredienti:	Pasta al farro (180g);
+					Zucchine	(2 - pezzi);
+					Melanzana	(1 - pezzi);
+					Peperone	(1 - pezzi);
+					Cipolla	(1 - pezzi);
+					Porro	(1 - pezzi);
+					Olio extravergine d'oliva	(1 - cucchiaio);
+	Bevanda: Vino rosso;
+	Foto: "11.jpg";	
+	
+Ricetta 12
+	Id: 12
+	Nome: Spàtzln di spinaci con panna e prosciutto;
+	Descrizione: 	Pulite e lavate gli spinaci, lessateli in acqua salata per 3-4 minuti.
+					Fateli raffreddare nell'acqua fredda, strizzateli bene e infine frullateli nel mixer con le uova. 
+					Aggiungete un po' di sale, pepe e noce moscata.
+					Setacciate la farina in una ciotola, unite agli spinaci frullati e insaporite con sale, pepe e noce moscata.
+					Mescolate il tutto con un cucchiaio da cucina fino ad ottenere una pastella densa; lasciate riposare per 15 minuti.
+					In una padella mettete un filo di olio e fate rosolare per qualche minuto il prosciutto cotto, aggiungete la panna. 
+					Spegnete la fiamma e lasciate da parte.
+					In una pentola portate ad ebollizione l'acqua salata. 
+					Appena vengono a galla estraeteli con una schiumarola e sciacqueteli con acqua fredda, succesivamente metteteli nella padella del sugo.
+					Mescolate gli spätzln con il sugo a fuoco medio per qualche minuto e alla fine aggiungete il parmigiano.
+					Se non avete l'attrezzo giusto per fare gli spätzln-spätzle va benissimo anche lo schiaccia patate, verrano fuori semplicemente un po' piu lunghi.
+	Numero persone: 2
+	Calorie: 681 Kcal
+	Tempo: 30 minuti
+	Portata: Primo
+	Ingredienti:	Spinaci	(190g);
+					Farina di frumento tipo	(170g);
+					Panna (100g);
+					Prosciutto cotto (100g);
+					Uovo (1 - pezzi)
+					Parmigiano grattugiato	(20g);
+					Sale		(-2 - quanto basta);
+					Noci		(-2 - quanto basta);
+					Pepe		(-2 - quanto basta);
+	Bevanda: Vino Rosso;
+	Foto: "12.jpg";	
+	
+Ricetta 13
+	Id: 13
+	Nome: Fettuccine al salmone;
+	Descrizione: 	Spolpare e tagliare a filetti piccoli il salmone fresco e disporlo in una ciotola, salandolo leggermente.
+					Intanto sminuzzare il salmone affumicato.
+					In una padella, sciogliere metà del burro, unire il salmone fresco, il succo di limone e lasciar cuocere per qualche minuto.
+					Aggiungere quindi il salmone affumicato continuando a mescolare.
+					Quando il salmone fresco sarà quasi cotto, aggiungere lo yogurt e il burro restante.
+					Quando gli ingredienti saranno amalgamati, spegnere il fuoco e coprire la padella.
+					Intanto lessare e scolare le fettuccina al dente, quindi unirle alla padella con la salsa al salmone, saltare e lasciar insaporire la pasta aggiustando di sale e pepe.
+	Numero persone: 4 
+	Calorie: 554 Kcal
+	Tempo: 30 minuti
+	Portata: Primo
+	Ingredienti:	Fettuccine (400g);
+					Filetto di salmone (200g);
+					Yogurt bianco (100g);
+					Salmone affumicato (50g)
+					Burro (40g);
+					Succo di limone		(-2 - quanto basta);
+					Sale				(-2 - quanto basta);
+					Pepe				(-2 - quanto basta);
+	Bevanda: Vino rosso;
+	Foto: "13.jpg";	
+	
+Ricetta 21
+	Id: 21
+	Nome: Pollo all'agro;
+	Descrizione: 	Acquista un pollo già pulito, fiammeggialo, lavalo ed asciugalo.
+					Fai un trito con gli aromi.
+					Insaporisci esternamente il pollo con sale ed una generosa macinata di pepe.
+					Inserisci all'interno del pollo un limone tagliato a metà ed il trito di aromi.
+					Adagia il pollo in una pirofila e mettilo nel forno caldo a 200°.
+					Intanto fai scaldare un mestolo di acqua fredda e, quando è bollente, mettici il mezzo dado da brodo per carne e fallo sciogliere.
+					Come la pelle del pollo inizia a seccarsi, forala con una forchetta in modo che fuoriesca il grasso.
+					Dopo circa mezz'ora, unisci il succo dell'altro limone ed il brodo.
+					Porta a cottura il pollo girandolo ogni tanto.
+					Mettilo su di un piatto da portata e servilo intero, svuotato dagli aromi e dal limone e cosparso con il suo fondo di cottura.
+	Numero persone: 4 
+	Calorie:  334 Kcal
+	Tempo: 60 minuti
+	Portata: Secondo
+	Ingredienti:	Pollo	(1000g);
+					Limoni	(2 - pezzi)
+					Salvia		(-2 - quanto basta);
+					Rosmarino	(-2 - quanto basta);
+					Sale		(-2 - quanto basta);
+					Pepe		(-2 - quanto basta);
+	Bevanda: Vino rosso;
+	Foto: "21.jpg";
+	
+Ricetta 22
+	Id: 22
+	Nome: Scaloppine di vitello al Marsala;
+	Descrizione: 	Infarina le fettine di vitello.
+					Metti in una padella l'olio extravergine di oliva ed il burro.
+					Quando il burro si è sciolto, sistema all'interno della padella le fettine di vitello.
+					Condisci con il sale ed una bella macinata di pepe e poi falle rosolare da entrambi i lati.
+					Versa il marsala e gira le fettine mentre sfuma.
+					Impiatta e versa sulle scaloppine il sugo al marsala.
+					Porta in tavola caldo.
+	Numero persone: 2 
+	Calorie: 522 Kcal
+	Tempo: 40 minuti
+	Portata: Secondo
+	Ingredienti:	Fesa di vitello	(300g);
+					Marsala	(1 - bicchiere);
+					Farina	(20g);
+					Olio extravergine d'oliva	(1 - cucchiaio);
+					Burro (10g);
+					Sale		(-2 - quanto basta);
+					Pepe		(-2 - quanto basta);
+	Bevanda: Vino rosso;
+	Foto: "22.jpg";
+	
+Ricetta 23
+	Id: 23
+	Nome: Filetti di platessa;
+	Descrizione: 	Procuratevi dei filetti di platessa o di merluzzo.
+					Prendete una padella antiaderente e fatela riscaldare a fuoco medio.
+					Nel mentre tagliate a cubettini i pomodori e conditeli con un po' di sale, aglio e prezzemolo. 
+					Mettete tutto nella padella e lasciate sul fuoco medio per qualche minuto con il coperchio, in questo modo si formerà il sughetto leggero.
+					Quando vedrete il sughetto adagiateci i filetti di pesce e, a fuoco basso, fate cucinare per 10/15 minuti girando i filetti un paio di volte.
+					A fine cottura aggiungete il vostro cucchiaino di olio, aggiustate di sale e inserite un po' di prezzemolo.
+	Numero persone: 1 
+	Calorie: 328 Kcal
+	Tempo: 20 minuti
+	Portata: Secondo
+	Ingredienti:	Filetti di platessa	(200g);
+					Pomodori (150g);
+					Olio extravergine d'oliva	(1 - cucchiaio);
+					Aglio	(-2 - quanto basta);
+	Bevanda: Vino bianco;
+	Foto: "23.jpg";
+	
+	
+Ricetta 31
+	Id: 31
+	Nome: Funghi alla panna;
+	Descrizione: 	Pulisci i funghi e poi lavali velocemente sotto acqua corrente fredda.
+					Tagliali a fettine e mettili in una casseruola antiaderente con un poco di acqua ed il sale.
+					Falli cuocere a fuoco debole.
+					A metà cottura l'acqua si deve essere completamente consumata.
+					A questo punto aggiungi la panna liquida e porta a termine la cottura a fuoco bassissimo ed a pentola coperta.
+					Mescola spesso durante la cottura.
+					A cottura ultimata i funghi dovranno risultare quasi asciutti.
+	Numero persone: 4  
+	Calorie: 88 Kcal
+	Tempo: 30 minuti
+	Portata: Contorno
+	Ingredienti:	Funghi coltivati	(800g);
+					Panna	(1/2 bicchiere);
+					Prezzemolo	(1 - cucchiaio);
+					Sale	(-2 - quanto basta);
+	Bevanda: Vino rosso;
+	Foto: "31.jpg";	
+	
+Ricetta 32
+	Id: 32
+	Nome: Insalata primavera;
+	Descrizione: 	Elimina la zona verde del gambo dei cipollotti freschi e poi e tagliali a fettine sottili per il senso della lunghezza.
+					Fai lessare i fagioli in acqua bollente per 20 minuti o finchè saranno teneri e poi aggiungi il sale.
+					Scolali e mettili in una insalatiera.
+					Pulisci e lava i fagiolini.
+					Falli lessare in acqua salata per 7/8 minuti e poi scolali.
+					Sbuccia la mela e tagliala a dadini.
+					Metti in una ciotolina il sale, il pepe appena macinato, il succo di limone e l'olio extravergine di oliva.
+					Battili con una forchetta o una piccola frusta in modo da emulsionare bene gli ingredienti.
+					Unisci tutte le verdure e la mela nell'insalatiera insieme ai fagioli.
+					Versaci sopra il condimento battuto ed emulsionato e mescola bene.	
+	Numero persone: 4  
+	Calorie: 296 Kcal
+	Tempo: 30 minuti
+	Portata: Contorno
+	Ingredienti:	Fagiolini verdi (400g);
+					Fagioli borlotti (200g);
+					Mela	(1 - pezzi);
+					Cipolla	(2 - pezzi);
+					Olio extravergine d'oliva	(4 - cucchiaio);
+					Sale	(-2 - quanto basta);
+					Pepe	(-2 - quanto basta);
+	Bevanda: Vino Rosso ;
+	Foto: "32.jpg";	
+	
+Ricetta 33
+	Id: 33
+	Nome: Broccoli e cavolfiori al forno;
+	Descrizione: 	
+	Numero persone:  
+	Calorie:  Kcal
+	Tempo:  minuti
+	Portata: Contorno
+	Ingredienti:	Cavolfiore	(1/2 - pezzi);
+					Broccoli (200g);
+					Pangrattato (5g);
+					Olio extravergine d'oliva	(1 - cucchiaio);
+					Limone						(1 - cucchiaio);
+					Aceto di mele 				(1 - cucchiaio);
+					Maggiorana essiccata (1g);
+					Timo essiccato (1g);
+	Bevanda: Vino ;
+	Foto: "33.jpg";	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
