@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.studente.appcucinaproject">
+
+    <supports-screens
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:xlargeScreens="true"
+        android:anyDensity="true" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/food2"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Home"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Ricettario.Ricettario"
+            android:label="@string/title_activity_ricettario"
+            android:parentActivityName=".Home"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.studente.appcucinaproject.Home" />
+        </activity>
+        <activity
+            android:name=".RicercaAvanzata.RicercaAV"
+            android:label="@string/title_activity_ricerca_av"
+            android:parentActivityName=".Home"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.studente.appcucinaproject.Home" />
+        </activity>
+        <activity
+            android:name=".Spesa.Spesa"
+            android:label="@string/title_activity_spesa"
+            android:parentActivityName=".Home"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.studente.appcucinaproject.Home" />
+        </activity>
+        <activity
+            android:name=".Calcolatrice.Calcolatrice"
+            android:label="@string/title_activity_calcolatrice"
+            android:parentActivityName=".Home"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.studente.appcucinaproject.Home" />
+        </activity>
+        <activity
+            android:name=".CalcolaTeglia.CalcolaTeglia"
+            android:label="@string/title_activity_calcola_teglia"
+            android:parentActivityName=".Home"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.studente.appcucinaproject.Home" />
+        </activity>
+        <activity
+            android:name=".Timer.Timer"
+            android:label="@string/title_activity_timer"
+            android:parentActivityName=".Home"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.studente.appcucinaproject.Home" />
+        </activity>
+        <activity android:name=".Ricetta.Ricetta" />
+        <activity android:name=".Timer.TimerOverActivity"
+                android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+    </application>
+
+</manifest>

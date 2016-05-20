@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.studente.appcucinaproject.Timer.Timer"
+    tools:showIn="@layout/app_bar_timer">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        <!-- center picker @ minutes -->
+
+        <NumberPicker
+            android:id="@+id/npicker_minutes"
+            android:layout_width="wrap_content"
+            android:layout_height="145dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignTop="@+id/npicker_hours" />
+
+        <!-- left picker @ hours -->
+
+        <NumberPicker
+            android:id="@+id/npicker_hours"
+            android:layout_width="wrap_content"
+            android:layout_height="145dp"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/npicker_minutes" />
+
+        <!-- android:layout_toStartOf = android:layout_toLeftOf -->
+        <!-- android:layout_toEndOf = android:layout_toRightOf -->
+
+        <!-- right picker @ seconds -->
+
+        <NumberPicker
+            android:id="@+id/npicker_seconds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_minutes"
+            android:layout_toRightOf="@+id/npicker_minutes"
+            android:layout_alignTop="@+id/npicker_minutes" />
+
+        <TextView
+            android:id="@+id/tv_minutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/npicker_minutes"
+            android:layout_alignRight="@id/npicker_minutes"
+            android:gravity="center_horizontal"
+            android:layout_below="@id/npicker_minutes"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="10dp"
+            android:textStyle="bold"
+            android:text="M" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/npicker_hours"
+            android:layout_alignRight="@+id/npicker_hours"
+            android:gravity="center_horizontal"
+            android:layout_below="@id/npicker_hours"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="15dp"
+            android:textStyle="bold"
+            android:text="H"
+            android:id="@+id/textView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/npicker_seconds"
+            android:layout_alignRight="@id/npicker_seconds"
+            android:gravity="center_horizontal"
+            android:layout_below="@id/npicker_seconds"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="15dp"
+            android:textStyle="bold"
+            android:text="S"
+            android:id="@+id/textView2" />
+
+        <Button
+            android:id="@+id/setTime"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="START"
+            android:layout_alignTop="@+id/cancel"
+            android:layout_alignRight="@+id/textView2" />
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="CANCEL"
+            android:layout_below="@+id/tv_minutes"
+            android:layout_toLeftOf="@+id/setTime" />
+
+        <TextView
+            android:id="@+id/risultato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/setTime"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:layout_marginLeft="150dp"/>
+
+
+        <LinearLayout
+            android:id="@+id/ll2"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            android:layout_alignTop="@+id/risultato"
+            android:layout_alignLeft="@+id/buttonPause"
+            android:layout_alignStart="@+id/buttonPause"
+            android:layout_alignRight="@+id/textView2"
+            android:layout_alignEnd="@+id/textView2">
+
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:orientation="vertical"
+                android:layout_gravity="top"
+                android:layout_marginTop="3dp">
+
+                <TextView
+                    android:id="@+id/txtTimerHour"
+                    android:maxLength="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:ems="10"
+                    android:text="00"
+                    android:textColor="#000"
+                    android:textSize="40sp"
+                    android:textColorHint="#000"
+                    android:clickable="false"
+                    android:contextClickable="false"
+                    android:editable="false" />
+
+                <TextView
+                    android:id="@+id/txt_TimerHour"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="H"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="top"
+                android:layout_gravity="top">
+
+                <TextView
+                    android:id="@+id/duePunti"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text=":"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#000"
+                    android:textSize="40sp"     />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:orientation="vertical"
+                android:layout_gravity="top"
+                android:layout_marginTop="2dp">
+
+                <TextView
+                    android:id="@+id/txtTimerMinute"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:ems="10"
+                    android:maxLength="2"
+                    android:text="00"
+                    android:textColorHint="#000"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#000"
+                    android:textSize="40sp" />
+
+                <TextView
+                    android:id="@+id/txt_TimerMinute"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="M"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="top"
+                android:layout_gravity="top">
+
+                <TextView
+                    android:id="@+id/duePunti2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text=":"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#000"
+                    android:textSize="40sp"     />
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:orientation="vertical"
+                android:layout_gravity="top"
+                android:layout_marginTop="2dp">
+
+                <TextView
+                    android:id="@+id/txtTimerSecond"
+                    android:maxLength="2"
+                    android:max="59"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:text="00"
+                    android:textColorHint="#000"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#000"
+                    android:textSize="40sp" />
+
+                <TextView
+                    android:id="@+id/txt_TimerSecond"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="S"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PAUSE"
+            android:id="@+id/buttonPause"
+            android:layout_below="@+id/ll2"
+            android:layout_alignLeft="@+id/cancel"
+            android:layout_alignRight="@+id/cancel"
+            android:layout_marginBottom="20dp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="RESUME"
+            android:id="@+id/buttonResume"
+            android:layout_below="@+id/ll2"
+            android:layout_alignLeft="@+id/cancel"
+            android:layout_alignRight="@+id/cancel" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="STOP"
+            android:id="@+id/buttonStop"
+            android:layout_alignTop="@+id/buttonPause"
+            android:layout_alignLeft="@+id/setTime"
+            android:layout_alignRight="@+id/ll2"
+            android:layout_marginBottom="20dp" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

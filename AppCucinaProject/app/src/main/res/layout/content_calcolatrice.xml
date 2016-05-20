@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.studente.appcucinaproject.Calcolatrice.Calcolatrice"
+    tools:showIn="@layout/app_bar_calcolatrice">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alignmentMode="alignMargins"
+        android:layout_alignParentTop="true"
+        android:id="@+id/gridLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:text="AC"
+            android:id="@+id/buttonac"
+            android:layout_row="4"
+            android:layout_column="1"
+            android:backgroundTint="#f2710e" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:text="C"
+            android:id="@+id/buttonC"
+            android:layout_row="4"
+            android:layout_column="2"
+            android:backgroundTint="#f2710e" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:text="^"
+            android:id="@+id/buttonapice"
+            android:layout_row="4"
+            android:layout_column="3"
+            android:backgroundTint="#f2710e" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:text="7"
+            android:id="@+id/button7"
+            android:layout_row="5"
+            android:layout_column="0" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:text="8"
+            android:id="@+id/button8"
+            android:layout_row="5"
+            android:layout_column="1" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:text="9"
+            android:id="@+id/button9"
+            android:layout_row="5"
+            android:layout_column="2" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:text="/"
+            android:id="@+id/buttondiviso"
+            android:layout_row="5"
+            android:layout_column="3"
+            android:backgroundTint="#f2710e" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:text="4"
+            android:id="@+id/button4"
+            android:layout_row="6"
+            android:layout_column="0" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:text="5"
+            android:id="@+id/button5"
+            android:layout_row="6"
+            android:layout_column="1" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:text="6"
+            android:id="@+id/button6"
+            android:layout_row="6"
+            android:layout_column="2" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:text="*"
+            android:id="@+id/buttonper"
+            android:layout_row="6"
+            android:layout_column="3"
+            android:backgroundTint="#f2710e" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:text="1"
+            android:id="@+id/button1"
+            android:layout_row="7"
+            android:layout_column="0" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:text="2"
+            android:id="@+id/button2"
+            android:layout_row="7"
+            android:layout_column="1" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:text="3"
+            android:id="@+id/button3"
+            android:layout_row="7"
+            android:layout_column="2" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:text="-"
+            android:id="@+id/buttonmeno"
+            android:layout_row="7"
+            android:layout_column="3"
+            android:backgroundTint="#f2710e" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:text="0"
+            android:id="@+id/button0"
+            android:layout_row="8"
+            android:layout_column="0" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:text="."
+            android:id="@+id/buttonpunto"
+            android:layout_row="8"
+            android:layout_column="1" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:text="="
+            android:id="@+id/buttonuguale"
+            android:layout_row="8"
+            android:layout_column="2"
+            android:backgroundTint="#f2710e" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:text="+"
+            android:id="@+id/buttonpiù"
+            android:layout_row="8"
+            android:layout_column="3"
+            android:backgroundTint="#f2710e" />
+    </GridLayout>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:clickable="false"
+        android:contextClickable="false"
+        android:enabled="false" />
+
+</RelativeLayout>

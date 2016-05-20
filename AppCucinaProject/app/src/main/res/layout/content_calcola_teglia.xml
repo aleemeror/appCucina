@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <RadioGroup
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_row="0"
+    android:layout_column="0"
+    android:weightSum="1"
+    android:id="@+id/scelta">
+
+    <RadioButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rettangolare"
+        android:id="@+id/rettangolare"
+        android:checked="false"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center" />
+
+    <RadioButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rotonda"
+        android:id="@+id/rotonda"
+        android:checked="false"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.19"
+        android:textAlignment="center" />
+
+</RadioGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/textView"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:text="Misure consigliate dalla ricetta"
+        android:textSize="15dp"
+        android:textAlignment="center" />
+
+    <EditText
+        android:layout_width="366dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:hint="Lunghezza" />
+
+    <EditText
+        android:layout_width="377dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText2"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:hint="Larghezza" />
+
+    <EditText
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText3"
+        android:layout_row="4"
+        android:layout_column="0"
+        android:hint="Diametro" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_row="5"
+        android:layout_column="0"
+        android:id="@+id/scelta2"
+        android:touchscreenBlocksFocus="false"
+        android:textAlignment="center">
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rettangolare"
+            android:id="@+id/rettangolare2"
+            android:checked="false"
+            android:textAlignment="center" />
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rotonda"
+            android:id="@+id/rotonda2"
+            android:checked="false"
+            android:textAlignment="center" />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="342dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Misure della propria teglia "
+        android:id="@+id/textView2"
+        android:layout_row="6"
+        android:layout_column="0"
+        android:textSize="15dp"
+        android:textAlignment="center" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText4"
+        android:layout_row="7"
+        android:layout_column="0"
+        android:hint="Lunghezza" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText5"
+        android:layout_row="8"
+        android:layout_column="0"
+        android:hint="Larghezza" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText6"
+        android:layout_row="9"
+        android:layout_column="0"
+        android:hint="Diametro" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:id="@+id/textView3"
+        android:layout_row="10"
+        android:layout_column="0"
+        android:layout_rowSpan="3"
+        android:textSize="30dp"
+        android:background="#bdb8f2"
+        android:textColor="#000000"
+        android:textAlignment="center" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calcola"
+        android:id="@+id/calcola"
+        android:layout_row="13"
+        android:layout_column="0" />
+
+</LinearLayout>
+
+
+
+
