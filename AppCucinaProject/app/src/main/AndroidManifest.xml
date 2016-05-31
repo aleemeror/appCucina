@@ -3,12 +3,12 @@
     package="com.example.studente.appcucinaproject">
 
     <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
         android:resizeable="true"
         android:smallScreens="true"
-        android:normalScreens="true"
-        android:largeScreens="true"
-        android:xlargeScreens="true"
-        android:anyDensity="true" />
+        android:xlargeScreens="true" />
 
     <application
         android:allowBackup="true"
@@ -81,8 +81,21 @@
                 android:value="com.example.studente.appcucinaproject.Home" />
         </activity>
         <activity android:name=".Ricetta.Ricetta" />
-        <activity android:name=".Timer.TimerOverActivity"
-                android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity
+            android:name=".Timer.TimerOverActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".Spesa.InserisciSpesa" />
+
+        <activity
+            android:name=".MenuDelGiorno.MenuDelGiorno"
+            android:label="@string/title_activity_menu_del_giorno"
+            android:parentActivityName=".Home"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.studente.appcucinaproject.Home" />
+        </activity>
+
     </application>
 
 </manifest>

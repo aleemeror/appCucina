@@ -21,18 +21,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                        <EditText
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/editText"
-                            android:hint="Nome ricetta"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentEnd="true"
-                            android:layout_toRightOf="@+id/textView4"
-                            android:layout_toEndOf="@+id/textView4"
-                            android:layout_marginLeft="20dp" />
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -47,6 +35,18 @@
                             android:gravity="fill_vertical"
                             android:layout_toLeftOf="@+id/editText"
                             android:layout_toStartOf="@+id/editText" />
+
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/editText"
+                            android:hint="Nome ricetta"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_toRightOf="@+id/textView4"
+                            android:layout_toEndOf="@+id/textView4"
+                            android:layout_marginLeft="20dp" />
 
                         <EditText
                             android:layout_width="wrap_content"
@@ -209,7 +209,8 @@
                             android:id="@+id/textView6"
                             android:layout_below="@+id/radioGroup"
                             android:layout_alignParentLeft="true"
-                            android:layout_alignParentStart="true" />
+                            android:layout_alignParentStart="true"
+                            android:layout_marginTop="40dp" />
 
                         <RelativeLayout
                             android:id="@+id/integer"
@@ -264,6 +265,7 @@
 
                         </RelativeLayout>
 
+                        <!--
                         <SeekBar
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -274,6 +276,33 @@
                             android:layout_alignLeft="@+id/radioGroup"
                             android:layout_alignStart="@+id/radioGroup"
                             android:layout_marginTop="20dp" />
+                        -->
+
+
+
+                        <org.florescu.android.rangeseekbar.RangeSeekBar
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/seekBar2"
+                            android:layout_below="@+id/integer"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignLeft="@+id/radioGroup"
+                            android:layout_alignStart="@+id/radioGroup"
+
+                            rsb:absoluteMaxValue="30"
+                            rsb:absoluteMinValue="0"
+                            rsb:thumbDisabled="@drawable/custom_slider_thumb"
+                            rsb:thumbNormal="@drawable/custom_slider_thumb"
+                            rsb:thumbPressed="@drawable/custom_slider_thumb"
+                            rsb:thumbShadow="true"
+                            rsb:thumbShadowBlur="3dp"
+                            rsb:thumbShadowColor="@color/primary_material_light"
+                            rsb:thumbShadowXOffset="1dp"
+                            rsb:thumbShadowYOffset="2dp"
+                            android:layout_centerVertical="true" />
+
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -292,6 +321,7 @@
                             android:layout_height="wrap_content"
                             android:text="Cerca"
                             android:id="@+id/buttonCerca"
+                            android:layout_marginTop="20dp"
                             android:layout_alignRight="@id/seekBar2"
                             android:layout_below="@id/seekBar2" />
 
@@ -321,7 +351,7 @@
                             android:layout_toRightOf="@+id/numberPickerMinutes"
                             android:layout_toEndOf="@+id/numberPickerMinutes" />
                         -->
-                        
+
                 </RelativeLayout>
         </ScrollView>
 </LinearLayout>

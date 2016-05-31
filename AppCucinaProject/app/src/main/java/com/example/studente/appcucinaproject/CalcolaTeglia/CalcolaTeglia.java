@@ -1,6 +1,7 @@
 package com.example.studente.appcucinaproject.CalcolaTeglia;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -67,6 +68,9 @@ public class CalcolaTeglia extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         setTitle("Calcola Teglia");
+
+        //ROTAZIONE SCHERMO BLOCCATA
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         calcola = (Button)findViewById(R.id.calcola);
 

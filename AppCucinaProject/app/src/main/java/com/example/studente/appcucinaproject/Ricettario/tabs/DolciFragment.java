@@ -2,7 +2,8 @@ package com.example.studente.appcucinaproject.Ricettario.tabs;
 
 /**
  * Created by Mattia on 22/04/2016.
- */import android.os.Bundle;
+ */
+import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -30,7 +31,6 @@ public class DolciFragment extends Fragment{
     int[] images = {R.drawable.dolce,R.drawable.dolce,R.drawable.dolce,R.drawable.dolce};
 
 
-
     public DolciFragment(){
         // Required empty public constructor
     }
@@ -39,7 +39,6 @@ public class DolciFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_dolci, container, false);
-
 
 
         String[] title = getResources().getStringArray(R.array.ricetta_name);
@@ -62,8 +61,7 @@ public class DolciFragment extends Fragment{
 
         // Inflate the layout for this fragment
         return rootView;
-        }
-
+    }
 }
 
 

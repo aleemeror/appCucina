@@ -1,11 +1,12 @@
-package com.example.studente.appcucinaproject.RicercaAvanzata;
+package com.example.studente.appcucinaproject.MenuDelGiorno;
 
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,40 +16,40 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.WindowManager;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.NumberPicker;
 
 import com.example.studente.appcucinaproject.CalcolaTeglia.CalcolaTeglia;
 import com.example.studente.appcucinaproject.Calcolatrice.Calcolatrice;
+import com.example.studente.appcucinaproject.Cards.MyCardAdapterHome;
+import com.example.studente.appcucinaproject.Cards.RicettaDetails;
 import com.example.studente.appcucinaproject.Home;
-import com.example.studente.appcucinaproject.MenuDelGiorno.MenuDelGiorno;
 import com.example.studente.appcucinaproject.R;
+import com.example.studente.appcucinaproject.RicercaAvanzata.RicercaAV;
 import com.example.studente.appcucinaproject.Ricettario.Ricettario;
 import com.example.studente.appcucinaproject.Spesa.Spesa;
 import com.example.studente.appcucinaproject.Timer.Timer;
 
-import org.florescu.android.rangeseekbar.RangeSeekBar;
+import java.util.ArrayList;
 
-public class RicercaAV extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MenuDelGiorno extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    //private NumberPicker pickerOre, pickerMinuti,pickerSecondi;
-    private EditText nomeRicerca;   //editText
-    private EditText ingrediente1,ingrediente2,ingrediente3; //2,3,4
-    private CheckBox antipastoCB, primoCB, secondoCB, dolceCB;
+    RecyclerView recyclerView;
+    RecyclerView.Adapter adapter;
+    RecyclerView.LayoutManager layoutManager;
+    CardView cardv;
+    ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();
 
-    private RangeSeekBar rangeBarCalorie, rangeBarTempo;
 
-    private SQLiteDatabase mydatabase;
+    int[] images = {R.drawable.antipasto,R.drawable.primo,R.drawable.secondo,R.drawable.dolce};
+    String[] title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ricerca_av);
+        setContentView(R.layout.activity_menu_del_giorno);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -59,70 +60,26 @@ public class RicercaAV extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        setTitle("Ricerca Avanzata");
 
-        //ROTAZIONE SCHERMO BLOCCATA
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
-        nomeRicerca = (EditText)findViewById(R.id.editText);
-        ingrediente1 = (EditText)findViewById(R.id.editText2);
-        ingrediente2 = (EditText)findViewById(R.id.editText3);
-        ingrediente3 = (EditText)findViewById(R.id.editText4);
-
-        antipastoCB = (CheckBox)findViewById(R.id.checkBox);
-        primoCB = (CheckBox)findViewById(R.id.checkBox2);
-        secondoCB = (CheckBox)findViewById(R.id.checkBox3);
-        dolceCB = (CheckBox)findViewById(R.id.checkBox4);
-
-        rangeBarTempo = (RangeSeekBar)findViewById(R.id.seekbar);
-        rangeBarCalorie = (RangeSeekBar)findViewById(R.id.seekBar2);
-
-        //rangeTempo.setRangeValues(10, 500);
-        //rangeBarCalorie.setRangeValues(10, 500);
-
-        int calorieMINValue = rangeBarTempo.getSelectedMinValue().intValue();  //numero minimo
-        int calorieMAXValue = rangeBarTempo.getSelectedMaxValue().intValue();  //numero massimo
-
-        int tempoMINValue = rangeBarCalorie.getSelectedMinValue().intValue();  //numero minimo
-        int tempoMAXValue = rangeBarCalorie.getSelectedMaxValue().intValue();  //numero massimo
+        setTitle("Menu del giorno");
 
 
+        title = getResources().getStringArray(R.array.ricetta_name);
 
-        mydatabase = openOrCreateDatabase("your database name",MODE_PRIVATE,null);
+        int count =0;
+        for(String Name:title){
 
+            RicettaDetails ricetta = new RicettaDetails(images[count],Name);
+            count++;
+            list.add(ricetta);
+        }
 
-        /*pickerOre = (NumberPicker) findViewById(R.id.numberPickerHours);
-        pickerOre.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
-        pickerOre.setMaxValue(99);
-        pickerOre.setMinValue(00);
-        pickerOre.setFocusable(true);
-        pickerOre.setFocusableInTouchMode(true);
-
-        pickerMinuti = (NumberPicker) findViewById(R.id.numberPickerMinutes);
-        pickerMinuti.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
-        pickerMinuti.setMaxValue(59);
-        pickerMinuti.setMinValue(00);
-        pickerMinuti.setFocusable(true);
-        pickerMinuti.setFocusableInTouchMode(true);
-
-        pickerSecondi = (NumberPicker) findViewById(R.id.numberPickerSeconds);
-        pickerSecondi.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
-        pickerSecondi.setMaxValue(59);
-        pickerSecondi.setMinValue(00);
-        pickerSecondi.setFocusable(true);
-        pickerSecondi.setFocusableInTouchMode(true);
-
-        pickerOre.setValue(0);
-        pickerMinuti.setValue(0);
-        pickerSecondi.setValue(0);*/
-
-
-
-
-
-
+        recyclerView = (RecyclerView)findViewById(R.id.recyclerViewMenuDelGG);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+        adapter = new MyCardAdapterHome(list,MenuDelGiorno.this);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
@@ -138,7 +95,7 @@ public class RicercaAV extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.ricerca_av, menu);
+        getMenuInflater().inflate(R.menu.menu_del_giorno, menu);
         return true;
     }
 
@@ -166,18 +123,18 @@ public class RicercaAV extends AppCompatActivity
         if (id == R.id.nav_home) {
             startActivity(new Intent(this, Home.class));
             finish();
-
         } else if (id == R.id.nav_ricettario) {
 
             startActivity(new Intent(this, Ricettario.class));
             finish();
 
         } else if (id == R.id.nav_ricerca) {
-            // startActivity(new Intent(this, RicercaAV.class));
+            startActivity(new Intent(this, RicercaAV.class));
+            finish();
 
         } else if (id == R.id.nav_menu_del_giorno) {
-            startActivity(new Intent(this, MenuDelGiorno.class));
-            finish();
+            //startActivity(new Intent(this, MenuDelGiorno.class));
+           // finish();
 
         } else if (id == R.id.nav_spesa) {
             startActivity(new Intent(this, Spesa.class));

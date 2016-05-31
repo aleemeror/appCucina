@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_ricettario"
+            android:icon="@drawable/ic_ricettario"
+            android:title="Ricettario" />
+        <item
+            android:id="@+id/nav_ricerca"
+            android:icon="@drawable/ic_ricerca"
+            android:title="Ricerca Avanzata" />
+
+        <item
+            android:id="@+id/nav_menu_del_giorno"
+            android:icon="@drawable/ic_menu"
+            android:title="Menù del giorno" />
+
+    </group>
+
+    <item android:title="Tools">
+        <menu>
+            <item
+                android:id="@+id/nav_spesa"
+                android:icon="@drawable/ic_spesa"
+                android:title="Spesa" />
+
+            <item
+                android:id="@+id/nav_calcolatrice"
+                android:icon="@drawable/ic_calcolatrice"
+                android:title="Calcolatrice" />
+            <item
+                android:id="@+id/nav_timer"
+                android:icon="@drawable/ic_timer"
+                android:title="Timer" />
+            <item
+                android:id="@+id/nav_calcolateglia"
+                android:icon="@drawable/ic_calcolateglia"
+                android:title="Calcola Teglia" />
+        </menu>
+    </item>
+
+</menu>

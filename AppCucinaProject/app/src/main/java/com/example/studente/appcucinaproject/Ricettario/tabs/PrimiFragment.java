@@ -31,9 +31,7 @@ public class PrimiFragment extends Fragment{
 
     public PrimiFragment() {
         // Required empty public constructor
-
     }
-
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

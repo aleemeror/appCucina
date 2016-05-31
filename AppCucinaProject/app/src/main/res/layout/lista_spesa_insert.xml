@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Inserisci l&apos;Ingrediente:"
+            android:id="@+id/textView6"
+            style="@style/Base.TextAppearance.AppCompat.Display1"
+            android:textSize="@dimen/abc_text_size_large_material"
+            android:layout_above="@+id/editText7"
+            android:layout_alignLeft="@+id/textViewNomeSpesa"
+            android:layout_alignStart="@+id/textViewNomeSpesa" />
+
+    <MultiAutoCompleteTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText7"
+        android:layout_above="@+id/view"
+        android:layout_alignLeft="@+id/textView6"
+        android:layout_alignStart="@+id/textView6"
+        android:layout_alignRight="@+id/buttonInserisciSpesa"
+        android:layout_alignEnd="@+id/buttonInserisciSpesa" />
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tab_max_width"
+        android:layout_above="@+id/buttonInserisciSpesa"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/view">
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inserisci Spesa"
+        android:id="@+id/buttonInserisciSpesa"
+        android:background="@drawable/button_rect"
+        android:textColor="#ffffff"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="31dp" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/imageButtonInsIngrediente"
+        android:src="@android:drawable/ic_input_add"
+        android:background="@drawable/round_button"
+        android:layout_marginRight="17dp"
+        android:layout_marginEnd="17dp"
+        android:layout_alignBottom="@+id/editText7"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:tint="#ffffff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inserisci il Nome Spesa:"
+        android:id="@+id/textViewNomeSpesa"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="@dimen/abc_text_size_large_material" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText8"
+        android:layout_below="@+id/textViewNomeSpesa"
+        android:layout_alignLeft="@+id/textViewNomeSpesa"
+        android:layout_alignStart="@+id/textViewNomeSpesa"
+        android:layout_marginTop="21dp"
+        android:layout_alignRight="@+id/imageButtonInsIngrediente"
+        android:layout_alignEnd="@+id/imageButtonInsIngrediente" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:id="@+id/textView7"
+        android:layout_below="@+id/imageButtonInsIngrediente"
+        android:layout_alignLeft="@+id/editText7"
+        android:layout_alignStart="@+id/editText7"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/buttonInserisciSpesa" />
+
+
+</RelativeLayout>

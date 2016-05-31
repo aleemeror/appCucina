@@ -12,4 +12,9 @@
     tools:context="com.example.studente.appcucinaproject.Spesa.Spesa"
     tools:showIn="@layout/app_bar_spesa">
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewSpesa"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
 </RelativeLayout>

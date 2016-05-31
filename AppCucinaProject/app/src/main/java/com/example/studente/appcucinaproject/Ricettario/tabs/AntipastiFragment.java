@@ -1,7 +1,5 @@
 package com.example.studente.appcucinaproject.Ricettario.tabs;
-/**
- * Created by Mattia on 22/04/2016.
- */
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -78,5 +76,4 @@ public class AntipastiFragment extends Fragment{
         return rootView;
 
     }
-
 }

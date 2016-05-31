@@ -2,8 +2,12 @@ package com.example.studente.appcucinaproject.Spesa;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,14 +20,30 @@ import android.view.MenuItem;
 
 import com.example.studente.appcucinaproject.CalcolaTeglia.CalcolaTeglia;
 import com.example.studente.appcucinaproject.Calcolatrice.Calcolatrice;
+import com.example.studente.appcucinaproject.Cards.MyCardAdapterSpesa;
 import com.example.studente.appcucinaproject.Home;
+import com.example.studente.appcucinaproject.MenuDelGiorno.MenuDelGiorno;
 import com.example.studente.appcucinaproject.R;
 import com.example.studente.appcucinaproject.RicercaAvanzata.RicercaAV;
 import com.example.studente.appcucinaproject.Ricettario.Ricettario;
 import com.example.studente.appcucinaproject.Timer.Timer;
 
+import java.util.ArrayList;
+
 public class Spesa extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    RecyclerView recyclerView;
+    RecyclerView.Adapter adapter;
+    RecyclerView.LayoutManager layoutManager;
+    CardView cardv;
+    public ArrayList<String> titleSpesa = new ArrayList<>();
+    public ArrayList<String> list = new ArrayList<String>();
+
+    private final String KEY_RECYCLER_STATE = "recycler_state";
+    private static Bundle mBundleRecyclerViewState;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +53,6 @@ public class Spesa extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -49,9 +62,39 @@ public class Spesa extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
         setTitle("Spesa");
+
+        if(getIntent().hasExtra("titleSpesa")){
+            titleSpesa = getIntent().getStringArrayListExtra("titleSpesa");
+        } else{
+            for(int count =0; count < 5; count++){
+                titleSpesa.add("Spesa "+ count);
+            }
+
+        }
+
+        recyclerView = (RecyclerView)findViewById(R.id.recyclerViewSpesa);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        //recyclerView.setHasFixedSize(true);
+        adapter = new MyCardAdapterSpesa(titleSpesa,Spesa.this);
+        recyclerView.setAdapter(adapter);
+
+
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Inserita una nuova lista della spesa", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+
+                Intent intent = new Intent(Spesa.this, InserisciSpesa.class); //Mi porta alla activity per inserire i dati della ricetta
+                intent.putExtra("listaSpese", titleSpesa); //passo alla activity di destinazione una lista di stringhe identificata da un "ID" sottoforma di stringa
+                startActivity(intent);
+            }
+        });
     }
+
 
     @Override
     public void onBackPressed() {
@@ -103,8 +146,13 @@ public class Spesa extends AppCompatActivity
             startActivity(new Intent(this, RicercaAV.class));
             finish();
 
+        } else if (id == R.id.nav_menu_del_giorno) {
+            startActivity(new Intent(this, MenuDelGiorno.class));
+            finish();
+
         } else if (id == R.id.nav_spesa) {
-            //startActivity(new Intent(this, Spesa.class));
+            startActivity(new Intent(this, Spesa.class));
+            finish();
 
         } else if (id == R.id.nav_calcolatrice) {
             startActivity(new Intent(this, Calcolatrice.class));

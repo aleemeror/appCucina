@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.studente.appcucinaproject.CalcolaTeglia.CalcolaTeglia;
 import com.example.studente.appcucinaproject.Calcolatrice.Calcolatrice;
@@ -28,15 +29,17 @@ import java.util.ArrayList;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    RecyclerView recyclerView;
+    /*RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
     CardView cardv;
-    ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();
+    ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();*/
 
 
-    int[] images = {R.drawable.antipasto,R.drawable.primo,R.drawable.secondo,R.drawable.dolce};
-    String[] title;
+    /*int[] images = {R.drawable.antipasto,R.drawable.primo,R.drawable.secondo,R.drawable.dolce};
+    String[] title;*/
+
+    TextView tx;
 
 
     @Override
@@ -59,10 +62,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         setTitle("Home");
 
-        title = getResources().getStringArray(R.array.ricetta_name);
+        //title = getResources().getStringArray(R.array.ricetta_name);
+        tx = (TextView)findViewById(R.id.textView9);
 
-        int count =0;
-         for(String Name:title){
+        //int count =0;
+         /*for(String Name:title){
 
              RicettaDetails ricetta = new RicettaDetails(images[count],Name);
                count++;
@@ -76,7 +80,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         adapter = new MyCardAdapterHome(list,Home.this);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter); */
 
     }
 
@@ -92,12 +96,12 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     }
 
     //PER TOGLIERE I 3 PUNTINI DALLA TOOLBAR
-    /*@Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home, menu);
         return true;
-    }*/
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
