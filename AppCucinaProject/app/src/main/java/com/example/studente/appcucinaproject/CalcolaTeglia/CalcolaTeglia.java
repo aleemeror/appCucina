@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.example.studente.appcucinaproject.Calcolatrice.Calcolatrice;
 import com.example.studente.appcucinaproject.Home;
+import com.example.studente.appcucinaproject.MenuDelGiorno.MenuDelGiorno;
 import com.example.studente.appcucinaproject.R;
 import com.example.studente.appcucinaproject.R.*;
 import com.example.studente.appcucinaproject.RicercaAvanzata.RicercaAV;
@@ -312,6 +313,10 @@ public class CalcolaTeglia extends AppCompatActivity
 
         } else if (id == R.id.nav_ricerca) {
             startActivity(new Intent(this, RicercaAV.class));
+            finish();
+
+        } else if (id == R.id.nav_menu_del_giorno) {
+            startActivity(new Intent(this, MenuDelGiorno.class));
             finish();
 
         } else if (id == R.id.nav_spesa) {

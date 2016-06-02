@@ -18,6 +18,7 @@ import android.widget.EditText;
 
 import com.example.studente.appcucinaproject.CalcolaTeglia.CalcolaTeglia;
 import com.example.studente.appcucinaproject.Home;
+import com.example.studente.appcucinaproject.MenuDelGiorno.MenuDelGiorno;
 import com.example.studente.appcucinaproject.R;
 import com.example.studente.appcucinaproject.RicercaAvanzata.RicercaAV;
 import com.example.studente.appcucinaproject.Ricettario.Ricettario;
@@ -950,7 +951,11 @@ public class Calcolatrice extends AppCompatActivity
             startActivity(new Intent(this, RicercaAV.class));
             finish();
 
-        } else if (id == R.id.nav_spesa) {
+        } else if (id == R.id.nav_menu_del_giorno) {
+            startActivity(new Intent(this, MenuDelGiorno.class));
+            finish();
+        }
+        else if (id == R.id.nav_spesa) {
             startActivity(new Intent(this, Spesa.class));
             finish();
 
