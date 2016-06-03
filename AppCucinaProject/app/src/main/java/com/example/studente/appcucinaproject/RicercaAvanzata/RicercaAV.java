@@ -19,6 +19,7 @@ import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.RadioGroup;
 
 import com.example.studente.appcucinaproject.CalcolaTeglia.CalcolaTeglia;
 import com.example.studente.appcucinaproject.Calcolatrice.Calcolatrice;
@@ -35,11 +36,12 @@ public class RicercaAV extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     //private NumberPicker pickerOre, pickerMinuti,pickerSecondi;
-    private EditText nomeRicerca;   //editText
+    private EditText nomeRicetta;   //editText
     private EditText ingrediente1,ingrediente2,ingrediente3; //2,3,4
     private CheckBox antipastoCB, primoCB, secondoCB, dolceCB;
-
     private RangeSeekBar rangeBarCalorie, rangeBarTempo;
+    private RadioGroup difficolta;
+    private String myNomeRicetta, myIngrediente1, myIngrediente2, myIngrediente3;
 
     private SQLiteDatabase mydatabase;
 
@@ -66,7 +68,12 @@ public class RicercaAV extends AppCompatActivity
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-        nomeRicerca = (EditText)findViewById(R.id.editText);
+        myNomeRicetta = "";
+        myIngrediente1 = "";
+        myIngrediente2 = "";
+        myIngrediente3 = "";
+
+        nomeRicetta = (EditText)findViewById(R.id.editText);
         ingrediente1 = (EditText)findViewById(R.id.editText2);
         ingrediente2 = (EditText)findViewById(R.id.editText3);
         ingrediente3 = (EditText)findViewById(R.id.editText4);
@@ -78,6 +85,20 @@ public class RicercaAV extends AppCompatActivity
 
         rangeBarTempo = (RangeSeekBar)findViewById(R.id.seekbar);
         rangeBarCalorie = (RangeSeekBar)findViewById(R.id.seekBar2);
+
+        difficolta = (RadioGroup)findViewById(R.id.radioGroup);
+
+        int ID_Difficolta = difficolta.getCheckedRadioButtonId();
+
+        myNomeRicetta = nomeRicetta.getText().toString();
+        myIngrediente1 = ingrediente1.getText().toString();
+        myIngrediente2 = ingrediente2.getText().toString();
+        myIngrediente3 = ingrediente3.getText().toString();
+
+        boolean isAntipastoChecked = antipastoCB.isChecked();
+        boolean isPrimoCBChecked = primoCB.isChecked();
+        boolean isSecondoCBChecked = secondoCB.isChecked();
+        boolean isDolceCBChecked = dolceCB.isChecked();
 
         //rangeTempo.setRangeValues(10, 500);
         //rangeBarCalorie.setRangeValues(10, 500);
