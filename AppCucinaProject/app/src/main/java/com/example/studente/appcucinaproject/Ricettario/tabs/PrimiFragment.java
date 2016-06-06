@@ -25,8 +25,9 @@ public class PrimiFragment extends Fragment{
     LinearLayoutManager layoutManager;
     private ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();
     private String[] mDataset;
+    boolean creato = false;
 
-    int[] images = {R.drawable.ic_home,R.drawable.ic_calcolateglia,R.drawable.ic_ricettario,R.drawable.ic_calcolatrice};
+    int[] images = {R.drawable.primo,R.drawable.primo,R.drawable.primo,R.drawable.primo};
 
 
     public PrimiFragment() {
@@ -38,14 +39,17 @@ public class PrimiFragment extends Fragment{
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_primi, container, false);
 
-        String[] title = getResources().getStringArray(R.array.ricetta_name);
-        int count =0;
-        for(count =0; count < title.length; count++){ //String Name:title
+        if(!creato) {
+            String[] title = getResources().getStringArray(R.array.ricetta_name);
+            int count =0;
+            for(count =0; count < title.length; count++){ //String Name:title
 
-            String Name = title[count];
-            RicettaDetails ricetta = new RicettaDetails(images[count],Name);
-            //count++;
-            list.add(ricetta);
+                String Name = title[count];
+                RicettaDetails ricetta = new RicettaDetails(images[count],Name);
+                //count++;
+                list.add(ricetta);
+            }
+            creato = true;
         }
 
 

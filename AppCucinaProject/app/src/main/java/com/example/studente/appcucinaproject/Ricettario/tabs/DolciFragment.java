@@ -26,7 +26,7 @@ public class DolciFragment extends Fragment{
     LinearLayoutManager layoutManager;
     private ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();
     private RicettaDetails[] mDataset;
-    boolean creato;
+    boolean creato = false;
 
     int[] images = {R.drawable.dolce,R.drawable.dolce,R.drawable.dolce,R.drawable.dolce};
 
@@ -40,24 +40,27 @@ public class DolciFragment extends Fragment{
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_dolci, container, false);
 
+        if(!creato) {
+            //list.clear();
+            String[] title = getResources().getStringArray(R.array.ricetta_name);
+            int count = 0;
+            for (String Name : title) {
 
-        String[] title = getResources().getStringArray(R.array.ricetta_name);
-        int count =0;
-        for(String Name:title){
+                RicettaDetails ricetta = new RicettaDetails(images[count], Name);
+                count++;
+                list.add(ricetta);
+            }
 
-            RicettaDetails ricetta = new RicettaDetails(images[count],Name);
-            count++;
-            list.add(ricetta);
+            creato = true;
         }
 
-        RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.recview_dolci);
-        rv.setHasFixedSize(true);
-        MyCardAdapter adapter = new MyCardAdapter(list,this.getContext());
-        rv.setAdapter(adapter);
+            RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.recview_dolci);
+            rv.setHasFixedSize(true);
+            MyCardAdapter adapter = new MyCardAdapter(list, this.getContext());
+            rv.setAdapter(adapter);
 
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        rv.setLayoutManager(llm);
-
+            LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+            rv.setLayoutManager(llm);
 
         // Inflate the layout for this fragment
         return rootView;

@@ -21,19 +21,15 @@ public class AntipastiFragment extends Fragment{
 
     RecyclerView recAntipasti;
     LinearLayoutManager layoutManager;
-    //private ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();     MOD
-    private RicettaDetails [] list = new RicettaDetails[4];
-    private String[] mDataset;
+    private ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();
+    private RicettaDetails[] mDataset;
+    boolean creato = false;
 
     int[] images = {R.drawable.antipasto,R.drawable.antipasto,R.drawable.antipasto,R.drawable.antipasto};
-    String[] title = {"Antipasto 1","Antipasto 2","Antipasto 3","Antipasto 4"};
 
     public AntipastiFragment() {
         // Required empty public constructor
-
-
     }
-
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -41,31 +37,23 @@ public class AntipastiFragment extends Fragment{
 
         View rootView = inflater.inflate(R.layout.fragment_antipasti, container, false);
 
-        /*title = getResources().getStringArray(R.array.ricetta_name);
-        //int count =0;
-        for(int count =0; count < title.length; count++){ //String Name:title
 
-            String Name = title[count];
-            RicettaDetails ricetta = new RicettaDetails(images[count],Name);
-            //count++;
-            list.add(ricetta);
-        }*/
+        if(!creato) {
+            String[] title = getResources().getStringArray(R.array.ricetta_name);
+            int count =0;
+            for(count =0; count < title.length; count++){ //String Name:title
 
-
-        //title = getResources().getStringArray(R.array.ricetta_name);
-
-        //int count =0;
-        for(int count =0; count < title.length; count++){ //String Name:title
-
-            RicettaDetails ricetta = new RicettaDetails(images[count],title[count]);
-            //count++;
-            list[count]= ricetta;
-            //list.add(ricetta);
+                String Name = title[count];
+                RicettaDetails ricetta = new RicettaDetails(images[count],Name);
+                //count++;
+                list.add(ricetta);
+            }
+            creato = true;
         }
 
         RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.recview_antipasti);
         rv.setHasFixedSize(true);
-        MyFragmentsCardAdapter adapter = new MyFragmentsCardAdapter(list,this.getContext()); //MyCardAdapter adapter = new MyCardAdapter(list,this.getContext());
+        MyCardAdapter adapter = new MyCardAdapter(list, this.getContext());
         rv.setAdapter(adapter);
 
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
