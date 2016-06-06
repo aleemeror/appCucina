@@ -40,15 +40,15 @@
 
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="Inserisci Spesa"
         android:id="@+id/buttonInserisciSpesa"
         android:background="@drawable/button_rect"
         android:textColor="#ffffff"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="31dp" />
+        android:layout_alignRight="@+id/textView6"
+        android:layout_alignEnd="@+id/textView6" />
 
     <ImageButton
         android:layout_width="50dp"
