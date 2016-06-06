@@ -6,6 +6,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.KeyEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -369,7 +370,7 @@ public class Timer extends AppCompatActivity
 
     }
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -377,6 +378,19 @@ public class Timer extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }*/
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START))
+            drawer.closeDrawer(GravityCompat.START);
+        else if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_HOME) {
+            super.onBackPressed();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 
     /*@Override
