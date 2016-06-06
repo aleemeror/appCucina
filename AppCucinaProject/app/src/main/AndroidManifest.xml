@@ -54,6 +54,15 @@
                 android:value="com.example.studente.appcucinaproject.Home" />
         </activity>
 
+        <activity
+            android:name=".Spesa.InserisciSpesa"
+            android:parentActivityName=".Spesa.Spesa"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.studente.appcucinaproject.Spesa.Spesa" />
+        </activity>
+
 
         <activity
             android:name=".Spesa.SpesaDetailsActivity"
@@ -105,7 +114,7 @@
         <activity
             android:name=".Timer.TimerOverActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".Spesa.InserisciSpesa" />
+
 
         <activity
             android:name=".MenuDelGiorno.MenuDelGiorno"
