@@ -97,21 +97,134 @@
 
             </RelativeLayout>
 
-            <Space android:layout_width="match_parent"
-                android:layout_height="10dp"/>
-
-
-            <android.support.v4.widget.NestedScrollView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/tab_max_width">
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nPersone"
+                    android:src="@drawable/users"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="5dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tempoRicetta"
+                    android:src="@drawable/time"
+                    android:layout_below="@+id/nPersone"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="5dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/calorie"
+                    android:src="@drawable/calories"
+                    android:layout_below="@+id/tempoRicetta"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="5dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/portata"
+                    android:src="@drawable/portata"
+                    android:layout_below="@+id/calorie"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="5dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ingredienti_img"
+                    android:src="@drawable/ingredienti"
+                    android:layout_below="@+id/portata"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="n persone"
+                    android:id="@+id/textView11"
+                    android:layout_alignBottom="@+id/nPersone"
+                    android:layout_toRightOf="@+id/nPersone"
+                    android:layout_toEndOf="@+id/nPersone"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="24dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="tempo impiegato"
+                    android:id="@+id/textView12"
+                    android:layout_above="@+id/calorie"
+                    android:layout_alignLeft="@+id/textView11"
+                    android:layout_alignStart="@+id/textView11" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="calorie"
+                    android:id="@+id/textView14"
+                    android:layout_above="@+id/portata"
+                    android:layout_alignLeft="@+id/textView12"
+                    android:layout_alignStart="@+id/textView12" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="portata"
+                    android:id="@+id/textView15"
+                    android:layout_above="@+id/ingredienti_img"
+                    android:layout_alignLeft="@+id/textView12"
+                    android:layout_alignStart="@+id/textView12" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ingredienti"
+                    android:id="@+id/textView16"
+                    android:layout_above="@+id/textView15"
+                    android:layout_alignLeft="@+id/textView14"
+                    android:layout_alignStart="@+id/textView15" />
+
+                <android.support.v4.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ingredienti_img">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ID_ingredienti"
+                        android:layout_alignLeft="@+id/textView12"
+                        android:text="INGREDIENTI"/>
+
+                </android.support.v4.widget.NestedScrollView>
+
+
+            </RelativeLayout>
+
+            <Space android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:id="@+id/space1"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/large_text"
-                    android:id="@+id/textView5" />
+                    android:textSize="20sp"
+                    android:id="@+id/textView5"
+                    android:layout_weight="0.94"
+                    android:layout_marginLeft="5dp"/>
 
-            </android.support.v4.widget.NestedScrollView>
+
 
         </LinearLayout>
 

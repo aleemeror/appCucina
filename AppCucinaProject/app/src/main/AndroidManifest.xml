@@ -53,17 +53,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.studente.appcucinaproject.Home" />
         </activity>
-
         <activity
             android:name=".Spesa.InserisciSpesa"
-            android:parentActivityName=".Spesa.Spesa"
-            >
+            android:parentActivityName=".Spesa.Spesa">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.studente.appcucinaproject.Spesa.Spesa" />
         </activity>
-
-
         <activity
             android:name=".Spesa.SpesaDetailsActivity"
             android:parentActivityName=".Spesa.Spesa"
@@ -72,9 +68,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.studente.appcucinaproject.Spesa.Spesa" />
         </activity>
-
-
-
         <activity
             android:name=".Calcolatrice.Calcolatrice"
             android:label="@string/title_activity_calcolatrice"
@@ -102,20 +95,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.studente.appcucinaproject.Home" />
         </activity>
-
-        <activity
-            android:name=".Ricetta.Ricetta">
+        <activity android:name=".Ricetta.Ricetta">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.studente.appcucinaproject.Ricettario.Ricettario" />
         </activity>
-
-
         <activity
             android:name=".Timer.TimerOverActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-
-
         <activity
             android:name=".MenuDelGiorno.MenuDelGiorno"
             android:label="@string/title_activity_menu_del_giorno"
@@ -125,7 +112,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.studente.appcucinaproject.Home" />
         </activity>
-
     </application>
 
 </manifest>

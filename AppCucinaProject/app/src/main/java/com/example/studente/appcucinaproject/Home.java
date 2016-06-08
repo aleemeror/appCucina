@@ -1,6 +1,7 @@
 package com.example.studente.appcucinaproject;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -41,6 +42,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     String[] title;*/
 
     TextView tx;
+    TextView frase;
 
 
     @Override
@@ -62,9 +64,17 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         navigationView.setNavigationItemSelectedListener(this);
 
         setTitle("Home");
+        // Typeface custom_font = Typeface.createFromAsset(getAssets(), "LANENAR_.ttf"); //"fonts/font name.ttf"
+        //Typeface custom_font_bold = Typeface.createFromAsset(getAssets(), "LANEPOSH.ttf");
+        Typeface custom_font_3 = Typeface.createFromAsset(getAssets(), "TCM.TTF");
 
         //title = getResources().getStringArray(R.array.ricetta_name);
+
         tx = (TextView)findViewById(R.id.textView9);
+        frase = (TextView)findViewById(R.id.textView10);
+        tx.setTypeface(custom_font_3);
+        frase.setTypeface(custom_font_3);
+
 
         //int count =0;
          /*for(String Name:title){

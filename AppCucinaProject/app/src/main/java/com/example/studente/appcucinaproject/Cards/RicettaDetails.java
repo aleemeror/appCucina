@@ -32,4 +32,13 @@ public class RicettaDetails {
         this.imgRicettaID = imgID;
     }
 
+    public String getDescrRicetta() {
+        return descrRicetta;
+    }   //prendo il testo di come realizzare la ricetta
+
+    public void setDescrRicetta(String descrRicetta) {
+        this.descrRicetta = descrRicetta;
+    }   //setto i vari passaggi per realizzare la ricetta
+
+
 }
