@@ -20,8 +20,15 @@ import com.example.studente.appcucinaproject.Timer.TimerOverActivity;
 
 public class Ricetta extends AppCompatActivity {
     ImageView imageView;
+
     TextView txtname;
     TextView txtDescrizione;
+    TextView txtPersone;
+    TextView txtTempoImpiegato;
+    TextView txtCalorie;
+    TextView txtPortata;
+    TextView txtIngredienti;
+    TextView proc;
 
     ImageButton preferito;
     ImageButton timer;
@@ -42,6 +49,13 @@ public class Ricetta extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.d_ricetta_image);
         txtname = (TextView) findViewById(R.id.d_ricetta_title);
         txtDescrizione = (TextView) findViewById(R.id.textView5);
+        txtPersone = (TextView) findViewById(R.id.textView11);
+        txtTempoImpiegato = (TextView) findViewById(R.id.textView12);
+        txtCalorie = (TextView) findViewById(R.id.textView14);
+        txtPortata = (TextView) findViewById(R.id.textView15);
+        txtIngredienti = (TextView) findViewById(R.id.ID_ingredienti);
+        proc=(TextView) findViewById(R.id.textViewTitoloProcedimento);
+
 
         preferito = (ImageButton) findViewById(R.id.imageButton2);
         timer = (ImageButton) findViewById(R.id.imageButton4);
@@ -49,12 +63,19 @@ public class Ricetta extends AppCompatActivity {
         menu_gg = (ImageButton) findViewById(R.id.imageButton5);
 
 
+        txtname.setTypeface(custom_font_3);
         txtDescrizione.setTypeface(custom_font_3);
+        txtPersone.setTypeface(custom_font_3);
+        txtTempoImpiegato.setTypeface(custom_font_3);
+        txtCalorie.setTypeface(custom_font_3);
+        txtPortata.setTypeface(custom_font_3);
+        txtIngredienti.setTypeface(custom_font_3);
+        proc.setTypeface(custom_font_3);
 
 
         //prendo le info dall'intent
         imageView.setImageResource(getIntent().getIntExtra("img_id",00));
-        txtname.setText("Name:"+ getIntent().getStringExtra("name"));
+        txtname.setText(getIntent().getStringExtra("name"));
 
         setTitle(getIntent().getStringExtra("name"));
         nameRicetta = getIntent().getStringExtra("name");

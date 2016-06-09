@@ -28,12 +28,13 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/d_ricetta_title"
                 android:text="Titolo Ricetta"
-                android:textSize="20dp"
+                android:textSize="30dp"
                 android:layout_marginTop="20dp"
                 android:textStyle="bold"
                 android:layout_marginLeft="10dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="10dp"
+                style="@style/Base.TextAppearance.AppCompat.Title" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -186,25 +187,21 @@
                     android:layout_alignLeft="@+id/textView12"
                     android:layout_alignStart="@+id/textView12" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ingredienti"
-                    android:id="@+id/textView16"
-                    android:layout_above="@+id/textView15"
-                    android:layout_alignLeft="@+id/textView14"
-                    android:layout_alignStart="@+id/textView15" />
+
 
                 <android.support.v4.widget.NestedScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/ingredienti_img">
+                    android:layout_below="@+id/textView15"
+                    android:layout_alignLeft="@+id/textView14"
+                    android:paddingTop="8dp">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/ID_ingredienti"
                         android:layout_alignLeft="@+id/textView12"
-                        android:text="INGREDIENTI"/>
+                        android:text="Ingrediente 1"/>
 
                 </android.support.v4.widget.NestedScrollView>
 
@@ -215,7 +212,18 @@
                 android:layout_height="10dp"
                 android:id="@+id/space1"/>
 
-                <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Procedimento"
+                android:id="@+id/textViewTitoloProcedimento"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                style="@style/Base.TextAppearance.AppCompat.Title"
+                android:layout_gravity="center_horizontal"
+                android:textSize="20sp" />
+
+            <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/large_text"
