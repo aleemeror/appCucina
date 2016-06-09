@@ -165,7 +165,7 @@
                     android:layout_height="wrap_content"
                     android:text="tempo impiegato"
                     android:id="@+id/textView12"
-                    android:layout_above="@+id/calorie"
+                    android:layout_alignBottom="@+id/tempoRicetta"
                     android:layout_alignLeft="@+id/textView11"
                     android:layout_alignStart="@+id/textView11" />
 
@@ -174,7 +174,7 @@
                     android:layout_height="wrap_content"
                     android:text="calorie"
                     android:id="@+id/textView14"
-                    android:layout_above="@+id/portata"
+                    android:layout_centerVertical="true"
                     android:layout_alignLeft="@+id/textView12"
                     android:layout_alignStart="@+id/textView12" />
 
@@ -183,9 +183,9 @@
                     android:layout_height="wrap_content"
                     android:text="portata"
                     android:id="@+id/textView15"
-                    android:layout_above="@+id/ingredienti_img"
-                    android:layout_alignLeft="@+id/textView12"
-                    android:layout_alignStart="@+id/textView12" />
+                    android:layout_alignBottom="@+id/portata"
+                    android:layout_alignLeft="@+id/view3"
+                    android:layout_alignStart="@+id/view3" />
 
 
 
@@ -194,16 +194,19 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textView15"
                     android:layout_alignLeft="@+id/textView14"
-                    android:paddingTop="8dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/ID_ingredienti"
-                        android:layout_alignLeft="@+id/textView12"
-                        android:text="Ingrediente 1"/>
+                    android:paddingTop="8dp"
+                    android:id="@+id/view3">
 
                 </android.support.v4.widget.NestedScrollView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ID_ingredienti"
+                    android:text="Ingrediente 1"
+                    android:layout_alignBottom="@+id/ingredienti_img"
+                    android:layout_alignLeft="@+id/view3"
+                    android:layout_alignStart="@+id/view3" />
 
 
             </RelativeLayout>

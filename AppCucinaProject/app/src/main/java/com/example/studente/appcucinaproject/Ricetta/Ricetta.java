@@ -2,6 +2,7 @@ package com.example.studente.appcucinaproject.Ricetta;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -43,6 +44,9 @@ public class Ricetta extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ricetta_act);
+
+        //ROTAZIONE SCHERMO BLOCCATA
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         Typeface custom_font_3 = Typeface.createFromAsset(getAssets(), "TCM.TTF"); //per modificare il font
 
