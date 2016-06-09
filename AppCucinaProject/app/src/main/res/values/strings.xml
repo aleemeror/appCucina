@@ -48,4 +48,7 @@
     </string>
     <string name="title_activity_menu_del_giorno">Menu del giorno</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
