@@ -1,13 +1,8 @@
 package com.example.studente.appcucinaproject;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
-import android.support.design.widget.TabLayout;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,11 +24,6 @@ import com.example.studente.appcucinaproject.Cards.RicettaDetails;
 import com.example.studente.appcucinaproject.MenuDelGiorno.MenuDelGiorno;
 import com.example.studente.appcucinaproject.RicercaAvanzata.RicercaAV;
 import com.example.studente.appcucinaproject.Ricettario.Ricettario;
-import com.example.studente.appcucinaproject.ViewPagerAdapter;
-import com.example.studente.appcucinaproject.Ricettario.tabs.AntipastiFragment;
-import com.example.studente.appcucinaproject.Ricettario.tabs.DolciFragment;
-import com.example.studente.appcucinaproject.Ricettario.tabs.PrimiFragment;
-import com.example.studente.appcucinaproject.Ricettario.tabs.SecondiFragment;
 import com.example.studente.appcucinaproject.Spesa.Spesa;
 import com.example.studente.appcucinaproject.Timer.Timer;
 
@@ -51,9 +41,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     /*int[] images = {R.drawable.antipasto,R.drawable.primo,R.drawable.secondo,R.drawable.dolce};
     String[] title;*/
 
-
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+    TextView tx;
+    TextView frase;
 
 
     @Override
@@ -74,18 +63,17 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        viewPager = (ViewPager) findViewById(R.id.viewpagerHome);
-        setupViewPager(viewPager);
-
-        tabLayout = (TabLayout) findViewById(R.id.tabsHome);
-        tabLayout.setupWithViewPager(viewPager);
-
-
-
         setTitle("Home");
         // Typeface custom_font = Typeface.createFromAsset(getAssets(), "LANENAR_.ttf"); //"fonts/font name.ttf"
         //Typeface custom_font_bold = Typeface.createFromAsset(getAssets(), "LANEPOSH.ttf");
+        Typeface custom_font_3 = Typeface.createFromAsset(getAssets(), "TCM.TTF");
 
+        //title = getResources().getStringArray(R.array.ricetta_name);
+
+        tx = (TextView)findViewById(R.id.textView9);
+        frase = (TextView)findViewById(R.id.textView10);
+        tx.setTypeface(custom_font_3);
+        frase.setTypeface(custom_font_3);
 
 
         //int count =0;
@@ -104,6 +92,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         recyclerView.setHasFixedSize(true);
         adapter = new MyCardAdapterHome(list,Home.this);
         recyclerView.setAdapter(adapter); */
+
     }
 
 
@@ -178,13 +167,5 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new HomeFragment(), "Home");
-        adapter.addFragment(new PreferitiFragment(), "Preferiti");
-        viewPager.setAdapter(adapter);
     }
 }
