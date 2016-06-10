@@ -1,8 +1,11 @@
 package com.example.studente.appcucinaproject;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,18 +34,9 @@ import java.util.ArrayList;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    /*RecyclerView recyclerView;
-    RecyclerView.Adapter adapter;
-    RecyclerView.LayoutManager layoutManager;
-    CardView cardv;
-    ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();*/
 
-
-    /*int[] images = {R.drawable.antipasto,R.drawable.primo,R.drawable.secondo,R.drawable.dolce};
-    String[] title;*/
-
-    TextView tx;
-    TextView frase;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
 
     @Override
@@ -52,7 +46,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        //ROTAZIONE SCHERMO BLOCCATA
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -63,36 +58,15 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        viewPager = (ViewPager) findViewById(R.id.viewpagerHome);
+        setupViewPager(viewPager);
+
+        tabLayout = (TabLayout) findViewById(R.id.tabsHome);
+        tabLayout.setupWithViewPager(viewPager);
+
+
+
         setTitle("Home");
-        // Typeface custom_font = Typeface.createFromAsset(getAssets(), "LANENAR_.ttf"); //"fonts/font name.ttf"
-        //Typeface custom_font_bold = Typeface.createFromAsset(getAssets(), "LANEPOSH.ttf");
-        Typeface custom_font_3 = Typeface.createFromAsset(getAssets(), "TCM.TTF");
-
-        //title = getResources().getStringArray(R.array.ricetta_name);
-
-        tx = (TextView)findViewById(R.id.textView9);
-        frase = (TextView)findViewById(R.id.textView10);
-        tx.setTypeface(custom_font_3);
-        frase.setTypeface(custom_font_3);
-
-
-        //int count =0;
-         /*for(String Name:title){
-
-             RicettaDetails ricetta = new RicettaDetails(images[count],Name);
-               count++;
-             list.add(ricetta);
-         }
-
-
-
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
-        adapter = new MyCardAdapterHome(list,Home.this);
-        recyclerView.setAdapter(adapter); */
-
     }
 
 
@@ -168,4 +142,14 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new HomeFragment(), "Home");
+        adapter.addFragment(new PreferitiFragment(), "Preferiti");
+        viewPager.setAdapter(adapter);
+    }
+
+
+
 }
