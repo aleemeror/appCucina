@@ -130,7 +130,7 @@ public class Timer extends AppCompatActivity
         }
 
         nomeRicettaFromIntent = getIntent().getStringExtra("name");
-        tempoRicettaFromIntent = getIntent().getIntExtra("time", 0);
+        //tempoRicettaFromIntent = getIntent().getIntExtra("time", 0);
         //secondiFromRicetta = getIntent().getStringExtra("seconds");
 
         //tempoRicettaFromIntent = "123";
@@ -183,25 +183,11 @@ public class Timer extends AppCompatActivity
         /*INTENT PER LA ECONDA ACTIVITY*/
         secondACT = new Intent(this.getApplicationContext(),TimerOverActivity.class);
 
-        /*if(tempoRicettaFromIntent == "")
-            tot = s * 1000 + m * 60000 + h * 3600000 + 1000;    //+ 1000 finale a livello estetico
-        else{
-            //tot = CONVERTIRE LA STRINGA IN INT E
-            long totInMillis = tot;
-            String hh = String.format("%02d", TimeUnit.MILLISECONDS.toHours(totInMillis));
-            editOre.setText(hh);
-            String mm = String.format("%02d", TimeUnit.MILLISECONDS.toMinutes(totInMillis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(totInMillis)));
-            editMinuti.setText(mm);
-            String ss = String.format("%02d", TimeUnit.MILLISECONDS.toSeconds(totInMillis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(totInMillis)));
-            editSecondi.setText(ss);
-        }*/
-
         pauseButton.setEnabled(false);
 
         setTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //String myH = Integer.toString(h);
 
                 int h = ore.getValue();
                 int m = minuti.getValue();

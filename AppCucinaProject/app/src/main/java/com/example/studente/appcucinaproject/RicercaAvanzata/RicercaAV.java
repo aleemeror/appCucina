@@ -43,7 +43,8 @@ public class RicercaAV extends AppCompatActivity
     private RadioGroup difficolta;
     private String myNomeRicetta, myIngrediente1, myIngrediente2, myIngrediente3;
 
-    private SQLiteDatabase mydatabase;
+    private int minCal = 0, maxCal = 0;
+    private int minTime = 0, maxTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
