@@ -40,30 +40,15 @@ public class DatabaseAccess {
         return instance;
     }
 
-    /**
-     * Open the database connection.
-     */
-
     public void open() {
         this.database = openHelper.getWritableDatabase();
     }
-
-    /**
-     * Close the database connection.
-     */
 
     public void close() {
         if (database != null) {
             this.database.close();
         }
     }
-
-    /**
-     * Read all quotes from the database.
-     *
-     * @return a List of quotes
-     */
-
 
     public List<String> getQuotes() {
         List<String> list = new ArrayList<>();

@@ -23,6 +23,7 @@ import android.widget.RadioGroup;
 
 import com.example.studente.appcucinaproject.CalcolaTeglia.CalcolaTeglia;
 import com.example.studente.appcucinaproject.Calcolatrice.Calcolatrice;
+import com.example.studente.appcucinaproject.DatabaseAccess;
 import com.example.studente.appcucinaproject.Home;
 import com.example.studente.appcucinaproject.MenuDelGiorno.MenuDelGiorno;
 import com.example.studente.appcucinaproject.R;
@@ -35,7 +36,6 @@ import org.florescu.android.rangeseekbar.RangeSeekBar;
 public class RicercaAV extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    //private NumberPicker pickerOre, pickerMinuti,pickerSecondi;
     private EditText nomeRicetta;   //editText
     private EditText ingrediente1,ingrediente2,ingrediente3; //2,3,4
     private CheckBox antipastoCB, primoCB, secondoCB, dolceCB;
@@ -101,48 +101,26 @@ public class RicercaAV extends AppCompatActivity
         boolean isSecondoCBChecked = secondoCB.isChecked();
         boolean isDolceCBChecked = dolceCB.isChecked();
 
-        //rangeTempo.setRangeValues(10, 500);
-        //rangeBarCalorie.setRangeValues(10, 500);
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
+        databaseAccess.open();
+        minCal = databaseAccess.getMINCalorie();
+        maxCal = databaseAccess.getMAXCalorie();
+
+        minTime = databaseAccess.getMINTempo();
+        maxTime = databaseAccess.getMAXTempo();
+
+        databaseAccess.close();
+
+        /*rangeTempo.setRangeValues(minTime, maxTime);
+        rangeBarCalorie.setRangeValues(minCal, maxCal);
 
         int calorieMINValue = rangeBarTempo.getSelectedMinValue().intValue();  //numero minimo
         int calorieMAXValue = rangeBarTempo.getSelectedMaxValue().intValue();  //numero massimo
 
         int tempoMINValue = rangeBarCalorie.getSelectedMinValue().intValue();  //numero minimo
-        int tempoMAXValue = rangeBarCalorie.getSelectedMaxValue().intValue();  //numero massimo
+        int tempoMAXValue = rangeBarCalorie.getSelectedMaxValue().intValue();  //numero massimo */
 
-
-
-        mydatabase = openOrCreateDatabase("your database name",MODE_PRIVATE,null);
-
-
-        /*pickerOre = (NumberPicker) findViewById(R.id.numberPickerHours);
-        pickerOre.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
-        pickerOre.setMaxValue(99);
-        pickerOre.setMinValue(00);
-        pickerOre.setFocusable(true);
-        pickerOre.setFocusableInTouchMode(true);
-
-        pickerMinuti = (NumberPicker) findViewById(R.id.numberPickerMinutes);
-        pickerMinuti.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
-        pickerMinuti.setMaxValue(59);
-        pickerMinuti.setMinValue(00);
-        pickerMinuti.setFocusable(true);
-        pickerMinuti.setFocusableInTouchMode(true);
-
-        pickerSecondi = (NumberPicker) findViewById(R.id.numberPickerSeconds);
-        pickerSecondi.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
-        pickerSecondi.setMaxValue(59);
-        pickerSecondi.setMinValue(00);
-        pickerSecondi.setFocusable(true);
-        pickerSecondi.setFocusableInTouchMode(true);
-
-        pickerOre.setValue(0);
-        pickerMinuti.setValue(0);
-        pickerSecondi.setValue(0);*/
-
-
-
-
+        
 
 
     }

@@ -57,8 +57,8 @@ public class Timer extends AppCompatActivity
     private boolean timerAttivato = false;
 
     private String nomeRicettaFromIntent = "";
-    private int tempoRicettaFromIntent = 0;
-    private String secondiFromRicetta = "";
+    private String tempoRicettaFromIntent = "";
+
 
     private boolean isTimeFromRicetta = false;
 
@@ -130,54 +130,37 @@ public class Timer extends AppCompatActivity
         }
 
         nomeRicettaFromIntent = getIntent().getStringExtra("name");
-        //tempoRicettaFromIntent = getIntent().getIntExtra("time", 0);
-        //secondiFromRicetta = getIntent().getStringExtra("seconds");
+        tempoRicettaFromIntent = getIntent().getStringExtra("time");
 
-        //tempoRicettaFromIntent = "123";
-
-        //FARE I CONTROLLI PER QUANDO PARTE
-        if(!isTimeFromRicetta)
+        if(tempoRicettaFromIntent != null || (!tempoRicettaFromIntent.isEmpty()))
         {
-            if((tempoRicettaFromIntent != 0) || (secondiFromRicetta != ""))
-            {
-                isTimeFromRicetta = true;
+            String[] parts = tempoRicettaFromIntent.split(":");
+            String oreFromDB = parts[0];
+            String minutiFromDB = parts[1];
+            String secondiFromDB = parts[2];
 
-                int secondiConvertiti = 0;
-                int minutiCalcolati = 0;
-                int oreCalcolate = 0;
+            int oreConvertite = 0;
+            int minutiConvertiti = 0;
+            int secondiConvertiti = 0;
 
-                if(secondiFromRicetta != "")
-                {
-                    secondiConvertiti = Integer.parseInt(secondiFromRicetta);
-                    secondi.setValue(secondiConvertiti);
-                }
+            oreConvertite = Integer.parseInt(oreFromDB);
+            minutiConvertiti = Integer.parseInt(minutiFromDB);
+            secondiConvertiti = Integer.parseInt(secondiFromDB);
 
-                if(tempoRicettaFromIntent != 0)
-                {
-                    int minutiFromString = tempoRicettaFromIntent;
-                    oreCalcolate = minutiFromString / 60;
-                    minutiCalcolati = minutiFromString - (60 * oreCalcolate);
+            ore.setValue(oreConvertite);
+            minuti.setValue(minutiConvertiti);
+            secondi.setValue(secondiConvertiti);
 
-                    ore.setValue(oreCalcolate);
-                    minuti.setValue(minutiCalcolati);
-                }
 
-                String oreInString = Integer.toString(oreCalcolate);
-                String minutiInString = Integer.toString(minutiCalcolati);
+            if(oreConvertite != 0)
+                Toast.makeText(getApplicationContext(),"Timer impostato a : " + oreFromDB + "h" + " " + minutiFromDB + "m" + " " + secondiFromDB + "s", Toast.LENGTH_LONG).show();
+            else if(minutiConvertiti != 0)
+                Toast.makeText(getApplicationContext(),"Timer impostato a : " + minutiFromDB + "m" + " " + secondiFromDB + "s", Toast.LENGTH_LONG).show();
 
-                //aggiunge uno zero davanti solo per una questione estetica
-                /*if(minutiCalcolati < 10)
-                    minutiInString = "0" + minutiInString;*/
+            ore.setEnabled(false);
+            minuti.setEnabled(false);
+            secondi.setEnabled(false);
 
-                if(oreCalcolate != 0)
-                    Toast.makeText(getApplicationContext(),"Timer setted at : " + oreInString + "h" + " " + minutiInString + "m", Toast.LENGTH_LONG).show();
-                else
-                    Toast.makeText(getApplicationContext(),"Timer setted at : " + minutiInString + "m", Toast.LENGTH_LONG).show();
-
-                ore.setEnabled(false);
-                minuti.setEnabled(false);
-                secondi.setEnabled(false);
-            }
         }
 
         /*INTENT PER LA ECONDA ACTIVITY*/
@@ -355,16 +338,6 @@ public class Timer extends AppCompatActivity
         }
 
     }
-
-    /*@Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }*/
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)  {
