@@ -50,6 +50,14 @@ public class DatabaseAccess {
         }
     }
 
+    public String getTempoRicetta(String nomeRicetta){
+        String tempoRicetta = "";
+        Cursor cursor = database.rawQuery("SELECT tempo FROM ricetta where nome = ???? 'nomeRicetta'", null);
+        cursor.moveToFirst();
+        tempoRicetta = cursor.toString();
+        return tempoRicetta;
+    }
+
     public List<String> getQuotes() {
         List<String> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT tempo FROM ricetta", null);
@@ -63,17 +71,18 @@ public class DatabaseAccess {
     }
 
     public int getMINCalorie(){
-        Cursor cursor = database.rawQuery("SELECT min(calorie) FROM ricetta", null);
-        String min = cursor.toString();
         int minCalorie = 0;
+        Cursor cursor = database.rawQuery("SELECT min(calorie) FROM ricetta", null);
+        cursor.moveToFirst();
+        String min = cursor.toString();
         minCalorie = Integer.parseInt(min);
         return minCalorie;
     }
 
     public int getMAXCalorie(){
+        int maxCalorie = 0;
         Cursor cursor = database.rawQuery("SELECT max(calorie) FROM ricetta", null);
         String max = cursor.toString();
-        int maxCalorie = 0;
         maxCalorie = Integer.parseInt(max);
         return maxCalorie;
     }

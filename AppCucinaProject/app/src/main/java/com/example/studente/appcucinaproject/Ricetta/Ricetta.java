@@ -14,9 +14,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.studente.appcucinaproject.DatabaseAccess;
 import com.example.studente.appcucinaproject.R;
 import com.example.studente.appcucinaproject.Timer.Timer;
 import com.example.studente.appcucinaproject.Timer.TimerOverActivity;
+
+import java.util.List;
 
 public class Ricetta extends AppCompatActivity {
     ImageView imageView;
@@ -37,6 +40,9 @@ public class Ricetta extends AppCompatActivity {
 
     private Intent setTimeFromRicetta;
     private String nameRicetta = "";
+    private String tempoFromDatabase = "";
+
+    private DatabaseAccess myDatabaseAccess;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +78,16 @@ public class Ricetta extends AppCompatActivity {
         txtIngredienti.setTypeface(custom_font_3);
         proc.setTypeface(custom_font_3);
 
+
+        myDatabaseAccess = DatabaseAccess.getInstance(this);
+        myDatabaseAccess.open();
+
+        //getTempoRicetta(nameRicetta)
+        List<String> quotes = myDatabaseAccess.getQuotes();
+
+        myDatabaseAccess.close();
+
+        tempoFromDatabase = quotes.get(0);
 
         //prendo le info dall'intent
         imageView.setImageResource(getIntent().getIntExtra("img_id",00));
@@ -109,7 +125,7 @@ public class Ricetta extends AppCompatActivity {
 
                 setTimeFromRicetta = new Intent(getApplicationContext(), Timer.class);
                 setTimeFromRicetta.putExtra("name", nameRicetta);
-                //setTimeFromRicetta.putExtra("time", )
+                setTimeFromRicetta.putExtra("time", tempoFromDatabase);
 
                 startActivity(setTimeFromRicetta);
             }
