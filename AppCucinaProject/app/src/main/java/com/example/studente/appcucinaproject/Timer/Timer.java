@@ -132,35 +132,39 @@ public class Timer extends AppCompatActivity
         nomeRicettaFromIntent = getIntent().getStringExtra("name");
         tempoRicettaFromIntent = getIntent().getStringExtra("time");
 
-        if(tempoRicettaFromIntent != null || (!tempoRicettaFromIntent.isEmpty()))
+        //se è null allora non ho ricevuto niente dalla ricetta
+        if(tempoRicettaFromIntent != null)
         {
-            String[] parts = tempoRicettaFromIntent.split(":");
-            String oreFromDB = parts[0];
-            String minutiFromDB = parts[1];
-            String secondiFromDB = parts[2];
+            //controllo che il tempo della ricetta non sia vuoto
+            if(!tempoRicettaFromIntent.isEmpty())
+            {
+                String[] parts = tempoRicettaFromIntent.split(":");
+                String oreFromDB = parts[0];
+                String minutiFromDB = parts[1];
+                String secondiFromDB = parts[2];
 
-            int oreConvertite = 0;
-            int minutiConvertiti = 0;
-            int secondiConvertiti = 0;
+                int oreConvertite = 0;
+                int minutiConvertiti = 0;
+                int secondiConvertiti = 0;
 
-            oreConvertite = Integer.parseInt(oreFromDB);
-            minutiConvertiti = Integer.parseInt(minutiFromDB);
-            secondiConvertiti = Integer.parseInt(secondiFromDB);
+                oreConvertite = Integer.parseInt(oreFromDB);
+                minutiConvertiti = Integer.parseInt(minutiFromDB);
+                secondiConvertiti = Integer.parseInt(secondiFromDB);
 
-            ore.setValue(oreConvertite);
-            minuti.setValue(minutiConvertiti);
-            secondi.setValue(secondiConvertiti);
+                ore.setValue(oreConvertite);
+                minuti.setValue(minutiConvertiti);
+                secondi.setValue(secondiConvertiti);
 
 
-            if(oreConvertite != 0)
-                Toast.makeText(getApplicationContext(),"Timer impostato a : " + oreFromDB + "h" + " " + minutiFromDB + "m" + " " + secondiFromDB + "s", Toast.LENGTH_LONG).show();
-            else if(minutiConvertiti != 0)
-                Toast.makeText(getApplicationContext(),"Timer impostato a : " + minutiFromDB + "m" + " " + secondiFromDB + "s", Toast.LENGTH_LONG).show();
+                if(oreConvertite != 0)
+                    Toast.makeText(getApplicationContext(),"Timer impostato a : " + oreFromDB + "h" + " " + minutiFromDB + "m" + " " + secondiFromDB + "s", Toast.LENGTH_LONG).show();
+                else if(minutiConvertiti != 0)
+                    Toast.makeText(getApplicationContext(),"Timer impostato a : " + minutiFromDB + "m" + " " + secondiFromDB + "s", Toast.LENGTH_LONG).show();
 
-            ore.setEnabled(false);
-            minuti.setEnabled(false);
-            secondi.setEnabled(false);
-
+                ore.setEnabled(false);
+                minuti.setEnabled(false);
+                secondi.setEnabled(false);
+            }
         }
 
         /*INTENT PER LA ECONDA ACTIVITY*/

@@ -72,7 +72,7 @@ public class DatabaseAccess {
         return list;
     }
 
-    public int getMINCalorie(){
+    /*public int getMINCalorie(){
         int minCalorie = -1;
         String minFromDB = "";
         Cursor cursor = database.rawQuery("SELECT min(calorie) FROM ricetta", null);
@@ -80,6 +80,38 @@ public class DatabaseAccess {
         minFromDB = cursor.toString();
         if((minFromDB != null) || (!minFromDB.isEmpty()))
             minCalorie = Integer.parseInt(minFromDB);
+
+        cursor.close();
+        return minCalorie;
+    }*/
+
+    public int getMINCalorie(){
+        int minTemp = -1;
+        int minCalorie = -1;
+        String minFromDB = "";
+
+        //List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT calorie FROM ricetta", null);
+        cursor.moveToFirst();
+
+        //suppongo che il primo valore sia il minimo
+        minFromDB = cursor.toString();
+        if((minFromDB != null) || (!minFromDB.isEmpty())) {
+            minTemp = Integer.parseInt(minFromDB);
+            minCalorie = minTemp;
+        }
+
+        while (!cursor.isAfterLast()) {
+
+            minFromDB = cursor.toString();
+            if((minFromDB != null) || (!minFromDB.isEmpty()))
+                minTemp = Integer.parseInt(minFromDB);
+
+            if(minTemp < minCalorie)
+                minCalorie = minTemp;
+
+            cursor.moveToNext();
+        }
 
         cursor.close();
         return minCalorie;
