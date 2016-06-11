@@ -52,7 +52,7 @@ public class DatabaseAccess {
 
     public String getTempoRicetta(String nomeRicetta){
         String tempoRicetta = "";
-        Cursor cursor = database.rawQuery("SELECT tempo FROM ricetta where nome = ???? 'nomeRicetta'", null);
+        Cursor cursor = database.rawQuery("SELECT tempo FROM ricetta where nome ='" + nomeRicetta +"';", null);
         cursor.moveToFirst();
         tempoRicetta = cursor.toString();
         return tempoRicetta;

@@ -58,8 +58,8 @@ public class TimerOverActivity extends AppCompatActivity {
 
         myAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         volume_level = myAudioManager.getStreamVolume(AudioManager.STREAM_RING);
-        //myAudioManager.setStreamVolume(AudioManager.STREAM_RING, myAudioManager.getStreamMaxVolume(AudioManager.STREAM_RING),0);
-        myAudioManager.setStreamVolume(AudioManager.STREAM_RING,0,0);
+        myAudioManager.setStreamVolume(AudioManager.STREAM_RING, myAudioManager.getStreamMaxVolume(AudioManager.STREAM_RING),0);
+        //myAudioManager.setStreamVolume(AudioManager.STREAM_RING,0,0);
 
         mySuond = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
         //myIntent = new Intent(this.getApplicationContext(),TimeOverActivity.class);

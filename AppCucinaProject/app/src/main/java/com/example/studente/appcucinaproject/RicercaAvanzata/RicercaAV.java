@@ -46,6 +46,8 @@ public class RicercaAV extends AppCompatActivity
     private int minCal = 0, maxCal = 0;
     private int minTime = 0, maxTime = 0;
 
+    private DatabaseAccess myDatabaseAccess;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,15 +103,15 @@ public class RicercaAV extends AppCompatActivity
         boolean isSecondoCBChecked = secondoCB.isChecked();
         boolean isDolceCBChecked = dolceCB.isChecked();
 
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
-        databaseAccess.open();
-        minCal = databaseAccess.getMINCalorie();
-        maxCal = databaseAccess.getMAXCalorie();
+        myDatabaseAccess = DatabaseAccess.getInstance(this);
+        myDatabaseAccess.open();
+        minCal = myDatabaseAccess.getMINCalorie();
+        maxCal = myDatabaseAccess.getMAXCalorie();
 
-        minTime = databaseAccess.getMINTempo();
-        maxTime = databaseAccess.getMAXTempo();
+        minTime = myDatabaseAccess.getMINTempo();
+        maxTime = myDatabaseAccess.getMAXTempo();
 
-        databaseAccess.close();
+        myDatabaseAccess.close();
 
         /*rangeTempo.setRangeValues(minTime, maxTime);
         rangeBarCalorie.setRangeValues(minCal, maxCal);
