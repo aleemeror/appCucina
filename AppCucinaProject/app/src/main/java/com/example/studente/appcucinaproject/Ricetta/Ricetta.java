@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.ColorRes;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -18,6 +19,9 @@ import com.example.studente.appcucinaproject.DatabaseAccess;
 import com.example.studente.appcucinaproject.R;
 import com.example.studente.appcucinaproject.Timer.Timer;
 import com.example.studente.appcucinaproject.Timer.TimerOverActivity;
+
+import com.github.clans.fab.FloatingActionMenu;
+import com.github.clans.fab.FloatingActionButton;
 
 import java.util.List;
 
@@ -33,10 +37,9 @@ public class Ricetta extends AppCompatActivity {
     TextView txtIngredienti;
     TextView proc;
 
-    ImageButton preferito;
-    ImageButton timer;
-    ImageButton spesa;
-    ImageButton menu_gg;
+    FloatingActionMenu materialDesignFAM;
+    FloatingActionButton preferito, timer, spesa,menu_gg;
+
 
     private Intent setTimeFromRicetta;
     private String nameRicetta = "";
@@ -48,7 +51,10 @@ public class Ricetta extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ricetta_act);
+        setContentView(R.layout.ricetta_act_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarRicetta);
+        setSupportActionBar(toolbar);
+
 
         Typeface custom_font_3 = Typeface.createFromAsset(getAssets(), "TCM.TTF"); //per modificare il font
 
@@ -63,10 +69,11 @@ public class Ricetta extends AppCompatActivity {
         proc=(TextView) findViewById(R.id.textViewTitoloProcedimento);
 
 
-        preferito = (ImageButton) findViewById(R.id.imageButton2);
-        timer = (ImageButton) findViewById(R.id.imageButton4);
-        spesa = (ImageButton) findViewById(R.id.imageButton3);
-        menu_gg = (ImageButton) findViewById(R.id.imageButton5);
+        materialDesignFAM = (FloatingActionMenu) findViewById(R.id.material_design_android_floating_action_menu);
+        preferito = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item1);
+        timer = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item2);
+        spesa = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item3);
+        menu_gg = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item4);
 
 
         txtname.setTypeface(custom_font_3);
