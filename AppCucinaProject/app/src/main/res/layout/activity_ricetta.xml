@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".Ricetta.Ricetta">
+    tools:context="com.example.studente.appcucinaproject.Ricetta.Ricetta">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -15,13 +15,15 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbarRicetta"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_ricetta" />
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/material_design_android_floating_action_menu"
@@ -38,8 +40,7 @@
         fab:menu_colorNormal="@color/colorPrimary"
         fab:menu_colorPressed="@color/colorPrimaryDark"
         fab:menu_colorRipple="#99d4d4d4"
-        fab:menu_fab_label="Floating Action Menu"
-        fab:menu_fab_size="mini"
+        fab:menu_fab_size="normal"
         fab:menu_icon="@drawable/fab_add"
         fab:menu_labels_colorNormal="#333"
         fab:menu_labels_colorPressed="#444"
@@ -68,9 +69,11 @@
             android:id="@+id/material_design_floating_action_menu_item1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_home"
+            android:src="@android:drawable/btn_star"
             fab:fab_label="Preferiti"
-            fab:fab_size="mini" />
+            fab:fab_size="mini"
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_colorPressed="@color/colorPrimaryDark" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/material_design_floating_action_menu_item2"
@@ -78,7 +81,10 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_spesa"
             fab:fab_label="Spesa"
-            fab:fab_size="mini" />
+            fab:fab_size="mini"
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_colorPressed="@color/colorPrimaryDark"
+            />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/material_design_floating_action_menu_item3"
@@ -86,7 +92,10 @@
             android:layout_height="wrap_content"
             android:src="@drawable/menu"
             fab:fab_label="MyMenu"
-            fab:fab_size="mini" />
+            fab:fab_size="mini"
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_colorPressed="@color/colorPrimaryDark"
+            />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/material_design_floating_action_menu_item4"
@@ -94,11 +103,10 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_timer"
             fab:fab_label="Timer"
-            fab:fab_size="mini" />
+            fab:fab_size="mini"
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_colorPressed="@color/colorPrimaryDark"/>
+
     </com.github.clans.fab.FloatingActionMenu>
-
-    <include layout="@layout/ricetta_act" />
-
-
 
 </android.support.design.widget.CoordinatorLayout>

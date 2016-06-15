@@ -1,6 +1,5 @@
 package com.example.studente.appcucinaproject.Cards;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -12,8 +11,6 @@ import android.widget.TextView;
 
 import com.example.studente.appcucinaproject.R;
 import com.example.studente.appcucinaproject.Ricetta.Ricetta;
-
-import java.util.ArrayList;
 
 /**
  * Created by Mattia on 06/05/2016.

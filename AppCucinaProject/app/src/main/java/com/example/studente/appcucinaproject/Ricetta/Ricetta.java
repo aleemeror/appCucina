@@ -26,6 +26,7 @@ import com.github.clans.fab.FloatingActionButton;
 import java.util.List;
 
 public class Ricetta extends AppCompatActivity {
+
     ImageView imageView;
 
     TextView txtname;
@@ -49,11 +50,12 @@ public class Ricetta extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ricetta_act_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarRicetta);
+        setContentView(R.layout.activity_ricetta);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         Typeface custom_font_3 = Typeface.createFromAsset(getAssets(), "TCM.TTF"); //per modificare il font
@@ -71,9 +73,9 @@ public class Ricetta extends AppCompatActivity {
 
         materialDesignFAM = (FloatingActionMenu) findViewById(R.id.material_design_android_floating_action_menu);
         preferito = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item1);
-        timer = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item2);
-        spesa = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item3);
-        menu_gg = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item4);
+        timer = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item4);
+        spesa = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item2);
+        menu_gg = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item3);
 
 
         txtname.setTypeface(custom_font_3);
@@ -165,8 +167,6 @@ public class Ricetta extends AppCompatActivity {
                 //prendere il nome della ricetta e gli ingredienti e passarli alla lista dela spesa
             }
         });
-
-
-
     }
+
 }

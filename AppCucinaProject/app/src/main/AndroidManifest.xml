@@ -95,11 +95,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.studente.appcucinaproject.Home" />
         </activity>
-        <activity android:name=".Ricetta.Ricetta">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.studente.appcucinaproject.Ricettario.Ricettario" />
-        </activity>
         <activity
             android:name=".Timer.TimerOverActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
@@ -111,6 +106,15 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.studente.appcucinaproject.Home" />
+        </activity>
+        <activity
+            android:name=".Ricetta.Ricetta"
+            android:label="@string/title_activity_ricetta"
+            android:parentActivityName=".Ricettario.Ricettario"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.studente.appcucinaproject.Ricettario.Ricettario" />
         </activity>
     </application>
 

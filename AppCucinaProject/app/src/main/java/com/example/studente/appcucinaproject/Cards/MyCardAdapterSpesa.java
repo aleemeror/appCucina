@@ -1,20 +1,15 @@
 package com.example.studente.appcucinaproject.Cards;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.studente.appcucinaproject.R;
-import com.example.studente.appcucinaproject.Ricetta.Ricetta;
-import com.example.studente.appcucinaproject.Spesa.Spesa;
 import com.example.studente.appcucinaproject.Spesa.SpesaDetailsActivity;
 
 import java.util.ArrayList;
