@@ -110,7 +110,8 @@ public class Ricetta extends AppCompatActivity {
             public void onClick(View v) {
                 if(preferito.isActivated()){
                     preferito.setActivated(false);
-                    preferito.setColorFilter(Color.argb(255, 255, 255, 255));
+                    //preferito.setColorFilter(Color.argb(255, 255, 255, 255));
+                    preferito.setImageResource(R.drawable.white_star);
 
                     int duration = Toast.LENGTH_SHORT;
                     Toast.makeText(getApplicationContext(), "Ricetta eliminata dai preferiti",
@@ -118,7 +119,8 @@ public class Ricetta extends AppCompatActivity {
 
                 }
                 else{
-                    preferito.setColorFilter(Color.argb(255, 255, 235, 59));
+                    preferito.setImageResource(R.drawable.star);
+                    //preferito.setColorFilter(Color.argb(255, 255, 235, 59));
                     preferito.setActivated(true);
 
                     int duration = Toast.LENGTH_SHORT;
