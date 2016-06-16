@@ -236,7 +236,8 @@ public class DatabaseAccess {
     /*public ArrayList<String> getAllResults(String nomeRicettaParam, String ingrediente1Param, String ingrediente2Param, String ingrediente3Param,
                                       boolean isAntipastoCheckedParam, boolean isPrimoCBCheckedParam, boolean isSecondoCBCheckedParam, boolean isDolceCBCheckedParam,
                                       int calorieMINValueSelectedParam, int calorieMAXValueSelectedParam,
-                                      int tempoMINValueSelectedParam, int tempoMAXValueSelectedParam){
+                                      int tempoMINValueSelectedParam, int tempoMAXValueSelectedParam
+                                      int ID_DifficoltaParam){
 
         ArrayList<String> listResults = new ArrayList<>();
         String mySQLQuery = "";
@@ -247,6 +248,13 @@ public class DatabaseAccess {
 
         if(!nomeRicettaParam.isEmpty()){
             mySQLQuery = mySQLQuery.concat("AND r.nome =" + nomeRicettaParam);
+        }
+
+        //controllare tabelle su navicat
+        if(ID_DifficoltaParam != 3?4){
+            mySQLQuery = mySQLQuery.concat("AND r.id_difficoltà = (SELECT id_difficolta
+                                                                    FROM difficolta
+                                                                    WHERE nome_difficolta=" + ID_DifficoltaParam +");";
         }
 
 

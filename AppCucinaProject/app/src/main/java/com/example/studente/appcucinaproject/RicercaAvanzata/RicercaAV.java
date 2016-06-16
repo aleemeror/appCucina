@@ -158,7 +158,8 @@ public class RicercaAV extends AppCompatActivity
                 listaRisultati = myDatabaseAccess.getAllResults(myNomeRicetta, myIngrediente1, myIngrediente2, myIngrediente3,
                                                         isAntipastoChecked, isPrimoCBChecked, isSecondoCBChecked, isDolceCBChecked,
                                                         calorieMINValueSelected, calorieMAXValueSelected,
-                                                        tempoMINValueSelected, tempoMAXValueSelected);
+                                                        tempoMINValueSelected, tempoMAXValueSelected
+                                                        ID_Difficolta);
 
                 myDatabaseAccess.close();
 
