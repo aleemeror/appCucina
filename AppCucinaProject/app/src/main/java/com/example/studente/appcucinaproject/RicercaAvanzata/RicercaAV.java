@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.NumberPicker;
@@ -33,9 +34,13 @@ import com.example.studente.appcucinaproject.Timer.Timer;
 
 import org.florescu.android.rangeseekbar.RangeSeekBar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RicercaAV extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private Button cercaButton;
     private EditText nomeRicetta;   //editText
     private EditText ingrediente1,ingrediente2,ingrediente3; //2,3,4
     private CheckBox antipastoCB, primoCB, secondoCB, dolceCB;
@@ -47,6 +52,19 @@ public class RicercaAV extends AppCompatActivity
     private int minTime = 0, maxTime = 0;
 
     private DatabaseAccess myDatabaseAccess;
+
+    private Intent showResultsIntent;
+
+    private boolean isAntipastoChecked;
+    private boolean isPrimoCBChecked;
+    private boolean isSecondoCBChecked;
+    private boolean isDolceCBChecked;
+
+    private int calorieMINValueSelected;
+    private int calorieMAXValueSelected;
+
+    private int tempoMINValueSelected;
+    private int tempoMAXValueSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,19 +94,22 @@ public class RicercaAV extends AppCompatActivity
         myIngrediente2 = "";
         myIngrediente3 = "";
 
+        isAntipastoChecked = false;
+        isPrimoCBChecked = false;
+        isSecondoCBChecked = false;
+        isDolceCBChecked = false;
+
+        cercaButton = (Button)findViewById(R.id.buttonCerca);
         nomeRicetta = (EditText)findViewById(R.id.editText);
         ingrediente1 = (EditText)findViewById(R.id.editText2);
         ingrediente2 = (EditText)findViewById(R.id.editText3);
         ingrediente3 = (EditText)findViewById(R.id.editText4);
-
         antipastoCB = (CheckBox)findViewById(R.id.checkBox);
         primoCB = (CheckBox)findViewById(R.id.checkBox2);
         secondoCB = (CheckBox)findViewById(R.id.checkBox3);
         dolceCB = (CheckBox)findViewById(R.id.checkBox4);
-
         rangeBarTempo = (RangeSeekBar)findViewById(R.id.seekbar);
         rangeBarCalorie = (RangeSeekBar)findViewById(R.id.seekBar2);
-
         difficolta = (RadioGroup)findViewById(R.id.radioGroup);
 
         //leggo dal database i massimi e minimi di tempo e calorie
@@ -113,18 +134,43 @@ public class RicercaAV extends AppCompatActivity
         myIngrediente2 = ingrediente2.getText().toString();
         myIngrediente3 = ingrediente3.getText().toString();
 
-        boolean isAntipastoChecked = antipastoCB.isChecked();
-        boolean isPrimoCBChecked = primoCB.isChecked();
-        boolean isSecondoCBChecked = secondoCB.isChecked();
-        boolean isDolceCBChecked = dolceCB.isChecked();
+        isAntipastoChecked = antipastoCB.isChecked();
+        isPrimoCBChecked = primoCB.isChecked();
+        isSecondoCBChecked = secondoCB.isChecked();
+        isDolceCBChecked = dolceCB.isChecked();
 
-        int calorieMINValue = rangeBarTempo.getSelectedMinValue().intValue();  //numero minimo
-        int calorieMAXValue = rangeBarTempo.getSelectedMaxValue().intValue();  //numero massimo
+        calorieMINValueSelected = rangeBarTempo.getSelectedMinValue().intValue();  //numero minimo
+        calorieMAXValueSelected = rangeBarTempo.getSelectedMaxValue().intValue();  //numero massimo
 
-        int tempoMINValue = rangeBarCalorie.getSelectedMinValue().intValue();  //numero minimo
-        int tempoMAXValue = rangeBarCalorie.getSelectedMaxValue().intValue();  //numero massimo
+        tempoMINValueSelected = rangeBarCalorie.getSelectedMinValue().intValue();  //numero minimo
+        tempoMAXValueSelected = rangeBarCalorie.getSelectedMaxValue().intValue();  //numero massimo
 
-        
+
+        /*cercaButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ArrayList<String> listaRisultati = new ArrayList<>();
+
+                myDatabaseAccess.open();
+
+                //PROVARE A CREARE UNA CASELLA DI TESTO IN CUI METTO I VALORI CHE DOVREI PASSARE AL METODO
+                listaRisultati = myDatabaseAccess.getAllResults(myNomeRicetta, myIngrediente1, myIngrediente2, myIngrediente3,
+                                                        isAntipastoChecked, isPrimoCBChecked, isSecondoCBChecked, isDolceCBChecked,
+                                                        calorieMINValueSelected, calorieMAXValueSelected,
+                                                        tempoMINValueSelected, tempoMAXValueSelected);
+
+                myDatabaseAccess.close();
+
+                //intent all'activity risultati
+                showResultsIntent = new Intent(getApplicationContext(), ????.class);
+                showResultsIntent.putExtra("risultati", listaRisultati);
+                //showResultsIntent.putStringArrayListExtra("a", listaRisultati);
+
+                //startActivity(showResultsIntent);
+            }
+        });*/
+
 
 
     }

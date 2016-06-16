@@ -24,6 +24,7 @@ import com.example.studente.appcucinaproject.Timer.TimerOverActivity;
 import com.github.clans.fab.FloatingActionMenu;
 import com.github.clans.fab.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Ricetta extends AppCompatActivity {
@@ -98,7 +99,7 @@ public class Ricetta extends AppCompatActivity {
         myDatabaseAccess.open();
 
         //getTempoRicetta(nameRicetta)
-        List<String> quotes = myDatabaseAccess.getQuotes();
+        ArrayList<String> quotes = myDatabaseAccess.getQuotes();
 
         myDatabaseAccess.close();
 

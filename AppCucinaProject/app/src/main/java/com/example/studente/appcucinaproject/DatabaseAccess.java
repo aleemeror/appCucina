@@ -60,8 +60,20 @@ public class DatabaseAccess {
         return tempoRicetta;
     }
 
-    public List<String> getQuotes() {
+    /*public List<String> getQuotes() {
         List<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT tempo FROM ricetta", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }*/
+
+    public ArrayList<String> getQuotes() {
+        ArrayList<String> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT tempo FROM ricetta", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -220,6 +232,49 @@ public class DatabaseAccess {
         return minTempo;
     }
 
+
+    /*public ArrayList<String> getAllResults(String nomeRicettaParam, String ingrediente1Param, String ingrediente2Param, String ingrediente3Param,
+                                      boolean isAntipastoCheckedParam, boolean isPrimoCBCheckedParam, boolean isSecondoCBCheckedParam, boolean isDolceCBCheckedParam,
+                                      int calorieMINValueSelectedParam, int calorieMAXValueSelectedParam,
+                                      int tempoMINValueSelectedParam, int tempoMAXValueSelectedParam){
+
+        ArrayList<String> listResults = new ArrayList<>();
+        String mySQLQuery = "";
+
+        mySQLQuery = "SELECT nome_ricetta" +
+                     "FROM ricetta r, ingredienti i, appartiene a, difficoltà d, portata p" +
+                     "WHERE ";
+
+        if(!nomeRicettaParam.isEmpty()){
+            mySQLQuery = mySQLQuery.concat("AND r.nome =" + nomeRicettaParam);
+        }
+
+
+        SELECT id_ricetta, nome_ricetta
+        FROM ricetta r, ingredienti i, appartiene a, difficoltà d, portata p
+        WHERE a.id_ingrediente = i.id_ingrediente
+        AND a.id_ricetta = r.id_ricetta
+        AND r.nome = values_textview_nome
+        AND i.id_ingrediente = values_textview1
+		AND p.id_ingrediente = in (values_textview1, values_textview2, values_textview3)
+        AND p.id_tipologia = values_checkbox1
+		AND p.id_tipologia = in (values_checkbox1, values_checkbox2, values_checkbox3, values_checkbox4)
+        AND d.id_difficoltà = values_radio_difficoltà
+        AND r.tempo BETWEEN tempo_min AND tempo_max
+        AND r.calorie BETWEEN calorie_min AND calorie_max;
+
+        Cursor cursor = database.rawQuery(mySQLQuery, null);
+        cursor.moveToFirst();
+
+        //leggo tutti i risultati e metto in una lista
+        while (!cursor.isAfterLast()) {
+            listResults.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        return listResults;
+    }*/
 
     //METODI CON OPERATORI NELLE QUERY
     /*public int getMINCalorie(){
