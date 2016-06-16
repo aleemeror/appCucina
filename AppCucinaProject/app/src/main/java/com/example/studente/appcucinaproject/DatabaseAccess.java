@@ -252,9 +252,17 @@ public class DatabaseAccess {
 
         //controllare tabelle su navicat
         if(ID_DifficoltaParam != 3?4){
-            mySQLQuery = mySQLQuery.concat("AND r.id_difficoltà = (SELECT id_difficolta
-                                                                    FROM difficolta
-                                                                    WHERE nome_difficolta=" + ID_DifficoltaParam +");";
+            String idDiffConvert = Integer.toString(ID_DifficoltaParam);
+            mySQLQuery = mySQLQuery.concat("AND r.id_difficolta=" + idDiffConvert);
+        }
+
+        //se voglio un antipasto
+        if(isAntipastoCheckedParam){
+            //confronto l'id della tabella ricetta con l'id della tabella portata
+            //nella query nidificata cerco l'id che corrisponda ad antipasto
+            //mySQLQuery = mySQLQuery.concat("AND r.id_portata = (SELECT id_portata
+                                                                    FROM portata
+                                                                    WHERE tipologia=Antipasto;";
         }
 
 
