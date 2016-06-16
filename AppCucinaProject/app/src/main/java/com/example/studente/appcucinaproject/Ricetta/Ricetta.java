@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.ColorRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -37,6 +38,7 @@ public class Ricetta extends AppCompatActivity {
     TextView txtPortata;
     TextView txtIngredienti;
     TextView proc;
+    TextView txtDifficolta;
 
     FloatingActionMenu materialDesignFAM;
     FloatingActionButton preferito, timer, spesa,menu_gg;
@@ -69,6 +71,7 @@ public class Ricetta extends AppCompatActivity {
         txtPortata = (TextView) findViewById(R.id.textView15);
         txtIngredienti = (TextView) findViewById(R.id.ID_ingredienti);
         proc=(TextView) findViewById(R.id.textViewTitoloProcedimento);
+        txtDifficolta =(TextView) findViewById(R.id.textViewDifficolta);
 
 
         materialDesignFAM = (FloatingActionMenu) findViewById(R.id.material_design_android_floating_action_menu);
@@ -86,6 +89,9 @@ public class Ricetta extends AppCompatActivity {
         txtPortata.setTypeface(custom_font_3);
         txtIngredienti.setTypeface(custom_font_3);
         proc.setTypeface(custom_font_3);
+        txtDifficolta.setTypeface(custom_font_3);
+
+        txtIngredienti.setMovementMethod(new ScrollingMovementMethod());
 
 
         myDatabaseAccess = DatabaseAccess.getInstance(this);
@@ -104,6 +110,7 @@ public class Ricetta extends AppCompatActivity {
 
         setTitle(getIntent().getStringExtra("name"));
         nameRicetta = getIntent().getStringExtra("name");
+
 
         preferito.setOnClickListener(new View.OnClickListener() {
             @Override
