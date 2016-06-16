@@ -54,7 +54,7 @@ public class DatabaseAccess {
         String tempoRicetta = "";
         Cursor cursor = database.rawQuery("SELECT tempo FROM ricetta where nome ='" + nomeRicetta +"';", null);
         cursor.moveToFirst();
-        tempoRicetta = cursor.toString();
+        tempoRicetta = cursor.getString(0);
 
         cursor.close();
         return tempoRicetta;
@@ -95,22 +95,24 @@ public class DatabaseAccess {
         cursor.moveToFirst();
 
         //suppongo che il primo valore sia il minimo
-        minFromDB = cursor.toString();
-        if((minFromDB != null) || (!minFromDB.isEmpty())) {
-            minTemp = Integer.parseInt(minFromDB);
-            minCalorie = minTemp;
-        }
-
-        while (!cursor.isAfterLast()) {
-
-            minFromDB = cursor.toString();
-            if((minFromDB != null) || (!minFromDB.isEmpty()))
+        minFromDB = cursor.getString(0);
+        if(minFromDB != null){
+            if(!minFromDB.isEmpty()) {
                 minTemp = Integer.parseInt(minFromDB);
-
-            if(minTemp < minCalorie)
                 minCalorie = minTemp;
 
-            cursor.moveToNext();
+                while (!cursor.isAfterLast()) {
+
+                    minFromDB = cursor.getString(0);
+                    if ((minFromDB != null) || (!minFromDB.isEmpty()))
+                        minTemp = Integer.parseInt(minFromDB);
+
+                    if (minTemp < minCalorie)
+                        minCalorie = minTemp;
+
+                    cursor.moveToNext();
+                }
+            }
         }
 
         cursor.close();
@@ -120,7 +122,7 @@ public class DatabaseAccess {
     public int getMAXCalorie(){
         int maxCalorie = 0;
         Cursor cursor = database.rawQuery("SELECT max(calorie) FROM ricetta", null);
-        String max = cursor.toString();
+        String max = cursor.getString(0);
         maxCalorie = Integer.parseInt(max);
 
         cursor.close();
@@ -144,7 +146,7 @@ public class DatabaseAccess {
 
             totale = 0;
 
-            tempoRicettaFromDB = cursor.toString();
+            tempoRicettaFromDB = cursor.getString(0);
             String[] parts = tempoRicettaFromDB.split(":");
             String oreFromDB = parts[0];
             String minutiFromDB = parts[1];
@@ -185,7 +187,7 @@ public class DatabaseAccess {
 
             totale = 0;
 
-            tempoRicettaFromDB = cursor.toString();
+            tempoRicettaFromDB = cursor.getString(0);
             String[] parts = tempoRicettaFromDB.split(":");
             String oreFromDB = parts[0];
             String minutiFromDB = parts[1];
@@ -208,7 +210,6 @@ public class DatabaseAccess {
         cursor.close();
         return minTempo;
     }
-
 
 
     /*public List<String> getResultFromRAV(String nomeRicetta, ) {
