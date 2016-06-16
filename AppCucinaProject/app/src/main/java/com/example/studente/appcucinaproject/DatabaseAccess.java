@@ -1,7 +1,7 @@
 package com.example.studente.appcucinaproject;
 
 /**
- * Created by Andrea Cavazzini DJ on 10/06/2016.
+ * Created by Andrea Cavazzini on 10/06/2016.
  */
 import android.content.Context;
 import android.database.Cursor;
@@ -72,19 +72,6 @@ public class DatabaseAccess {
         return list;
     }
 
-    /*public int getMINCalorie(){
-        int minCalorie = -1;
-        String minFromDB = "";
-        Cursor cursor = database.rawQuery("SELECT min(calorie) FROM ricetta", null);
-        cursor.moveToFirst();
-        minFromDB = cursor.toString();
-        if((minFromDB != null) || (!minFromDB.isEmpty()))
-            minCalorie = Integer.parseInt(minFromDB);
-
-        cursor.close();
-        return minCalorie;
-    }*/
-
     public int getMINCalorie(){
         int minTemp = -1;
         int minCalorie = -1;
@@ -120,13 +107,35 @@ public class DatabaseAccess {
     }
 
     public int getMAXCalorie(){
-        int maxCalorie = 0;
-        Cursor cursor = database.rawQuery("SELECT max(calorie) FROM ricetta", null);
-        String max = cursor.getString(0);
-        maxCalorie = Integer.parseInt(max);
+
+        int maxCal = -1;
+        int tempMaxCal = -1;
+        String calFromDB = "";
+
+        Cursor cursor = database.rawQuery("SELECT calorie FROM ricetta", null);
+        cursor.moveToFirst();
+
+        //leggo la prima riga alla colonna 0 del cursore
+        calFromDB = cursor.getString(0);
+        tempMaxCal = Integer.parseInt(calFromDB);
+
+        //suppongo che il primo valore sia il massimo
+        maxCal = tempMaxCal;
+
+        while (!cursor.isAfterLast()) {
+            //leggo ogni riga
+            calFromDB = cursor.getString(0);
+            tempMaxCal = Integer.parseInt(calFromDB);
+
+            //se le calorie alla riga corrente sono maggiori del massimo allora settale come massimo
+            if (tempMaxCal > maxCal)
+                maxCal = tempMaxCal;
+
+            cursor.moveToNext();
+        }
 
         cursor.close();
-        return maxCalorie;
+        return maxCal;
     }
 
     public int getMAXTempo(){
@@ -211,6 +220,30 @@ public class DatabaseAccess {
         return minTempo;
     }
 
+
+    //METODI CON OPERATORI NELLE QUERY
+    /*public int getMINCalorie(){
+        int minCalorie = -1;
+        String minFromDB = "";
+        Cursor cursor = database.rawQuery("SELECT min(calorie) FROM ricetta", null);
+        cursor.moveToFirst();
+        minFromDB = cursor.getString(0);
+        if((minFromDB != null) || (!minFromDB.isEmpty()))
+            minCalorie = Integer.parseInt(minFromDB);
+
+        cursor.close();
+        return minCalorie;
+    }*/
+
+    /*public int getMAXCalorie(){
+        int maxCalorie = 0;
+        Cursor cursor = database.rawQuery("SELECT max(calorie) FROM ricetta", null);
+        String max = cursor.getString(0);
+        maxCalorie = Integer.parseInt(max);
+
+        cursor.close();
+        return maxCalorie;
+    }*/
 
     /*public List<String> getResultFromRAV(String nomeRicetta, ) {
         List<String> list = new ArrayList<>();

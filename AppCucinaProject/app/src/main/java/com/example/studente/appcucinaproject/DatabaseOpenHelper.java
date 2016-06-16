@@ -1,7 +1,7 @@
 package com.example.studente.appcucinaproject;
 
 /**
- * Created by Andrea Cavazzini DJ on 10/06/2016.
+ * Created by Andrea Cavazzini on 10/06/2016.
  */
 import android.content.Context;
 

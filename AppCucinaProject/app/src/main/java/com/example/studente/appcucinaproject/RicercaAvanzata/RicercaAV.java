@@ -91,6 +91,21 @@ public class RicercaAV extends AppCompatActivity
 
         difficolta = (RadioGroup)findViewById(R.id.radioGroup);
 
+        //leggo dal database i massimi e minimi di tempo e calorie
+        myDatabaseAccess = DatabaseAccess.getInstance(this);
+        myDatabaseAccess.open();
+        minCal = myDatabaseAccess.getMINCalorie();
+        maxCal = myDatabaseAccess.getMAXCalorie();
+
+        minTime = myDatabaseAccess.getMINTempo();
+        maxTime = myDatabaseAccess.getMAXTempo();
+
+        myDatabaseAccess.close();
+
+        //setto i massimi e i minimi nelle range bars
+        rangeBarTempo.setRangeValues(minTime, maxTime);
+        rangeBarCalorie.setRangeValues(minCal, maxCal);
+
         int ID_Difficolta = difficolta.getCheckedRadioButtonId();
 
         myNomeRicetta = nomeRicetta.getText().toString();
@@ -103,24 +118,11 @@ public class RicercaAV extends AppCompatActivity
         boolean isSecondoCBChecked = secondoCB.isChecked();
         boolean isDolceCBChecked = dolceCB.isChecked();
 
-        myDatabaseAccess = DatabaseAccess.getInstance(this);
-        myDatabaseAccess.open();
-        minCal = myDatabaseAccess.getMINCalorie();
-        maxCal = myDatabaseAccess.getMAXCalorie();
-
-        minTime = myDatabaseAccess.getMINTempo();
-        maxTime = myDatabaseAccess.getMAXTempo();
-
-        myDatabaseAccess.close();
-
-        /*rangeTempo.setRangeValues(minTime, maxTime);
-        rangeBarCalorie.setRangeValues(minCal, maxCal);
-
         int calorieMINValue = rangeBarTempo.getSelectedMinValue().intValue();  //numero minimo
         int calorieMAXValue = rangeBarTempo.getSelectedMaxValue().intValue();  //numero massimo
 
         int tempoMINValue = rangeBarCalorie.getSelectedMinValue().intValue();  //numero minimo
-        int tempoMAXValue = rangeBarCalorie.getSelectedMaxValue().intValue();  //numero massimo */
+        int tempoMAXValue = rangeBarCalorie.getSelectedMaxValue().intValue();  //numero massimo
 
         
 
