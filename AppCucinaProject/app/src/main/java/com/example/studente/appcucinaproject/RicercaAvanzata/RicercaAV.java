@@ -136,24 +136,6 @@ public class RicercaAV extends AppCompatActivity
 
                 findDifficoltaID();
 
-                /*int ID_RadioGroup = difficolta.getCheckedRadioButtonId();
-
-                if (ID_RadioGroup == R.id.radioButton){
-                    ID_Difficolta = 1;
-                }
-
-                if (ID_RadioGroup == R.id.radioButton2){
-                    ID_Difficolta = 2;
-                }
-
-                if (ID_RadioGroup == R.id.radioButton3){
-                    ID_Difficolta = 3;
-                }
-
-                if (ID_RadioGroup == R.id.radioButton4){
-                    ID_Difficolta = 4;
-                }*/
-
                 myNomeRicetta = nomeRicetta.getText().toString();
                 myIngrediente1 = ingrediente1.getText().toString();
                 myIngrediente2 = ingrediente2.getText().toString();

@@ -284,12 +284,16 @@ public class DatabaseAccess {
                      "AND r.calorie BETWEEN " + minCalorieSelectedConv +" AND " + maxCalorieSelectedConv;
 
         if(!nomeRicettaParam.isEmpty()){
+            //se la prima lettera non è maiuscola la metto maiuscola
+            if(!Character.isUpperCase(nomeRicettaParam.charAt(0)))
+                nomeRicettaParam = nomeRicettaParam.substring(0, 1).toUpperCase() + nomeRicettaParam.substring(1);
+
             mySQLQuery = mySQLQuery.concat("AND r.nome ='" + nomeRicettaParam +"';");
         }
 
         //String ingrediente1Param, String ingrediente2Param, String ingrediente3Param
 
-        //controllare indice
+        //se la difficoltà non è 4 ovvero qualsiasi
         if(ID_DifficoltaParam != 4){
             String idDiffConvert = Integer.toString(ID_DifficoltaParam);
             mySQLQuery = mySQLQuery.concat("AND r.id_difficolta=" + idDiffConvert);
@@ -391,7 +395,7 @@ public class DatabaseAccess {
             tempoRicettaMinuti += minutiConvertiti;
 
             //se il tempo della riga è compreso tra i valori passati come parametro allora aggiungo la ricetta alla lista dei risultati
-            if((tempoRicettaMinuti < tempoMAXValueSelectedParam) && (tempoRicettaMinuti > tempoMINValueSelectedParam ))
+            if((tempoRicettaMinuti <= tempoMAXValueSelectedParam) && (tempoRicettaMinuti >= tempoMINValueSelectedParam ))
                 listResults.add(cursor.getString(0));
 
             cursor.moveToNext();
