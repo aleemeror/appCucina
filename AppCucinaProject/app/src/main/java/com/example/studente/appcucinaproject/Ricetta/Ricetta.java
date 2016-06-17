@@ -97,10 +97,9 @@ public class Ricetta extends AppCompatActivity {
 
         myDatabaseAccess = DatabaseAccess.getInstance(this);
         myDatabaseAccess.open();
-
-        //getTempoRicetta(nameRicetta)
         ArrayList<String> quotes = myDatabaseAccess.getQuotes();
-
+        //QUESTO METODO FUNZIONA
+        //tempoFromDatabase = myDatabaseAccess.getTempoRicetta(nameRicetta);
         myDatabaseAccess.close();
 
         tempoFromDatabase = quotes.get(0);

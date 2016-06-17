@@ -52,6 +52,7 @@ public class DatabaseAccess {
 
     public String getTempoRicetta(String nomeRicetta){
         String tempoRicetta = "";
+        //se il ; alla fine della query viene messo, funziona ugualmente
         Cursor cursor = database.rawQuery("SELECT tempo FROM ricetta where nome ='" + nomeRicetta +"';", null);
         cursor.moveToFirst();
         tempoRicetta = cursor.getString(0);
@@ -194,25 +195,53 @@ public class DatabaseAccess {
     public int getMINTempo(){
         int minTempo = 0;
 
+        String[] parts;
+        String oreFromDB;
+        String minutiFromDB;
+        String secondiFromDB;
+
         int oreConvertite = 0;
         int minutiConvertiti = 0;
         int secondiConvertiti = 0;
 
-        int totale;
-
+        int totale = 0;
         String tempoRicettaFromDB = "";
 
         Cursor cursor = database.rawQuery("SELECT tempo FROM ricetta", null);
         cursor.moveToFirst();
+
+        //leggo il tempo dalla ricetta
+        tempoRicettaFromDB = cursor.getString(0);
+
+        //separo la stringa in ore, minuti e secondi
+        parts = tempoRicettaFromDB.split(":");
+        oreFromDB = parts[0];
+        minutiFromDB = parts[1];
+        secondiFromDB = parts[2];
+
+        //converto ore, minuti e secondi da string a int
+        oreConvertite = Integer.parseInt(oreFromDB);
+        minutiConvertiti = Integer.parseInt(minutiFromDB);
+        secondiConvertiti = Integer.parseInt(secondiFromDB);
+
+        //se le ore non sono 0 le trasformo in minuti
+        if(oreConvertite > 0)
+            totale = oreConvertite * 60; //converto in minuti
+
+        totale += minutiConvertiti;
+
+        //suppongo che il primo valore di tempo sia il minimo
+        minTempo = totale;
+
         while (!cursor.isAfterLast()) {
 
             totale = 0;
 
             tempoRicettaFromDB = cursor.getString(0);
-            String[] parts = tempoRicettaFromDB.split(":");
-            String oreFromDB = parts[0];
-            String minutiFromDB = parts[1];
-            String secondiFromDB = parts[2];
+            parts = tempoRicettaFromDB.split(":");
+            oreFromDB = parts[0];
+            minutiFromDB = parts[1];
+            secondiFromDB = parts[2];
 
             oreConvertite = Integer.parseInt(oreFromDB);
             minutiConvertiti = Integer.parseInt(minutiFromDB);
@@ -233,25 +262,35 @@ public class DatabaseAccess {
     }
 
 
-    /*public ArrayList<String> getAllResults(String nomeRicettaParam, String ingrediente1Param, String ingrediente2Param, String ingrediente3Param,
+    public ArrayList<String> getAllResults(String nomeRicettaParam, String ingrediente1Param, String ingrediente2Param, String ingrediente3Param,
                                       boolean isAntipastoCheckedParam, boolean isPrimoCBCheckedParam, boolean isSecondoCBCheckedParam, boolean isDolceCBCheckedParam,
                                       int calorieMINValueSelectedParam, int calorieMAXValueSelectedParam,
-                                      int tempoMINValueSelectedParam, int tempoMAXValueSelectedParam
+                                      int tempoMINValueSelectedParam, int tempoMAXValueSelectedParam,
                                       int ID_DifficoltaParam){
 
         ArrayList<String> listResults = new ArrayList<>();
         String mySQLQuery = "";
 
-        mySQLQuery = "SELECT nome_ricetta" +
+        String minCalorieSelectedConv = Integer.toString(calorieMINValueSelectedParam);
+        String maxCalorieSelectedConv = Integer.toString(calorieMAXValueSelectedParam);
+
+        String minTempoSelectedConv =  Integer.toString(tempoMINValueSelectedParam);
+        String maxTempoSelectedConv =  Integer.toString(tempoMAXValueSelectedParam);
+
+        //CONTROLLARE QUESTA QUERY
+        mySQLQuery = "SELECT nome" +
                      "FROM ricetta r, ingredienti i, appartiene a, difficoltà d, portata p" +
-                     "WHERE ";
+                     "WHERE " +
+                     "AND r.calorie BETWEEN " + minCalorieSelectedConv +" AND " + maxCalorieSelectedConv;
 
         if(!nomeRicettaParam.isEmpty()){
-            mySQLQuery = mySQLQuery.concat("AND r.nome =" + nomeRicettaParam);
+            mySQLQuery = mySQLQuery.concat("AND r.nome ='" + nomeRicettaParam +"';");
         }
 
-        //controllare tabelle su navicat
-        if(ID_DifficoltaParam != 3?4){
+        //String ingrediente1Param, String ingrediente2Param, String ingrediente3Param
+
+        //controllare indice
+        if(ID_DifficoltaParam != 4){
             String idDiffConvert = Integer.toString(ID_DifficoltaParam);
             mySQLQuery = mySQLQuery.concat("AND r.id_difficolta=" + idDiffConvert);
         }
@@ -260,37 +299,109 @@ public class DatabaseAccess {
         if(isAntipastoCheckedParam){
             //confronto l'id della tabella ricetta con l'id della tabella portata
             //nella query nidificata cerco l'id che corrisponda ad antipasto
-            //mySQLQuery = mySQLQuery.concat("AND r.id_portata = (SELECT id_portata
-                                                                    FROM portata
-                                                                    WHERE tipologia=Antipasto;";
+            mySQLQuery = mySQLQuery.concat("AND r.id_portata = (SELECT id_portata " +
+                                                                "FROM portata " +
+                                                                "WHERE tipologia='Antipasto';");
         }
 
+        //se voglio un primo
+        if(isPrimoCBCheckedParam){
+            //nella query nidificata cerco l'id che corrisponda a primo
+            mySQLQuery = mySQLQuery.concat("AND r.id_portata = (SELECT id_portata " +
+                                                                    "FROM portata " +
+                                                                    "WHERE tipologia='Primo';");
+        }
 
-        SELECT id_ricetta, nome_ricetta
+        if(isSecondoCBCheckedParam){
+            //nella query nidificata cerco l'id che corrisponda a secondo
+            mySQLQuery = mySQLQuery.concat("AND r.id_portata = (SELECT id_portata " +
+                                                                "FROM portata " +
+                                                                "WHERE tipologia='Secondo';");
+        }
+
+        if(isDolceCBCheckedParam){
+            //nella query nidificata cerco l'id che corrisponda a dolce
+            mySQLQuery = mySQLQuery.concat("AND r.id_portata = (SELECT id_portata " +
+                                                                "FROM portata " +
+                                                                "WHERE tipologia='Dolce';");
+        }
+
+        /*!!---- SELECT id_ricetta, nome_ricetta
         FROM ricetta r, ingredienti i, appartiene a, difficoltà d, portata p
         WHERE a.id_ingrediente = i.id_ingrediente
         AND a.id_ricetta = r.id_ricetta
-        AND r.nome = values_textview_nome
+
         AND i.id_ingrediente = values_textview1
-		AND p.id_ingrediente = in (values_textview1, values_textview2, values_textview3)
-        AND p.id_tipologia = values_checkbox1
-		AND p.id_tipologia = in (values_checkbox1, values_checkbox2, values_checkbox3, values_checkbox4)
-        AND d.id_difficoltà = values_radio_difficoltà
-        AND r.tempo BETWEEN tempo_min AND tempo_max
-        AND r.calorie BETWEEN calorie_min AND calorie_max;
+		AND p.id_ingrediente = in (values_textview1, values_textview2, values_textview3) ---!!*/
+
+        String tempoRicettaFromDB = "";
+        int tempoRicettaMinuti = 0;
+        String[] parts;
+        String oreFromDB;
+        String minutiFromDB;
+        String secondiFromDB;
+
+        int oreConvertite = 0;
+        int minutiConvertiti = 0;
+        int secondiConvertiti = 0;
+
+        Cursor cursorTempo = database.rawQuery("SELECT tempo FROM ricetta", null);
+        cursorTempo.moveToFirst();
+
+        //leggo il tempo dalla ricetta
+        tempoRicettaFromDB = cursorTempo.getString(0);
+
+        //separo la stringa in ore, minuti e secondi
+        /*parts = tempoRicettaFromDB.split(":");
+        oreFromDB = parts[0];
+        minutiFromDB = parts[1];
+        secondiFromDB = parts[2];
+
+        //converto ore, minuti e secondi da string a int
+        oreConvertite = Integer.parseInt(oreFromDB);
+        minutiConvertiti = Integer.parseInt(minutiFromDB);
+        secondiConvertiti = Integer.parseInt(secondiFromDB);
+
+        //se le ore non sono 0 le trasformo in minuti
+        if(oreConvertite > 0)
+            tempoRicettaMinuti = oreConvertite * 60; //converto in minuti
+
+        tempoRicettaMinuti += minutiConvertiti;*/
+
 
         Cursor cursor = database.rawQuery(mySQLQuery, null);
         cursor.moveToFirst();
 
         //leggo tutti i risultati e metto in una lista
-        while (!cursor.isAfterLast()) {
-            listResults.add(cursor.getString(0));
+        while (!cursor.isAfterLast() && !cursorTempo.isLast()) {
+
+            tempoRicettaFromDB = cursor.getString(0);
+            parts = tempoRicettaFromDB.split(":");
+            oreFromDB = parts[0];
+            minutiFromDB = parts[1];
+            secondiFromDB = parts[2];
+
+            oreConvertite = Integer.parseInt(oreFromDB);
+            minutiConvertiti = Integer.parseInt(minutiFromDB);
+            secondiConvertiti = Integer.parseInt(secondiFromDB);
+
+            if(oreConvertite > 0)
+                tempoRicettaMinuti = oreConvertite * 60; //converto in minuti
+
+            tempoRicettaMinuti += minutiConvertiti;
+
+            //se il tempo della riga è compreso tra i valori passati come parametro allora aggiungo la ricetta alla lista dei risultati
+            if((tempoRicettaMinuti < tempoMAXValueSelectedParam) && (tempoRicettaMinuti > tempoMINValueSelectedParam ))
+                listResults.add(cursor.getString(0));
+
             cursor.moveToNext();
+            cursorTempo.moveToNext();
         }
         cursor.close();
+        cursorTempo.close();
 
         return listResults;
-    }*/
+    }
 
     //METODI CON OPERATORI NELLE QUERY
     /*public int getMINCalorie(){

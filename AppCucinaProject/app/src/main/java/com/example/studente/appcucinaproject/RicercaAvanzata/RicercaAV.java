@@ -66,6 +66,8 @@ public class RicercaAV extends AppCompatActivity
     private int tempoMINValueSelected;
     private int tempoMAXValueSelected;
 
+    private int ID_Difficolta;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,30 +129,48 @@ public class RicercaAV extends AppCompatActivity
         rangeBarTempo.setRangeValues(minTime, maxTime);
         rangeBarCalorie.setRangeValues(minCal, maxCal);
 
-        int ID_Difficolta = difficolta.getCheckedRadioButtonId();
 
-        myNomeRicetta = nomeRicetta.getText().toString();
-        myIngrediente1 = ingrediente1.getText().toString();
-        myIngrediente2 = ingrediente2.getText().toString();
-        myIngrediente3 = ingrediente3.getText().toString();
-
-        isAntipastoChecked = antipastoCB.isChecked();
-        isPrimoCBChecked = primoCB.isChecked();
-        isSecondoCBChecked = secondoCB.isChecked();
-        isDolceCBChecked = dolceCB.isChecked();
-
-        calorieMINValueSelected = rangeBarTempo.getSelectedMinValue().intValue();  //numero minimo
-        calorieMAXValueSelected = rangeBarTempo.getSelectedMaxValue().intValue();  //numero massimo
-
-        tempoMINValueSelected = rangeBarCalorie.getSelectedMinValue().intValue();  //numero minimo
-        tempoMAXValueSelected = rangeBarCalorie.getSelectedMaxValue().intValue();  //numero massimo
-
-
-        /*cercaButton.setOnClickListener(new View.OnClickListener() {
+        cercaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                ArrayList<String> listaRisultati = new ArrayList<>();
+                findDifficoltaID();
+
+                /*int ID_RadioGroup = difficolta.getCheckedRadioButtonId();
+
+                if (ID_RadioGroup == R.id.radioButton){
+                    ID_Difficolta = 1;
+                }
+
+                if (ID_RadioGroup == R.id.radioButton2){
+                    ID_Difficolta = 2;
+                }
+
+                if (ID_RadioGroup == R.id.radioButton3){
+                    ID_Difficolta = 3;
+                }
+
+                if (ID_RadioGroup == R.id.radioButton4){
+                    ID_Difficolta = 4;
+                }*/
+
+                myNomeRicetta = nomeRicetta.getText().toString();
+                myIngrediente1 = ingrediente1.getText().toString();
+                myIngrediente2 = ingrediente2.getText().toString();
+                myIngrediente3 = ingrediente3.getText().toString();
+
+                isAntipastoChecked = antipastoCB.isChecked();
+                isPrimoCBChecked = primoCB.isChecked();
+                isSecondoCBChecked = secondoCB.isChecked();
+                isDolceCBChecked = dolceCB.isChecked();
+
+                calorieMINValueSelected = rangeBarTempo.getSelectedMinValue().intValue();  //numero minimo
+                calorieMAXValueSelected = rangeBarTempo.getSelectedMaxValue().intValue();  //numero massimo
+
+                tempoMINValueSelected = rangeBarCalorie.getSelectedMinValue().intValue();  //numero minimo
+                tempoMAXValueSelected = rangeBarCalorie.getSelectedMaxValue().intValue();  //numero massimo
+
+                /*ArrayList<String> listaRisultati = new ArrayList<>();
 
                 myDatabaseAccess.open();
 
@@ -169,11 +189,32 @@ public class RicercaAV extends AppCompatActivity
                 //showResultsIntent.putStringArrayListExtra("a", listaRisultati);
 
                 //startActivity(showResultsIntent);
+                */
             }
-        });*/
+        });
 
+    }
 
+    private void findDifficoltaID(){
+        //leggo l'id selezionato
+        int ID_RadioGroup = difficolta.getCheckedRadioButtonId();
 
+        //confronto l'id selezionato con ogni id del gruppo di radiobutton
+        if (ID_RadioGroup == R.id.radioButton){
+            ID_Difficolta = 1;
+        }
+
+        if (ID_RadioGroup == R.id.radioButton2){
+            ID_Difficolta = 2;
+        }
+
+        if (ID_RadioGroup == R.id.radioButton3){
+            ID_Difficolta = 3;
+        }
+
+        if (ID_RadioGroup == R.id.radioButton4){
+            ID_Difficolta = 4;
+        }
     }
 
     @Override
