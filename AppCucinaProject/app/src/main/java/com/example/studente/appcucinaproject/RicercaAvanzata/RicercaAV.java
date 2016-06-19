@@ -168,7 +168,7 @@ public class RicercaAV extends AppCompatActivity
 
                 //intent all'activity risultati
                 showResultsIntent = new Intent(getApplicationContext(), Visualizzazione_Ricerca_av.class);
-                //showResultsIntent.putExtra("risultati", listaRisultati);
+                showResultsIntent.putExtra("risultati", listaRisultati);    //???
                 //showResultsIntent.putStringArrayListExtra("a", listaRisultati);
 
                 startActivity(showResultsIntent);

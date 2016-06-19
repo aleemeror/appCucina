@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.studente.appcucinaproject.Cards.RicettaDetails;
 import com.example.studente.appcucinaproject.Cards.MyCardAdapter;
+import com.example.studente.appcucinaproject.DatabaseAccess;
 import com.example.studente.appcucinaproject.R;
 
 import java.util.ArrayList;
@@ -24,10 +25,12 @@ public class PrimiFragment extends Fragment{
     RecyclerView recAntipasti;
     LinearLayoutManager layoutManager;
     private ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();
+    ArrayList<String> list_titoli= new ArrayList<>();
     private String[] mDataset;
     boolean creato = false;
 
     int[] images = {R.drawable.primo,R.drawable.primo,R.drawable.primo,R.drawable.primo};
+    DatabaseAccess databaseAccess;
 
 
     public PrimiFragment() {
@@ -40,12 +43,19 @@ public class PrimiFragment extends Fragment{
         View rootView = inflater.inflate(R.layout.fragment_primi, container, false);
 
         if(!creato) {
-            String[] title = getResources().getStringArray(R.array.ricetta_name);
-            int count =0;
-            for(count =0; count < title.length; count++){ //String Name:title
 
-                String Name = title[count];
-                RicettaDetails ricetta = new RicettaDetails(images[count],Name);
+            databaseAccess = DatabaseAccess.getInstance(this.getContext());
+
+            databaseAccess.open();
+            list_titoli = databaseAccess.getRicettaPrimo();
+            databaseAccess.open();
+
+            int count =0;
+            for(count =0; count < list_titoli.size(); count++){ //String Name:title
+
+
+                String titolo = list_titoli.get(count);
+                RicettaDetails ricetta = new RicettaDetails(images[count],titolo);
                 //count++;
                 list.add(ricetta);
             }

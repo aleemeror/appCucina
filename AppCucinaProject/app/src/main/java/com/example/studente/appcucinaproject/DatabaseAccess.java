@@ -50,6 +50,87 @@ public class DatabaseAccess {
         }
     }
 
+
+    public ArrayList<String> getRicettaAntipasto() {        //metodo per prendere tutti i nomi degli antipasti
+        ArrayList<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=1", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        if(list.isEmpty()){
+            list.add(0,"nessun risultato");
+        }
+
+        return list;
+    }
+
+
+    public ArrayList<String> getRicettaPrimo() {            //metodo per prendere tutti i nomi dei primi
+        ArrayList<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=2", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        if(list.isEmpty()){
+            list.add(0,"nessun risultato");
+        }
+
+        return list;
+    }
+
+
+    public ArrayList<String> getRicettaSeconda() {          //metodo per prendere tutti i nomi dei secondi
+        ArrayList<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=3", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        if(list.isEmpty()){
+            list.add(0,"nessun risultato");
+        }
+
+        return list;
+    }
+
+
+    public ArrayList<String> getRicettaDolce() {        //metodo per prendere tutti i nomi dei dolci
+        ArrayList<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=5", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        if(list.isEmpty()){
+            list.add(0,"nessun risultato");
+        }
+
+        return list;
+    }
+
+
+
+
+
+
+
+
+
+
     public String getTempoRicetta(String nomeRicetta){
         String tempoRicetta = "";
         //se il ; alla fine della query viene messo, funziona ugualmente

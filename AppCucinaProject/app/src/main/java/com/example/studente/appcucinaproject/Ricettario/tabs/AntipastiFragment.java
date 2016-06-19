@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.example.studente.appcucinaproject.Cards.MyFragmentsCardAdapter;
 import com.example.studente.appcucinaproject.Cards.RicettaDetails;
 import com.example.studente.appcucinaproject.Cards.MyCardAdapter;
+import com.example.studente.appcucinaproject.DatabaseAccess;
 import com.example.studente.appcucinaproject.R;
 import com.example.studente.appcucinaproject.Ricettario.Ricettario;
 
@@ -22,8 +23,11 @@ public class AntipastiFragment extends Fragment{
     RecyclerView recAntipasti;
     LinearLayoutManager layoutManager;
     private ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();
+    ArrayList<String> list_titoli= new ArrayList<>();
     private RicettaDetails[] mDataset;
     boolean creato = false;
+
+    DatabaseAccess databaseAccess;
 
     int[] images = {R.drawable.antipasto,R.drawable.antipasto,R.drawable.antipasto,R.drawable.antipasto};
 
@@ -34,17 +38,23 @@ public class AntipastiFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
         View rootView = inflater.inflate(R.layout.fragment_antipasti, container, false);
 
 
         if(!creato) {
-            String[] title = getResources().getStringArray(R.array.ricetta_name);
-            int count =0;
-            for(count =0; count < title.length; count++){ //String Name:title
 
-                String Name = title[count];
-                RicettaDetails ricetta = new RicettaDetails(images[count],Name);
+            databaseAccess = DatabaseAccess.getInstance(this.getContext());
+
+            databaseAccess.open();
+                list_titoli = databaseAccess.getRicettaAntipasto();
+            databaseAccess.open();
+
+            int count =0;
+            for(count =0; count < list_titoli.size(); count++){ //String Name:title
+
+
+                String titolo = list_titoli.get(count);
+                RicettaDetails ricetta = new RicettaDetails(images[count],titolo);
                 //count++;
                 list.add(ricetta);
             }
