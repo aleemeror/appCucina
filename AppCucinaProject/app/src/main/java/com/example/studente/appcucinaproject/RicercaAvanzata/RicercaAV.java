@@ -138,10 +138,11 @@ public class RicercaAV extends AppCompatActivity
 
                 findDifficoltaID();
 
-                myNomeRicetta = nomeRicetta.getText().toString();
-                myIngrediente1 = ingrediente1.getText().toString();
-                myIngrediente2 = ingrediente2.getText().toString();
-                myIngrediente3 = ingrediente3.getText().toString();
+                //CON IL TRIM TOLGO TUTTI GLI SPAZI PRIMA E DOPO LA STRINGA SENZA ALTERARE QUELLI IN MEZZO
+                myNomeRicetta = nomeRicetta.getText().toString().trim();
+                myIngrediente1 = ingrediente1.getText().toString().trim();
+                myIngrediente2 = ingrediente2.getText().toString().trim();
+                myIngrediente3 = ingrediente3.getText().toString().trim();
 
                 isAntipastoChecked = antipastoCB.isChecked();
                 isPrimoCBChecked = primoCB.isChecked();
@@ -168,8 +169,8 @@ public class RicercaAV extends AppCompatActivity
 
                 //intent all'activity risultati
                 showResultsIntent = new Intent(getApplicationContext(), Visualizzazione_Ricerca_av.class);
-                showResultsIntent.putExtra("risultati", listaRisultati);    //???
-                //showResultsIntent.putStringArrayListExtra("a", listaRisultati);
+                //showResultsIntent.putExtra("risultati", listaRisultati);    //???
+                showResultsIntent.putStringArrayListExtra("risultati", listaRisultati);
 
                 startActivity(showResultsIntent);
 

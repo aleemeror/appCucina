@@ -15,11 +15,14 @@ import com.example.studente.appcucinaproject.RicercaAvanzata.tabs_visualizzazion
 import com.example.studente.appcucinaproject.RicercaAvanzata.tabs_visualizzazione.PrimiFragment_visualizzazione;
 import com.example.studente.appcucinaproject.RicercaAvanzata.tabs_visualizzazione.SecondiFragment_visualizzazione;
 
+import java.util.ArrayList;
+
 
 public class Visualizzazione_Ricerca_av extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    //private ArrayList<String> listResults = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,8 @@ public class Visualizzazione_Ricerca_av extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
         setTitle("Risultati");
+
+        //listResults = getIntent().getStringArrayListExtra("risultati");
     }
 
 
