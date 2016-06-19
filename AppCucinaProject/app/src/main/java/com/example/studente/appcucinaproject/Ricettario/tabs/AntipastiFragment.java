@@ -29,7 +29,7 @@ public class AntipastiFragment extends Fragment{
 
     DatabaseAccess databaseAccess;
 
-    int[] images = {R.drawable.antipasto,R.drawable.antipasto,R.drawable.antipasto,R.drawable.antipasto};
+    int[] images = {R.drawable.r1,R.drawable.ricetta33,R.drawable.r3};
 
     public AntipastiFragment() {
         // Required empty public constructor

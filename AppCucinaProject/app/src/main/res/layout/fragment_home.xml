@@ -38,6 +38,8 @@
             android:text="&lt;&lt; Uno non può pensare bene, amare bene, dormire bene, se non ha mangiato bene >>                                                 cit. Virginia Woolf"
             android:id="@+id/textView10"
             android:layout_marginTop="35dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="2dp"
             android:layout_below="@+id/textView9"
             android:textColor="#ffffff"
             android:textStyle="bold|italic"

@@ -29,7 +29,7 @@ public class PrimiFragment extends Fragment{
     private String[] mDataset;
     boolean creato = false;
 
-    int[] images = {R.drawable.primo,R.drawable.primo,R.drawable.primo,R.drawable.primo};
+    int[] images = {R.drawable.r4,R.drawable.r5,R.drawable.r6};
     DatabaseAccess databaseAccess;
 
 

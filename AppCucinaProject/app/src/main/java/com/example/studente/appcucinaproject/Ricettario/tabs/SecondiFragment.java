@@ -29,7 +29,7 @@ public class SecondiFragment extends Fragment{
     private String[] mDataset;
     boolean creato = false;
 
-    int[] images = {R.drawable.secondo,R.drawable.secondo,R.drawable.secondo,R.drawable.secondo};
+    int[] images = {R.drawable.r7};
     DatabaseAccess databaseAccess;
 
 
