@@ -49,7 +49,7 @@ public class DolciFragment extends Fragment{
 
             databaseAccess.open();
             list_titoli = databaseAccess.getRicettaDolce();
-            databaseAccess.open();
+            databaseAccess.close();
 
             int count =0;
             for(count =0; count < list_titoli.size(); count++){ //String Name:title

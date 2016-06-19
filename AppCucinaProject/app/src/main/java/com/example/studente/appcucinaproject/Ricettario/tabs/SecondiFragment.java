@@ -48,7 +48,7 @@ public class SecondiFragment extends Fragment{
 
             databaseAccess.open();
             list_titoli = databaseAccess.getRicettaSeconda();
-            databaseAccess.open();
+            databaseAccess.close();
 
             int count =0;
             for(count =0; count < list_titoli.size(); count++){ //String Name:title

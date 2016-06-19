@@ -47,7 +47,7 @@ public class AntipastiFragment extends Fragment{
 
             databaseAccess.open();
                 list_titoli = databaseAccess.getRicettaAntipasto();
-            databaseAccess.open();
+            databaseAccess.close();
 
             int count =0;
             for(count =0; count < list_titoli.size(); count++){ //String Name:title
