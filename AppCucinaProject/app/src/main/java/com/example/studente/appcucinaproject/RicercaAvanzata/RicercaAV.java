@@ -68,6 +68,8 @@ public class RicercaAV extends AppCompatActivity
 
     private int ID_Difficolta;
 
+    private ArrayList<String> listaRisultati;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -134,7 +136,7 @@ public class RicercaAV extends AppCompatActivity
             @Override
             public void onClick(View v) {
 
-                /*findDifficoltaID();
+                findDifficoltaID();
 
                 myNomeRicetta = nomeRicetta.getText().toString();
                 myIngrediente1 = ingrediente1.getText().toString();
@@ -146,25 +148,24 @@ public class RicercaAV extends AppCompatActivity
                 isSecondoCBChecked = secondoCB.isChecked();
                 isDolceCBChecked = dolceCB.isChecked();
 
-                calorieMINValueSelected = rangeBarTempo.getSelectedMinValue().intValue();  //numero minimo
-                calorieMAXValueSelected = rangeBarTempo.getSelectedMaxValue().intValue();  //numero massimo
+                calorieMINValueSelected = rangeBarCalorie.getSelectedMinValue().intValue();  //numero minimo calorie
+                calorieMAXValueSelected = rangeBarCalorie.getSelectedMaxValue().intValue();  //numero massimo calorie
 
-                tempoMINValueSelected = rangeBarCalorie.getSelectedMinValue().intValue();  //numero minimo
-                tempoMAXValueSelected = rangeBarCalorie.getSelectedMaxValue().intValue();  //numero massimo*/
+                tempoMINValueSelected = rangeBarTempo.getSelectedMinValue().intValue();  //numero minimo tempo
+                tempoMAXValueSelected = rangeBarTempo.getSelectedMaxValue().intValue();  //numero massimo tempo
 
-                /*ArrayList<String> listaRisultati = new ArrayList<>();
+                listaRisultati = new ArrayList<>();
 
                 myDatabaseAccess.open();
 
-                //PROVARE A CREARE UNA CASELLA DI TESTO IN CUI METTO I VALORI CHE DOVREI PASSARE AL METODO
                 listaRisultati = myDatabaseAccess.getAllResults(myNomeRicetta, myIngrediente1, myIngrediente2, myIngrediente3,
                                                         isAntipastoChecked, isPrimoCBChecked, isSecondoCBChecked, isDolceCBChecked,
                                                         calorieMINValueSelected, calorieMAXValueSelected,
-                                                        tempoMINValueSelected, tempoMAXValueSelected
+                                                        tempoMINValueSelected, tempoMAXValueSelected,
                                                         ID_Difficolta);
 
                 myDatabaseAccess.close();
-                */
+
                 //intent all'activity risultati
                 showResultsIntent = new Intent(getApplicationContext(), Visualizzazione_Ricerca_av.class);
                 //showResultsIntent.putExtra("risultati", listaRisultati);

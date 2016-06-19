@@ -277,18 +277,16 @@ public class DatabaseAccess {
         String minTempoSelectedConv =  Integer.toString(tempoMINValueSelectedParam);
         String maxTempoSelectedConv =  Integer.toString(tempoMAXValueSelectedParam);
 
-        //CONTROLLARE QUESTA QUERY
-        mySQLQuery = "SELECT nome" +
-                     "FROM ricetta r, ingredienti i, appartiene a, difficoltà d, portata p" +
-                     "WHERE " +
-                     "AND r.calorie BETWEEN " + minCalorieSelectedConv +" AND " + maxCalorieSelectedConv;
+        mySQLQuery = "SELECT r.calorie, r.nome " +
+                     "FROM ricetta r " +
+                     "WHERE r.calorie BETWEEN " + minCalorieSelectedConv +" AND " + maxCalorieSelectedConv + " ";
 
         if(!nomeRicettaParam.isEmpty()){
             //se la prima lettera non è maiuscola la metto maiuscola
             if(!Character.isUpperCase(nomeRicettaParam.charAt(0)))
                 nomeRicettaParam = nomeRicettaParam.substring(0, 1).toUpperCase() + nomeRicettaParam.substring(1);
 
-            mySQLQuery = mySQLQuery.concat("AND r.nome ='" + nomeRicettaParam +"';");
+            mySQLQuery = mySQLQuery.concat("AND r.nome ='" + nomeRicettaParam +"' ");
         }
 
         //String ingrediente1Param, String ingrediente2Param, String ingrediente3Param
@@ -305,7 +303,7 @@ public class DatabaseAccess {
             //nella query nidificata cerco l'id che corrisponda ad antipasto
             mySQLQuery = mySQLQuery.concat("AND r.id_portata = (SELECT id_portata " +
                                                                 "FROM portata " +
-                                                                "WHERE tipologia='Antipasto';");
+                                                                "WHERE tipologia='Antipasto') ");
         }
 
         //se voglio un primo
@@ -313,30 +311,69 @@ public class DatabaseAccess {
             //nella query nidificata cerco l'id che corrisponda a primo
             mySQLQuery = mySQLQuery.concat("AND r.id_portata = (SELECT id_portata " +
                                                                     "FROM portata " +
-                                                                    "WHERE tipologia='Primo';");
+                                                                    "WHERE tipologia='Primo') ");
         }
 
         if(isSecondoCBCheckedParam){
             //nella query nidificata cerco l'id che corrisponda a secondo
             mySQLQuery = mySQLQuery.concat("AND r.id_portata = (SELECT id_portata " +
                                                                 "FROM portata " +
-                                                                "WHERE tipologia='Secondo';");
+                                                                "WHERE tipologia='Secondo') ");
         }
 
         if(isDolceCBCheckedParam){
             //nella query nidificata cerco l'id che corrisponda a dolce
             mySQLQuery = mySQLQuery.concat("AND r.id_portata = (SELECT id_portata " +
                                                                 "FROM portata " +
-                                                                "WHERE tipologia='Dolce';");
+                                                                "WHERE tipologia='Dolce') ");
         }
 
-        /*!!---- SELECT id_ricetta, nome_ricetta
-        FROM ricetta r, ingredienti i, appartiene a, difficoltà d, portata p
-        WHERE a.id_ingrediente = i.id_ingrediente
-        AND a.id_ricetta = r.id_ricetta
+        if(!nomeRicettaParam.isEmpty()){
+            //se la prima lettera non è maiuscola la metto maiuscola
+            if(!Character.isUpperCase(nomeRicettaParam.charAt(0)))
+                nomeRicettaParam = nomeRicettaParam.substring(0, 1).toUpperCase() + nomeRicettaParam.substring(1);
 
-        AND i.id_ingrediente = values_textview1
-		AND p.id_ingrediente = in (values_textview1, values_textview2, values_textview3) ---!!*/
+            mySQLQuery = mySQLQuery.concat("AND r.nome ='" + nomeRicettaParam +"' ");
+        }
+
+        //restituisce tutte le ricette con ingrediente 1
+        if(!ingrediente1Param.isEmpty()){
+            //se la prima lettera non è maiuscola la metto maiuscola
+            if(!Character.isUpperCase(ingrediente1Param.charAt(0)))
+                ingrediente1Param = ingrediente1Param.substring(0, 1).toUpperCase() + ingrediente1Param.substring(1);
+
+            mySQLQuery = mySQLQuery.concat("AND r.id_ricetta IN (SELECT a.id_ricetta " +
+                                            "FROM appartenere a, ingrediente i " +
+                                            "WHERE a.id_ingrediente = i.id_ingrediente " +
+                                            "AND i.nome= '" + ingrediente1Param + "') ");
+        }
+
+        //restituisce tutte le ricette con ingrediente 2
+        if(!ingrediente2Param.isEmpty()){
+            //se la prima lettera non è maiuscola la metto maiuscola
+            if(!Character.isUpperCase(ingrediente2Param.charAt(0)))
+                ingrediente2Param = ingrediente2Param.substring(0, 1).toUpperCase() + ingrediente2Param.substring(1);
+
+            mySQLQuery = mySQLQuery.concat("AND r.id_ricetta IN (SELECT a.id_ricetta " +
+                                            "FROM appartenere a, ingrediente i " +
+                                            "WHERE a.id_ingrediente = i.id_ingrediente " +
+                                            "AND i.nome= '" + ingrediente2Param + "') ");
+        }
+
+
+        //restituisce tutte le ricette con ingrediente 3
+        if(!ingrediente3Param.isEmpty()){
+            //se la prima lettera non è maiuscola la metto maiuscola
+            if(!Character.isUpperCase(ingrediente3Param.charAt(0)))
+                ingrediente3Param = ingrediente3Param.substring(0, 1).toUpperCase() + ingrediente3Param.substring(1);
+
+            mySQLQuery = mySQLQuery.concat("AND r.id_ricetta IN (SELECT a.id_ricetta " +
+                                        "FROM appartenere a, ingrediente i " +
+                                        "WHERE a.id_ingrediente = i.id_ingrediente " +
+                                        "AND i.nome= '" + ingrediente3Param + "') ");
+        }
+
+        mySQLQuery = mySQLQuery.concat("ORDER BY r.calorie, r.nome ");
 
         String tempoRicettaFromDB = "";
         int tempoRicettaMinuti = 0;
@@ -355,31 +392,13 @@ public class DatabaseAccess {
         //leggo il tempo dalla ricetta
         tempoRicettaFromDB = cursorTempo.getString(0);
 
-        //separo la stringa in ore, minuti e secondi
-        /*parts = tempoRicettaFromDB.split(":");
-        oreFromDB = parts[0];
-        minutiFromDB = parts[1];
-        secondiFromDB = parts[2];
-
-        //converto ore, minuti e secondi da string a int
-        oreConvertite = Integer.parseInt(oreFromDB);
-        minutiConvertiti = Integer.parseInt(minutiFromDB);
-        secondiConvertiti = Integer.parseInt(secondiFromDB);
-
-        //se le ore non sono 0 le trasformo in minuti
-        if(oreConvertite > 0)
-            tempoRicettaMinuti = oreConvertite * 60; //converto in minuti
-
-        tempoRicettaMinuti += minutiConvertiti;*/
-
-
         Cursor cursor = database.rawQuery(mySQLQuery, null);
         cursor.moveToFirst();
 
         //leggo tutti i risultati e metto in una lista
         while (!cursor.isAfterLast() && !cursorTempo.isLast()) {
 
-            tempoRicettaFromDB = cursor.getString(0);
+            tempoRicettaFromDB = cursorTempo.getString(0);
             parts = tempoRicettaFromDB.split(":");
             oreFromDB = parts[0];
             minutiFromDB = parts[1];
@@ -403,6 +422,9 @@ public class DatabaseAccess {
         }
         cursor.close();
         cursorTempo.close();
+
+        if(listResults.isEmpty())
+            listResults.add(0, "Nessun risultato trovato");
 
         return listResults;
     }
