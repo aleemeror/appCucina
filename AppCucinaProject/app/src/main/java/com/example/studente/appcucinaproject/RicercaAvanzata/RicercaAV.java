@@ -130,11 +130,11 @@ public class RicercaAV extends AppCompatActivity
         rangeBarCalorie.setRangeValues(minCal, maxCal);
 
 
-        cercaButton.setOnClickListener(new View.OnClickListener() {
+        cercaButton.setOnClickListener(new View.OnClickListener() {         //CERCA BUTTON
             @Override
             public void onClick(View v) {
 
-                findDifficoltaID();
+                /*findDifficoltaID();
 
                 myNomeRicetta = nomeRicetta.getText().toString();
                 myIngrediente1 = ingrediente1.getText().toString();
@@ -150,7 +150,7 @@ public class RicercaAV extends AppCompatActivity
                 calorieMAXValueSelected = rangeBarTempo.getSelectedMaxValue().intValue();  //numero massimo
 
                 tempoMINValueSelected = rangeBarCalorie.getSelectedMinValue().intValue();  //numero minimo
-                tempoMAXValueSelected = rangeBarCalorie.getSelectedMaxValue().intValue();  //numero massimo
+                tempoMAXValueSelected = rangeBarCalorie.getSelectedMaxValue().intValue();  //numero massimo*/
 
                 /*ArrayList<String> listaRisultati = new ArrayList<>();
 
@@ -164,14 +164,14 @@ public class RicercaAV extends AppCompatActivity
                                                         ID_Difficolta);
 
                 myDatabaseAccess.close();
-
+                */
                 //intent all'activity risultati
-                showResultsIntent = new Intent(getApplicationContext(), ????.class);
-                showResultsIntent.putExtra("risultati", listaRisultati);
+                showResultsIntent = new Intent(getApplicationContext(), Visualizzazione_Ricerca_av.class);
+                //showResultsIntent.putExtra("risultati", listaRisultati);
                 //showResultsIntent.putStringArrayListExtra("a", listaRisultati);
 
-                //startActivity(showResultsIntent);
-                */
+                startActivity(showResultsIntent);
+
             }
         });
 
