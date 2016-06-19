@@ -140,6 +140,21 @@ public class RicercaAV extends AppCompatActivity
                 ingrediente1.setText("");
                 ingrediente2.setText("");
                 ingrediente3.setText("");
+
+                rangeBarTempo.setSelectedMaxValue(maxTime);
+                rangeBarTempo.setSelectedMinValue(minTime);
+
+                rangeBarCalorie.setSelectedMaxValue(maxCal);
+                rangeBarCalorie.setSelectedMinValue(minCal);
+
+                antipastoCB.setChecked(false);
+                primoCB.setChecked(false);
+                secondoCB.setChecked(false);
+                dolceCB.setChecked(false);
+
+                //imposto la difficoltà a "qualsiasi"
+                difficolta.check(R.id.radioButton4);
+
             }
         });
 

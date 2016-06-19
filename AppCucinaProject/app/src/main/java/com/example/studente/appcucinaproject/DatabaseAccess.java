@@ -358,7 +358,7 @@ public class DatabaseAccess {
         String minTempoSelectedConv =  Integer.toString(tempoMINValueSelectedParam);
         String maxTempoSelectedConv =  Integer.toString(tempoMAXValueSelectedParam);
 
-        mySQLQuery = "SELECT r.calorie, r.nome " +
+        mySQLQuery = "SELECT r.nome " +
                      "FROM ricetta r " +
                      "WHERE r.calorie BETWEEN " + minCalorieSelectedConv +" AND " + maxCalorieSelectedConv + " ";
 
@@ -495,8 +495,9 @@ public class DatabaseAccess {
             tempoRicettaMinuti += minutiConvertiti;
 
             //se il tempo della riga è compreso tra i valori passati come parametro allora aggiungo la ricetta alla lista dei risultati
-            if((tempoRicettaMinuti <= tempoMAXValueSelectedParam) && (tempoRicettaMinuti >= tempoMINValueSelectedParam ))
+            if((tempoRicettaMinuti <= tempoMAXValueSelectedParam) && (tempoRicettaMinuti >= tempoMINValueSelectedParam )){
                 listResults.add(cursor.getString(0));
+            }
 
             cursor.moveToNext();
             cursorTempo.moveToNext();
