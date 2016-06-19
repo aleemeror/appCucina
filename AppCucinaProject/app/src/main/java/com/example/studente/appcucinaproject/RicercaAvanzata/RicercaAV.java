@@ -41,6 +41,7 @@ public class RicercaAV extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Button cercaButton;
+    private Button cancellaButton;
     private EditText nomeRicetta;   //editText
     private EditText ingrediente1,ingrediente2,ingrediente3; //2,3,4
     private CheckBox antipastoCB, primoCB, secondoCB, dolceCB;
@@ -104,6 +105,7 @@ public class RicercaAV extends AppCompatActivity
         isDolceCBChecked = false;
 
         cercaButton = (Button)findViewById(R.id.buttonCerca);
+        cancellaButton = (Button) findViewById(R.id.buttonCancella);
         nomeRicetta = (EditText)findViewById(R.id.editText);
         ingrediente1 = (EditText)findViewById(R.id.editText2);
         ingrediente2 = (EditText)findViewById(R.id.editText3);
@@ -130,6 +132,16 @@ public class RicercaAV extends AppCompatActivity
         //setto i massimi e i minimi nelle range bars
         rangeBarTempo.setRangeValues(minTime, maxTime);
         rangeBarCalorie.setRangeValues(minCal, maxCal);
+
+        cancellaButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                nomeRicetta.setText("");
+                ingrediente1.setText("");
+                ingrediente2.setText("");
+                ingrediente3.setText("");
+            }
+        });
 
 
         cercaButton.setOnClickListener(new View.OnClickListener() {         //CERCA BUTTON

@@ -340,6 +340,18 @@
                             android:textColor="#ffffff"
                             android:textAlignment="center" />
 
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:text="Cancella"
+                        android:id="@+id/buttonCancella"
+                        android:layout_marginTop="10dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@id/buttonCerca"
+                        android:background="@drawable/button_rect"
+                        android:textColor="#ffffff"
+                        android:textAlignment="center" />
+
                         <!--
                         <NumberPicker
                             android:layout_width="wrap_content"
