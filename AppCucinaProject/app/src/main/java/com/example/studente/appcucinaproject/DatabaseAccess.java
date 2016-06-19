@@ -375,7 +375,7 @@ public class DatabaseAccess {
         //se la difficoltà non è 4 ovvero qualsiasi
         if(ID_DifficoltaParam != 4){
             String idDiffConvert = Integer.toString(ID_DifficoltaParam);
-            mySQLQuery = mySQLQuery.concat("AND r.id_difficolta=" + idDiffConvert);
+            mySQLQuery = mySQLQuery.concat("AND r.id_difficolta=" + idDiffConvert + " ");
         }
 
         //se voglio un antipasto
