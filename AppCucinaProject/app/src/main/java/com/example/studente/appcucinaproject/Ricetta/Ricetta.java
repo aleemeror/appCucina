@@ -94,15 +94,13 @@ public class Ricetta extends AppCompatActivity {
 
         txtIngredienti.setMovementMethod(new ScrollingMovementMethod());
 
-
+        /*
         myDatabaseAccess = DatabaseAccess.getInstance(this);
         myDatabaseAccess.open();
-        ArrayList<String> quotes = myDatabaseAccess.getQuotes();
         //QUESTO METODO FUNZIONA
-        //tempoFromDatabase = myDatabaseAccess.getTempoRicetta(nameRicetta);
+        tempoFromDatabase = myDatabaseAccess.getTempoRicetta(nameRicetta);
         myDatabaseAccess.close();
-
-        tempoFromDatabase = quotes.get(0);
+        */
 
         //prendo le info dall'intent
         imageView.setImageResource(getIntent().getIntExtra("img_id",00));
@@ -156,6 +154,8 @@ public class Ricetta extends AppCompatActivity {
         timer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                tempoFromDatabase= txtTempoImpiegato.getText().toString();
 
                 setTimeFromRicetta = new Intent(getApplicationContext(), Timer.class);
                 setTimeFromRicetta.putExtra("name", nameRicetta);
