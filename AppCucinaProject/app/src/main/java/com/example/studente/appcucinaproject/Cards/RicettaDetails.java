@@ -10,6 +10,7 @@ public class RicettaDetails {
     private String titleRicetta;
     private String descrRicetta;
     private int imgRicettaID;
+    private boolean isPreferito;
 
     public RicettaDetails(int imgRicetta,String title) {
         this.setTitle(title);
@@ -41,4 +42,11 @@ public class RicettaDetails {
     }   //setto i vari passaggi per realizzare la ricetta
 
 
+    public boolean isPreferito() {
+        return isPreferito;
+    }       //per dire se è preferito o meno
+
+    public void setPreferito(boolean preferito) {
+        isPreferito = preferito;
+    }       //settare il preferito
 }

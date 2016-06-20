@@ -117,7 +117,7 @@ public class Ricetta extends AppCompatActivity {
         txtIngredienti.setText("");
         for(int i=0;i<list_ingredienti.size();i++)
         {
-            String ingredienti = txtIngredienti.getText().toString() + "," + list_ingredienti.get(1);
+            String ingredienti = txtIngredienti.getText().toString() + "," + list_ingredienti.get(i);
             txtIngredienti.setText(ingredienti);
         }
         myDatabaseAccess.close();
@@ -130,6 +130,7 @@ public class Ricetta extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(preferito.isActivated()){
+
                     preferito.setActivated(false);
                     //preferito.setColorFilter(Color.argb(255, 255, 255, 255));
                     preferito.setImageResource(R.drawable.white_star);
