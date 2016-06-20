@@ -125,6 +125,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.studente.appcucinaproject.RicercaAvanzata.RicercaAV" />
         </activity>
+        <activity
+            android:name=".Convertitore.Convertitore"
+            android:label="@string/title_activity_convertitore"
+            android:parentActivityName=".Home"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.studente.appcucinaproject.Home" />
+        </activity>
     </application>
 
 </manifest>

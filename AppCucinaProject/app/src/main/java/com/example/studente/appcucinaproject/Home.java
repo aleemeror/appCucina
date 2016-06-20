@@ -24,6 +24,7 @@ import com.example.studente.appcucinaproject.Calcolatrice.Calcolatrice;
 import com.example.studente.appcucinaproject.Cards.MyCardAdapter;
 import com.example.studente.appcucinaproject.Cards.MyCardAdapterHome;
 import com.example.studente.appcucinaproject.Cards.RicettaDetails;
+import com.example.studente.appcucinaproject.Convertitore.Convertitore;
 import com.example.studente.appcucinaproject.MenuDelGiorno.MenuDelGiorno;
 import com.example.studente.appcucinaproject.RicercaAvanzata.RicercaAV;
 import com.example.studente.appcucinaproject.Ricettario.Ricettario;
@@ -135,6 +136,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         }
         else if (id == R.id.nav_calcolateglia) {
             startActivity(new Intent(this, CalcolaTeglia.class));
+            finish();
+        }
+        else if(id == R.id.nav_convertitore){
+            startActivity(new Intent(this, Convertitore.class));
             finish();
         }
 

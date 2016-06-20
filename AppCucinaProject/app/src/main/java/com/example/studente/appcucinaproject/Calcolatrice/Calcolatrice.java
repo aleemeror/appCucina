@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.studente.appcucinaproject.CalcolaTeglia.CalcolaTeglia;
+import com.example.studente.appcucinaproject.Convertitore.Convertitore;
 import com.example.studente.appcucinaproject.Home;
 import com.example.studente.appcucinaproject.MenuDelGiorno.MenuDelGiorno;
 import com.example.studente.appcucinaproject.R;
@@ -954,13 +955,14 @@ public class Calcolatrice extends AppCompatActivity
         } else if (id == R.id.nav_menu_del_giorno) {
             startActivity(new Intent(this, MenuDelGiorno.class));
             finish();
-        }
-        else if (id == R.id.nav_spesa) {
+
+        } else if (id == R.id.nav_spesa) {
             startActivity(new Intent(this, Spesa.class));
             finish();
 
         } else if (id == R.id.nav_calcolatrice) {
-            //startActivity(new Intent(this, Calcolatrice.class));
+            /*startActivity(new Intent(this, Calcolatrice.class));
+            finish();*/
 
         } else if (id == R.id.nav_timer) {
             startActivity(new Intent(this, Timer.class));
@@ -968,6 +970,10 @@ public class Calcolatrice extends AppCompatActivity
         }
         else if (id == R.id.nav_calcolateglia) {
             startActivity(new Intent(this, CalcolaTeglia.class));
+            finish();
+        }
+        else if(id == R.id.nav_convertitore){
+            startActivity(new Intent(this, Convertitore.class));
             finish();
         }
 

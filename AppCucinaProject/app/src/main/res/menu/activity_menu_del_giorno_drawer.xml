@@ -41,6 +41,10 @@
                 android:id="@+id/nav_calcolateglia"
                 android:icon="@drawable/ic_calcolateglia"
                 android:title="Calcola Teglia" />
+            <item
+                android:id="@+id/nav_convertitore"
+                android:icon="@drawable/reload"
+                android:title="Convertitore" />
         </menu>
     </item>
 

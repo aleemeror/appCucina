@@ -15,6 +15,7 @@ import android.view.MenuItem;
 
 import com.example.studente.appcucinaproject.CalcolaTeglia.CalcolaTeglia;
 import com.example.studente.appcucinaproject.Calcolatrice.Calcolatrice;
+import com.example.studente.appcucinaproject.Convertitore.Convertitore;
 import com.example.studente.appcucinaproject.Home;
 import com.example.studente.appcucinaproject.MenuDelGiorno.MenuDelGiorno;
 import com.example.studente.appcucinaproject.R;
@@ -124,6 +125,10 @@ public class Ricettario extends AppCompatActivity
         }
         else if (id == R.id.nav_calcolateglia) {
             startActivity(new Intent(this, CalcolaTeglia.class));
+            finish();
+        }
+        else if(id == R.id.nav_convertitore){
+            startActivity(new Intent(this, Convertitore.class));
             finish();
         }
 

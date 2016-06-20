@@ -11,9 +11,9 @@
             android:icon="@drawable/ic_ricettario"
             android:title="Ricettario" />
         <item
-        android:id="@+id/nav_ricerca"
-        android:icon="@drawable/ic_ricerca"
-        android:title="Ricerca Avanzata" />
+            android:id="@+id/nav_ricerca"
+            android:icon="@drawable/ic_ricerca"
+            android:title="Ricerca Avanzata" />
 
         <item
             android:id="@+id/nav_menu_del_giorno"
@@ -41,7 +41,6 @@
                 android:id="@+id/nav_calcolateglia"
                 android:icon="@drawable/ic_calcolateglia"
                 android:title="Calcola Teglia" />
-
             <item
                 android:id="@+id/nav_convertitore"
                 android:icon="@drawable/reload"

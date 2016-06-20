@@ -21,6 +21,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.studente.appcucinaproject.Calcolatrice.Calcolatrice;
+import com.example.studente.appcucinaproject.Convertitore.Convertitore;
 import com.example.studente.appcucinaproject.Home;
 import com.example.studente.appcucinaproject.MenuDelGiorno.MenuDelGiorno;
 import com.example.studente.appcucinaproject.R;
@@ -334,7 +335,10 @@ public class CalcolaTeglia extends AppCompatActivity
         else if (id == R.id.nav_calcolateglia) {
             //startActivity(new Intent(this, CalcolaTeglia.class));
         }
-
+        else if(id == R.id.nav_convertitore){
+            startActivity(new Intent(this, Convertitore.class));
+            finish();
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

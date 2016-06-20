@@ -21,6 +21,7 @@ import com.example.studente.appcucinaproject.CalcolaTeglia.CalcolaTeglia;
 import com.example.studente.appcucinaproject.Calcolatrice.Calcolatrice;
 import com.example.studente.appcucinaproject.Cards.MyCardAdapterHome;
 import com.example.studente.appcucinaproject.Cards.RicettaDetails;
+import com.example.studente.appcucinaproject.Convertitore.Convertitore;
 import com.example.studente.appcucinaproject.Home;
 import com.example.studente.appcucinaproject.R;
 import com.example.studente.appcucinaproject.RicercaAvanzata.RicercaAV;
@@ -150,6 +151,10 @@ public class MenuDelGiorno extends AppCompatActivity implements NavigationView.O
         }
         else if (id == R.id.nav_calcolateglia) {
             startActivity(new Intent(this, CalcolaTeglia.class));
+            finish();
+        }
+        else if(id == R.id.nav_convertitore){
+            startActivity(new Intent(this, Convertitore.class));
             finish();
         }
 
