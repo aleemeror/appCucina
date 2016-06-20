@@ -160,7 +160,10 @@
         android:text="Calcola"
         android:id="@+id/calcola"
         android:layout_row="13"
-        android:layout_column="0" />
+        android:layout_column="0"
+        android:background="@drawable/button_rect"
+        android:textColor="#ffffff"
+        android:layout_marginTop="5dp" />
 
 </LinearLayout>
 
