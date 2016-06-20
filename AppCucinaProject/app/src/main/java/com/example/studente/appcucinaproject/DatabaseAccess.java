@@ -124,12 +124,65 @@ public class DatabaseAccess {
 
 
 
+    public String getNpersone(String nomeRicetta)
+    {
+        String nRicetta = "";
+        //se il ; alla fine della query viene messo, funziona ugualmente
+        Cursor cursor = database.rawQuery("SELECT nPersone FROM ricetta where nome ='" + nomeRicetta +"';", null);
+        cursor.moveToFirst();
+        nRicetta = cursor.getString(0);
 
+        cursor.close();
+        return nRicetta;
+    }
 
+    public String getCalorie(String nomeRicetta)
+    {
+        String calorie = "";
+        //se il ; alla fine della query viene messo, funziona ugualmente
+        Cursor cursor = database.rawQuery("SELECT calorie FROM ricetta where nome ='" + nomeRicetta +"';", null);
+        cursor.moveToFirst();
+        calorie = cursor.getString(0);
 
+        cursor.close();
+        return calorie;
+    }
 
+    public String getDifficolta(String nomeRicetta)
+    {
+        String difficolta = "";
+        //se il ; alla fine della query viene messo, funziona ugualmente
+        Cursor cursor = database.rawQuery("SELECT difficolta FROM ricetta,difficolta where ricetta.id_difficolta=difficolta.id_difficolta and ricetta.nome ='" + nomeRicetta +"';", null);
+        cursor.moveToFirst();
+        difficolta = cursor.getString(0);
 
+        cursor.close();
+        return difficolta;
+    }
 
+    public String getPortata(String nomeRicetta)
+    {
+        String portata = "";
+        //se il ; alla fine della query viene messo, funziona ugualmente
+        Cursor cursor = database.rawQuery("SELECT tipologia FROM ricetta,portata where ricetta.id_portata=portata.id_portata and ricetta.nome ='" + nomeRicetta +"';", null);
+        cursor.moveToFirst();
+        portata = cursor.getString(0);
+
+        cursor.close();
+        return portata;
+    }
+
+    public String getDescrizione(String nomeRicetta)
+    {
+        String descrizione = "";
+        //se il ; alla fine della query viene messo, funziona ugualmente
+        Cursor cursor = database.rawQuery("SELECT descrizione FROM ricetta where ricetta.nome ='" + nomeRicetta +"';", null);
+        cursor.moveToFirst();
+        descrizione = cursor.getString(0);
+
+        cursor.close();
+        return descrizione;
+    }
 
     public String getTempoRicetta(String nomeRicetta){
         String tempoRicetta = "";
@@ -140,6 +193,19 @@ public class DatabaseAccess {
 
         cursor.close();
         return tempoRicetta;
+    }
+
+    public ArrayList<String> getIngredienti(String nomeRicetta) {          //metodo per prendere tutti i nomi dei secondi
+        ArrayList<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT a.quantita,i.nome FROM appartenere a,ricetta r,ingrediente i WHERE i.id_ingrediente=a.id_ingrediente and r.id_ricetta=a.id_ricetta and r.nome='" + nomeRicetta +"';", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            String qi = cursor.getString(0) + " " + cursor.getString(1);
+            list.add(qi);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
     }
 
     /*public List<String> getQuotes() {

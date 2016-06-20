@@ -44,7 +44,7 @@ public class Ricetta extends AppCompatActivity {
     FloatingActionMenu materialDesignFAM;
     FloatingActionButton preferito, timer, spesa,menu_gg;
 
-
+    ArrayList<String> list_ingredienti= new ArrayList<>();
     private Intent setTimeFromRicetta;
     private String nameRicetta = "";
     private String tempoFromDatabase = "";
@@ -107,6 +107,22 @@ public class Ricetta extends AppCompatActivity {
         //prendo le info dall'intent
         imageView.setImageResource(getIntent().getIntExtra("img_id",00));
         txtname.setText(getIntent().getStringExtra("name"));
+        myDatabaseAccess = DatabaseAccess.getInstance(this);
+        myDatabaseAccess.open();
+        txtPersone.setText(myDatabaseAccess.getNpersone(txtname.getText().toString()));
+        txtCalorie.setText(myDatabaseAccess.getCalorie(txtname.getText().toString()));
+        txtTempoImpiegato.setText(myDatabaseAccess.getTempoRicetta(txtname.getText().toString()));
+        txtDifficolta.setText(myDatabaseAccess.getDifficolta(txtname.getText().toString()));
+        txtPortata.setText(myDatabaseAccess.getPortata(txtname.getText().toString()));
+        txtDescrizione.setText(myDatabaseAccess.getDescrizione(txtname.getText().toString()));
+        list_ingredienti = myDatabaseAccess.getIngredienti(txtname.getText().toString());
+        txtIngredienti.setText("");
+        for(int i=0;i<list_ingredienti.size();i++)
+        {
+            String ingredienti = txtIngredienti.getText().toString() + "," + list_ingredienti.get(1);
+            txtIngredienti.setText(ingredienti);
+        }
+        myDatabaseAccess.close();
 
         setTitle(getIntent().getStringExtra("name"));
         nameRicetta = getIntent().getStringExtra("name");
