@@ -2,6 +2,7 @@ package com.example.studente.appcucinaproject.Cards;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,9 @@ import android.widget.TextView;
 
 import com.example.studente.appcucinaproject.R;
 import com.example.studente.appcucinaproject.Spesa.SpesaDetailsActivity;
+import com.example.studente.appcucinaproject.Spesa.SpesaObject;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -18,15 +22,16 @@ import java.util.ArrayList;
  * Created by Mattia on 06/05/2016.
  */
 public class MyCardAdapterSpesa extends RecyclerView.Adapter<MyCardAdapterSpesa.ContactViewHolder> {
-    ArrayList<String> Spese = new ArrayList<String>();
+    //ArrayList<String> Spese = new ArrayList<String>();
+    ArrayList<SpesaObject> speseList = new ArrayList<SpesaObject>(); //M
     //Activity a;
 
     Context ctx;//M
     int pos_da_eliminare=0;
 
-    public MyCardAdapterSpesa(ArrayList<String> Spese, Context a){     //M-Activity a
+    public MyCardAdapterSpesa(ArrayList<SpesaObject> Spese, Context a){     //M-Activity a
 
-        this.Spese= Spese;
+        this.speseList= Spese;
         this.ctx=a;
     }
 
@@ -40,18 +45,19 @@ public class MyCardAdapterSpesa extends RecyclerView.Adapter<MyCardAdapterSpesa.
     @Override
     public void onBindViewHolder(final ContactViewHolder holder, int position) {
 
-        String SP = Spese.get(position);
-        holder.spesa_title.setText(SP.toString());
+        SpesaObject SP = speseList.get(position);
+        holder.spesa_title.setText(SP.getTitle());
+        final String ingredienti = SP.getIngredientiSpesa();
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();  //prendo le info della posizione
-                String spesa = Spese.get(position);
+                SpesaObject spesa = new SpesaObject(speseList.get(position).getTitle(), ingredienti); //M - gli passo alla posizione selezionata il titolo e gli ingredienti e creo un nuovo oggetto spesa che passerò poi nell'intent
 
                 //startiamo la activity
                 Intent intent = new Intent(ctx, SpesaDetailsActivity.class);     //  Intent intent = new Intent(a, Ricetta.class);
-                intent.putExtra("nameSpesa",spesa);
+                intent.putExtra("spesaOggetto", (Parcelable) spesa);
                 ctx.startActivity(intent); //starta l'activity- M - a.startActivity(...);
             }
 
@@ -62,9 +68,9 @@ public class MyCardAdapterSpesa extends RecyclerView.Adapter<MyCardAdapterSpesa.
             int position = holder.getAdapterPosition();     //prendo la posizione
             @Override
             public void onClick(View v) {   //quando la " X " è cliccata
-                Spese.remove(position); //rimuovo la lista della spesa in questione dalla lista di spese
+                speseList.remove(position); //rimuovo la lista della spesa in questione dalla lista di spese
                 notifyItemRemoved(position);    //notifico i registri che ho eliminato un item
-                notifyItemRangeChanged(position, Spese.size()); //notifico i registri che ho scalato la posizione degli elementi sottostanti
+                notifyItemRangeChanged(position, speseList.size()); //notifico i registri che ho scalato la posizione degli elementi sottostanti
 
             }
 
@@ -72,9 +78,9 @@ public class MyCardAdapterSpesa extends RecyclerView.Adapter<MyCardAdapterSpesa.
     }
 
     public void removeAt(int position) {
-        Spese.remove(position);
+        speseList.remove(position);
         notifyItemRemoved(position);
-        notifyItemRangeChanged(position, Spese.size());
+        notifyItemRangeChanged(position, speseList.size());
     }
 
 
@@ -82,13 +88,14 @@ public class MyCardAdapterSpesa extends RecyclerView.Adapter<MyCardAdapterSpesa.
 
     @Override
     public int getItemCount() {
-        return Spese.size();
+        return speseList.size();
     }
 
 
     public static class ContactViewHolder extends RecyclerView.ViewHolder{
 
         TextView spesa_title;
+        TextView spesa_ingredienti;
         ImageButton image_button_delete;
 
         public ContactViewHolder(View view){

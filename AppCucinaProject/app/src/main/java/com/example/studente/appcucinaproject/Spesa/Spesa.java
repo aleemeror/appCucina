@@ -38,7 +38,7 @@ public class Spesa extends AppCompatActivity
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
     CardView cardv;
-    public ArrayList<String> titleSpesa = new ArrayList<>();
+    public ArrayList<SpesaObject> listSpesa = new ArrayList<>();
     public ArrayList<String> list = new ArrayList<String>();
 
     private final String KEY_RECYCLER_STATE = "recycler_state";
@@ -65,12 +65,12 @@ public class Spesa extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         setTitle("Spesa");
 
-        if(getIntent().hasExtra("titleSpesa")){
-            titleSpesa = getIntent().getStringArrayListExtra("titleSpesa");
+        if(getIntent().hasExtra("listaDiSpeseInput")){
+            listSpesa= getIntent().getParcelableArrayListExtra("listaDiSpeseInput"); //prendo la lista di oggetti che mi arrivano e aggiorno quella nella main della spesa
         } else{
-            for(int count =0; count < 5; count++){
-                titleSpesa.add("Spesa "+ count);
-            }
+            /*for(int count =0; count < 5; count++){
+                listSpesa.add("Spesa "+ count);
+            }*/
 
         }
 
@@ -78,7 +78,7 @@ public class Spesa extends AppCompatActivity
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         //recyclerView.setHasFixedSize(true);
-        adapter = new MyCardAdapterSpesa(titleSpesa,Spesa.this);
+        adapter = new MyCardAdapterSpesa(listSpesa,Spesa.this);    //passo una lista di oggetti "SpesaObject"
         recyclerView.setAdapter(adapter);
 
 
@@ -90,7 +90,7 @@ public class Spesa extends AppCompatActivity
                         .setAction("Action", null).show();
 
                 Intent intent = new Intent(Spesa.this, InserisciSpesa.class); //Mi porta alla activity per inserire i dati della ricetta
-                intent.putExtra("listaSpese", titleSpesa); //passo alla activity di destinazione una lista di stringhe identificata da un "ID" sottoforma di stringa
+                intent.putParcelableArrayListExtra("listaSpese", listSpesa); //passo alla activity di destinazione una lista di stringhe identificata da un "ID" sottoforma di stringa
                 startActivity(intent);
             }
         });
