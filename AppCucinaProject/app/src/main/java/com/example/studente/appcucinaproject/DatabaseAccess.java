@@ -107,7 +107,7 @@ public class DatabaseAccess {
 
     public ArrayList<String> getRicettaDolce() {        //metodo per prendere tutti i nomi dei dolci
         ArrayList<String> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=5", null);
+        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=4", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             list.add(cursor.getString(0));
