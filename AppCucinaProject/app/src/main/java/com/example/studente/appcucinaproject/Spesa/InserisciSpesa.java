@@ -22,8 +22,12 @@ public class InserisciSpesa extends AppCompatActivity {
     ImageButton bt_inserisci_ingrediente;
     MultiAutoCompleteTextView ins_ingrediente;
     TextView tv;
+    String Ingredienti;
+
 
     ArrayList<String> titleSpesa = new ArrayList<>();
+    ArrayList<SpesaObject> spesaListInsert = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +45,7 @@ public class InserisciSpesa extends AppCompatActivity {
 
         setTitle("Inserisci Spesa");
 
-        titleSpesa= getIntent().getStringArrayListExtra("listaSpese");
+        spesaListInsert= getIntent().getParcelableArrayListExtra("listaSpese");
 
 
         ins_ingrediente.setAdapter(adapter);
@@ -63,11 +67,19 @@ public class InserisciSpesa extends AppCompatActivity {
 
                 if(!nomeSpesa.getText().toString().isEmpty() && !tv.getText().toString().isEmpty()){
 
-                    titleSpesa.add("Spesa: "+nomeSpesa.getText().toString());
+                    SpesaObject sp = new SpesaObject(nomeSpesa.getText().toString(),tv.getText().toString());
+
+                    spesaListInsert.add(sp);
+
+
+                    //titleSpesa.add("Spesa: "+nomeSpesa.getText().toString());
+                    //Ingredienti = tv.getText().toString();
 
                     //startiamo la activity
                     Intent intent = new Intent(InserisciSpesa.this, Spesa.class);     //  Intent intent = new Intent(a, Ricetta.class);
-                    intent.putExtra("titleSpesa",titleSpesa);
+                    //intent.putExtra("titleSpesa",titleSpesa);
+                    //intent.putExtra("ingredientiSpesa",Ingredienti);
+                    intent.putParcelableArrayListExtra("listaDiSpeseInput",spesaListInsert);    //ERROREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
                     startActivity(intent); //starta l'activity- M - a.startActivity(...);
                     finish();
                 }else{

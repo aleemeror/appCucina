@@ -1,13 +1,25 @@
 package com.example.studente.appcucinaproject.Spesa;
 
-public class SpesaObject {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class SpesaObject implements Parcelable{
 
     private String titleSpesa;
+    private String ingredientiSpesa;
 
 
-    public SpesaObject(String title) {
+    public SpesaObject(String title, String ingredienti) {
         this.setTitle(title);
+        this.setIngredientiSpesa(ingredienti);
     }
+
+    protected SpesaObject(Parcel in) {
+        titleSpesa = in.readString();
+        ingredientiSpesa = in.readString();
+    }
+
+
 
     public String getTitle() {
         return titleSpesa;
@@ -15,5 +27,39 @@ public class SpesaObject {
 
     public void setTitle(String msg) {
         this.titleSpesa = msg;
+    }
+
+    public String getIngredientiSpesa() {
+        return ingredientiSpesa;
+    }
+
+    public void setIngredientiSpesa(String ingredientiSpesa) {
+        this.ingredientiSpesa = ingredientiSpesa;
+    }
+
+
+    public static final Creator<SpesaObject> CREATOR = new Creator<SpesaObject>() {
+        @Override
+        public SpesaObject createFromParcel(Parcel in) {
+            return new SpesaObject(in);
+        }
+
+        @Override
+        public SpesaObject[] newArray(int size) {
+            return new SpesaObject[size];
+        }
+    };
+
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(titleSpesa);
+        dest.writeString(ingredientiSpesa);
     }
 }

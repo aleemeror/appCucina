@@ -13,6 +13,9 @@ import com.example.studente.appcucinaproject.R;
 public class SpesaDetailsActivity extends AppCompatActivity {
 
     TextView spesaTitolo;
+    TextView spesaIngredienti;
+
+    SpesaObject spesa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +26,14 @@ public class SpesaDetailsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         spesaTitolo = (TextView) findViewById(R.id.titoloSpesa);
+        spesaIngredienti = (TextView) findViewById(R.id.textView8);
 
         setTitle("Spesa");
 
-        String str = getIntent().getStringExtra("nameSpesa");
+        spesa = getIntent().getParcelableExtra("spesaOggetto"); //ricevo l'oggetto dal click sulla card
 
-        spesaTitolo.setText(str);
+        spesaTitolo.setText(spesa.getTitle());  //prendo dall'oggetto il titolo
+        spesaIngredienti.setText(spesa.getIngredientiSpesa());  //prendo dall'oggetto gli ingredienti
     }
 
 }
