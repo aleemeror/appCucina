@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.example.studente.appcucinaproject.DatabaseAccess;
 import com.example.studente.appcucinaproject.R;
 import com.example.studente.appcucinaproject.RicercaAvanzata.tabs_visualizzazione.AntipastiFragment_visualizzazione;
 import com.example.studente.appcucinaproject.RicercaAvanzata.tabs_visualizzazione.DolciFragment_visualizzazione;
@@ -22,7 +23,13 @@ public class Visualizzazione_Ricerca_av extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    //private ArrayList<String> listResults = new ArrayList<>();
+    private ArrayList<String> listResults = new ArrayList<>();
+    private ArrayList<String> listAntipasti = new ArrayList<>();
+    private ArrayList<String> listPrimis = new ArrayList<>();
+    private ArrayList<String> listSecondi = new ArrayList<>();
+    private ArrayList<String> listDolci = new ArrayList<>();
+
+    private DatabaseAccess myDatabaseAccess;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +48,6 @@ public class Visualizzazione_Ricerca_av extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
         setTitle("Risultati");
-
-        //listResults = getIntent().getStringArrayListExtra("risultati");
     }
 
 

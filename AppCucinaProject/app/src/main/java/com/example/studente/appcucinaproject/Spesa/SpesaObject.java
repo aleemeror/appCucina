@@ -38,7 +38,7 @@ public class SpesaObject implements Parcelable{
     }
 
 
-    public static final Creator<SpesaObject> CREATOR = new Creator<SpesaObject>() {
+    public static final Creator<SpesaObject> CREATOR = new Creator<SpesaObject>() { //metodi per il Parcelable
         @Override
         public SpesaObject createFromParcel(Parcel in) {
             return new SpesaObject(in);

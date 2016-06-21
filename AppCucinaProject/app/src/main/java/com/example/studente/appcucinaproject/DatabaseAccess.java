@@ -123,6 +123,85 @@ public class DatabaseAccess {
     }
 
 
+    //metodi per suddivisione ricette della visualizzazione ricerca av nelle varie tabs
+
+    public String getRicettaAntipastoVisualizzazione(String nome_ricetta) {        //metodo per prendere tutti i nomi dei dolci
+        String nRicetta = "";
+
+        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=1 AND nome ='" + nome_ricetta +"';", null);
+        cursor.moveToFirst();
+        cursor.moveToFirst();
+
+        nRicetta = cursor.getString(0);
+
+        cursor.close();
+
+        if(nRicetta.isEmpty()){
+            nRicetta="nessun risultato";
+        }
+
+        return nRicetta;
+    }
+
+
+    public String getRicettaPrimiVisualizzazione(String nome_ricetta) {        //metodo per prendere tutti i nomi dei dolci
+        String nRicetta = "";
+
+        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=2 AND nome ='" + nome_ricetta +"';", null);
+        cursor.moveToFirst();
+        cursor.moveToFirst();
+
+        nRicetta = cursor.getString(0);
+
+        cursor.close();
+
+        if(nRicetta.isEmpty()){
+            nRicetta="nessun risultato";
+        }
+
+        return nRicetta;
+    }
+
+    public String getRicettaSecondiVisualizzazione(String nome_ricetta) {        //metodo per prendere tutti i nomi dei dolci
+        String nRicetta = "";
+
+        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=3 AND nome ='" + nome_ricetta +"';", null);
+        cursor.moveToFirst();
+        cursor.moveToFirst();
+
+        nRicetta = cursor.getString(0);
+
+        cursor.close();
+
+        if(nRicetta.isEmpty()){
+            nRicetta="nessun risultato";
+        }
+
+        return nRicetta;
+    }
+
+
+    public String getRicettaDolciVisualizzazione(String nome_ricetta) {        //metodo per prendere tutti i nomi dei dolci
+        String nRicetta = "";
+
+        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=4 AND nome ='" + nome_ricetta +"';", null);
+        cursor.moveToFirst();
+        cursor.moveToFirst();
+
+        nRicetta = cursor.getString(0);
+
+        cursor.close();
+
+        if(nRicetta.isEmpty()){
+            nRicetta="nessun risultato";
+        }
+
+        return nRicetta;
+    }
+
+
+
+    ////
 
     public String getNpersone(String nomeRicetta)
     {
