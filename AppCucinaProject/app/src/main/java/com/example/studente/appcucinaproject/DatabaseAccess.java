@@ -128,8 +128,7 @@ public class DatabaseAccess {
     public String getRicettaAntipastoVisualizzazione(String nome_ricetta) {        //metodo per prendere tutti i nomi dei dolci
         String nRicetta = "";
 
-        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=1 AND nome ='" + nome_ricetta +"';", null);
-        cursor.moveToFirst();
+        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=1 AND nome ='" + nome_ricetta +"' ", null);
         cursor.moveToFirst();
 
         nRicetta = cursor.getString(0);
@@ -147,8 +146,7 @@ public class DatabaseAccess {
     public String getRicettaPrimiVisualizzazione(String nome_ricetta) {        //metodo per prendere tutti i nomi dei dolci
         String nRicetta = "";
 
-        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=2 AND nome ='" + nome_ricetta +"';", null);
-        cursor.moveToFirst();
+        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=2 AND nome ='" + nome_ricetta +"' ", null);
         cursor.moveToFirst();
 
         nRicetta = cursor.getString(0);
@@ -167,7 +165,7 @@ public class DatabaseAccess {
 
         Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=3 AND nome ='" + nome_ricetta +"';", null);
         cursor.moveToFirst();
-        cursor.moveToFirst();
+
 
         nRicetta = cursor.getString(0);
 
@@ -185,7 +183,6 @@ public class DatabaseAccess {
         String nRicetta = "";
 
         Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=4 AND nome ='" + nome_ricetta +"';", null);
-        cursor.moveToFirst();
         cursor.moveToFirst();
 
         nRicetta = cursor.getString(0);

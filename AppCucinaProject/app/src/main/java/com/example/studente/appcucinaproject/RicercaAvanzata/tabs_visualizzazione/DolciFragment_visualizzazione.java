@@ -36,14 +36,14 @@ public class DolciFragment_visualizzazione extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_dolci_fragment_visualizzazione, container, false);
 
-        listResults = getActivity().getIntent().getStringArrayListExtra("risultati");
+       /*listResults = getActivity().getIntent().getStringArrayListExtra("risultati");
 
         myDatabaseAccess = DatabaseAccess.getInstance(this.getContext());
         myDatabaseAccess.open();
         for(int i=0;i<listResults.size();i++){
             listDolci.add(myDatabaseAccess.getRicettaDolciVisualizzazione(listResults.get(i)));
         }
-        myDatabaseAccess.close();
+        myDatabaseAccess.close();*/
 
         RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.recview_dolci_RAV);
         rv.setHasFixedSize(true);
