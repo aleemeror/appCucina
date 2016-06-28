@@ -26,6 +26,7 @@ import com.example.studente.appcucinaproject.CalcolaTeglia.CalcolaTeglia;
 import com.example.studente.appcucinaproject.Calcolatrice.Calcolatrice;
 import com.example.studente.appcucinaproject.Convertitore.Convertitore;
 import com.example.studente.appcucinaproject.DatabaseAccess;
+import com.example.studente.appcucinaproject.DatiCondivisi;
 import com.example.studente.appcucinaproject.Home;
 import com.example.studente.appcucinaproject.MenuDelGiorno.MenuDelGiorno;
 import com.example.studente.appcucinaproject.R;
@@ -72,6 +73,8 @@ public class RicercaAV extends AppCompatActivity
 
     private ArrayList<String> listaRisultati;
 
+    DatiCondivisi dati_condivisi; //prova
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +97,8 @@ public class RicercaAV extends AppCompatActivity
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+
 
         myNomeRicetta = "";
         myIngrediente1 = "";
@@ -118,6 +123,11 @@ public class RicercaAV extends AppCompatActivity
         rangeBarTempo = (RangeSeekBar)findViewById(R.id.seekbar);
         rangeBarCalorie = (RangeSeekBar)findViewById(R.id.seekBar2);
         difficolta = (RadioGroup)findViewById(R.id.radioGroup);
+
+
+        //setto un oggetto DatiCondivisi
+        //dati_condivisi = new DatiCondivisi();
+        //dati_condivisi.ClearAll();        PER PULIRE LISTE PRIMA DI RICERCARE
 
         //leggo dal database i massimi e minimi di tempo e calorie
         myDatabaseAccess = DatabaseAccess.getInstance(this);
@@ -196,8 +206,10 @@ public class RicercaAV extends AppCompatActivity
                 myDatabaseAccess.close();
 
                 //intent all'activity risultati
+
+               // dati_condivisi.setRicetteVis(listaRisultati);
+
                 showResultsIntent = new Intent(getApplicationContext(), Visualizzazione_Ricerca_av.class);
-                //showResultsIntent.putExtra("risultati", listaRisultati);    //???
                 showResultsIntent.putStringArrayListExtra("risultati", listaRisultati);
 
                 startActivity(showResultsIntent);
