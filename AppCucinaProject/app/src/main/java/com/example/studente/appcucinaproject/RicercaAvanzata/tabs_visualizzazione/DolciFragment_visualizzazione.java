@@ -24,7 +24,9 @@ public class DolciFragment_visualizzazione extends Fragment {
 
     private ArrayList<String> listResults = new ArrayList<>();
     private ArrayList<String> listDolci = new ArrayList<>();
+    private ArrayList<String> listDolciTemp = new ArrayList<>();
     private DatabaseAccess myDatabaseAccess;
+    boolean creato = false;
 
 
     public DolciFragment_visualizzazione() {
@@ -41,16 +43,29 @@ public class DolciFragment_visualizzazione extends Fragment {
         listResults = ((Activity)container.getRootView().getContext()).getIntent().getStringArrayListExtra("risultati");
 
         if(listResults != null && !listResults.isEmpty()) {
-            myDatabaseAccess = DatabaseAccess.getInstance(this.getContext());
-            myDatabaseAccess.open();
-            for (int i = 0; i < listResults.size(); i++) {
-                listDolci.add(myDatabaseAccess.getRicettaDolciVisualizzazione(listResults.get(i)));
+            if(!creato) {
+                myDatabaseAccess = DatabaseAccess.getInstance(this.getContext());
+
+                myDatabaseAccess.open();
+                listDolci = myDatabaseAccess.getRicettaDolce();
+                myDatabaseAccess.close();
+
+                for (int i = 0; i < listDolci.size(); i++) {
+
+                    for (int j = 0; j < listResults.size(); j++) {
+                        if (listDolci.get(i).equals(listResults.get(j))) {
+                            listDolciTemp.add(listResults.get(j));
+                        }
+                    }
+
+                }
+                creato = true;
             }
-            myDatabaseAccess.close();
+
 
             RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.recview_dolci_RAV);
             rv.setHasFixedSize(true);
-            MyCardAdapterRAvis adapter = new MyCardAdapterRAvis(listDolci, this.getContext());
+            MyCardAdapterRAvis adapter = new MyCardAdapterRAvis(listDolciTemp, this.getContext());
             rv.setAdapter(adapter);
 
             LinearLayoutManager llm = new LinearLayoutManager(getActivity());

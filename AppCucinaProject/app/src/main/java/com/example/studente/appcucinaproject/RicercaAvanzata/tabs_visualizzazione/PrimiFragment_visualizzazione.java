@@ -24,7 +24,9 @@ public class PrimiFragment_visualizzazione extends Fragment {
 
     private ArrayList<String> listResults = new ArrayList<>();
     private ArrayList<String> listPrimi = new ArrayList<>();
+    private ArrayList<String> listPrimiTemp = new ArrayList<>();
     private DatabaseAccess myDatabaseAccess;
+    boolean creato = false;
 
     public PrimiFragment_visualizzazione() {
         // Required empty public constructor
@@ -40,16 +42,28 @@ public class PrimiFragment_visualizzazione extends Fragment {
         listResults = ((Activity)container.getRootView().getContext()).getIntent().getStringArrayListExtra("risultati");
 
         if(listResults != null && !listResults.isEmpty()) {
-            myDatabaseAccess = DatabaseAccess.getInstance(this.getContext());
-            myDatabaseAccess.open();
-            for (int i = 0; i < listResults.size(); i++) {
-                listPrimi.add(myDatabaseAccess.getRicettaPrimiVisualizzazione(listResults.get(i)));
+            if(!creato) {
+                myDatabaseAccess = DatabaseAccess.getInstance(this.getContext());
+
+                myDatabaseAccess.open();
+                listPrimi = myDatabaseAccess.getRicettaPrimo();
+                myDatabaseAccess.close();
+
+                for (int i = 0; i < listPrimi.size(); i++) {
+
+                    for (int j = 0; j < listResults.size(); j++) {
+                        if (listPrimi.get(i).equals(listResults.get(j))) {
+                            listPrimiTemp.add(listResults.get(j));
+                        }
+                    }
+
+                }
+                creato = true;
             }
-            myDatabaseAccess.close();
 
             RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.recview_primi_RAV);
             rv.setHasFixedSize(true);
-            MyCardAdapterRAvis adapter = new MyCardAdapterRAvis(listPrimi, this.getContext());
+            MyCardAdapterRAvis adapter = new MyCardAdapterRAvis(listPrimiTemp, this.getContext());
             rv.setAdapter(adapter);
 
             LinearLayoutManager llm = new LinearLayoutManager(getActivity());
@@ -57,7 +71,6 @@ public class PrimiFragment_visualizzazione extends Fragment {
         } else{
             Toast.makeText(getContext(), "Nessun risultato", Toast.LENGTH_SHORT).show();
         }
-
 
         return rootView;
     }

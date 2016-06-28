@@ -53,7 +53,7 @@ public class DatabaseAccess {
 
     public ArrayList<String> getRicettaAntipasto() {        //metodo per prendere tutti i nomi degli antipasti
         ArrayList<String> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=1", null);
+        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=1 ORDER BY nome", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             list.add(cursor.getString(0));
@@ -71,7 +71,7 @@ public class DatabaseAccess {
 
     public ArrayList<String> getRicettaPrimo() {            //metodo per prendere tutti i nomi dei primi
         ArrayList<String> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=2", null);
+        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=2 ORDER BY nome", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             list.add(cursor.getString(0));
@@ -89,7 +89,7 @@ public class DatabaseAccess {
 
     public ArrayList<String> getRicettaSeconda() {          //metodo per prendere tutti i nomi dei secondi
         ArrayList<String> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=3", null);
+        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=3 ORDER BY nome", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             list.add(cursor.getString(0));
@@ -107,7 +107,7 @@ public class DatabaseAccess {
 
     public ArrayList<String> getRicettaDolce() {        //metodo per prendere tutti i nomi dei dolci
         ArrayList<String> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=4", null);
+        Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=4 ORDER BY nome", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             list.add(cursor.getString(0));
@@ -125,7 +125,7 @@ public class DatabaseAccess {
 
     //metodi per suddivisione ricette della visualizzazione ricerca av nelle varie tabs
 
-    public String getRicettaAntipastoVisualizzazione(String nome_ricetta) {        //metodo per prendere tutti i nomi dei dolci
+    /*public String getRicettaAntipastoVisualizzazione(String nome_ricetta) {        //metodo per prendere tutti i nomi dei dolci
         String nRicetta = "";
 
         Cursor cursor = database.rawQuery("SELECT nome FROM ricetta WHERE id_portata=1 AND nome ='" + nome_ricetta +"' ", null);
@@ -194,7 +194,7 @@ public class DatabaseAccess {
         }
 
         return nRicetta;
-    }
+    }*/
 
 
 
@@ -524,7 +524,7 @@ public class DatabaseAccess {
         if(isAntipastoCheckedParam){
             //confronto l'id della tabella ricetta con l'id della tabella portata
             //nella query nidificata cerco l'id che corrisponda ad antipasto
-            mySQLQuery = mySQLQuery.concat("AND r.id_portata = (SELECT id_portata " +
+            mySQLQuery = mySQLQuery.concat("AND r.id_portata IN (SELECT id_portata " +
                                                                 "FROM portata " +
                                                                 "WHERE tipologia='Antipasto') ");
         }
@@ -532,21 +532,21 @@ public class DatabaseAccess {
         //se voglio un primo
         if(isPrimoCBCheckedParam){
             //nella query nidificata cerco l'id che corrisponda a primo
-            mySQLQuery = mySQLQuery.concat("AND r.id_portata = (SELECT id_portata " +
+            mySQLQuery = mySQLQuery.concat("AND r.id_portata IN (SELECT id_portata " +
                                                                     "FROM portata " +
                                                                     "WHERE tipologia='Primo') ");
         }
 
         if(isSecondoCBCheckedParam){
             //nella query nidificata cerco l'id che corrisponda a secondo
-            mySQLQuery = mySQLQuery.concat("AND r.id_portata = (SELECT id_portata " +
+            mySQLQuery = mySQLQuery.concat("AND r.id_portata IN (SELECT id_portata " +
                                                                 "FROM portata " +
                                                                 "WHERE tipologia='Secondo') ");
         }
 
         if(isDolceCBCheckedParam){
             //nella query nidificata cerco l'id che corrisponda a dolce
-            mySQLQuery = mySQLQuery.concat("AND r.id_portata = (SELECT id_portata " +
+            mySQLQuery = mySQLQuery.concat("AND r.id_portata IN (SELECT id_portata " +
                                                                 "FROM portata " +
                                                                 "WHERE tipologia='Dolce') ");
         }
@@ -557,7 +557,7 @@ public class DatabaseAccess {
             if(!Character.isUpperCase(ingrediente1Param.charAt(0)))
                 ingrediente1Param = ingrediente1Param.substring(0, 1).toUpperCase() + ingrediente1Param.substring(1);
 
-            mySQLQuery = mySQLQuery.concat("AND r.id_ricetta = (SELECT a.id_ricetta " +
+            mySQLQuery = mySQLQuery.concat("AND r.id_ricetta IN (SELECT a.id_ricetta " +
                                             "FROM appartenere a, ingrediente i " +
                                             "WHERE a.id_ingrediente = i.id_ingrediente " +
                                             "AND i.nome= '" + ingrediente1Param + "') ");

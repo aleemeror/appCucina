@@ -31,7 +31,7 @@ public class DatiCondivisi {
     }
 
     public void setRicetteVis(ArrayList<String> ricette_vis) {
-        this.ricetteVis = ricette_vis;
+        /*this.ricetteVis = ricette_vis;
 
 
         myDatabaseAccess = DatabaseAccess.getInstance(cx);
@@ -74,7 +74,7 @@ public class DatiCondivisi {
             }
         }
 
-        myDatabaseAccess.close();
+        myDatabaseAccess.close();*/
     }
 
 

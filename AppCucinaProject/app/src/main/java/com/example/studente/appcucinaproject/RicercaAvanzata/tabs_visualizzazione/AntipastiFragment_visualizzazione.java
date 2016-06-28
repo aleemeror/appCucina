@@ -28,7 +28,9 @@ public class AntipastiFragment_visualizzazione extends Fragment {
 
     private ArrayList<String> listResults = new ArrayList<>();
     private ArrayList<String> listAntipasti = new ArrayList<>();
+    private ArrayList<String> listAntipastiTemp = new ArrayList<>();
     private DatabaseAccess myDatabaseAccess;
+    boolean creato = false;
 
     public AntipastiFragment_visualizzazione() {
         // Required empty public constructor
@@ -45,16 +47,29 @@ public class AntipastiFragment_visualizzazione extends Fragment {
         listResults = ((Activity)container.getRootView().getContext()).getIntent().getStringArrayListExtra("risultati");
 
         if(listResults != null && !listResults.isEmpty()) {
-            myDatabaseAccess = DatabaseAccess.getInstance(this.getContext());
-            myDatabaseAccess.open();
-            for (int i = 0; i < listResults.size(); i++) {
-                listAntipasti.add(myDatabaseAccess.getRicettaAntipastoVisualizzazione(listResults.get(i)));
+
+            if(!creato) {
+                myDatabaseAccess = DatabaseAccess.getInstance(this.getContext());
+
+                myDatabaseAccess.open();
+                listAntipasti = myDatabaseAccess.getRicettaAntipasto();
+                myDatabaseAccess.close();
+
+                for (int i = 0; i < listAntipasti.size(); i++) {
+
+                    for (int j = 0; j < listResults.size(); j++) {
+                        if (listAntipasti.get(i).equals(listResults.get(j))) {
+                            listAntipastiTemp.add(listResults.get(j));
+                        }
+                    }
+
+                }
+                creato = true;
             }
-            myDatabaseAccess.close();
 
             RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.recview_antipasti_RAV);
             rv.setHasFixedSize(true);
-            MyCardAdapterRAvis adapter = new MyCardAdapterRAvis(listAntipasti, this.getContext());
+            MyCardAdapterRAvis adapter = new MyCardAdapterRAvis(listAntipastiTemp, this.getContext());
             rv.setAdapter(adapter);
 
             LinearLayoutManager llm = new LinearLayoutManager(getActivity());
