@@ -606,7 +606,7 @@ public class DatabaseAccess {
         if(!listTempQuery.isEmpty())
         {
             String tempoRicettaFromDB = "";
-            int tempoRicettaMinuti = 0;
+            int tempoRicettaMinuti;
             String[] parts;
             String oreFromDB;
             String minutiFromDB;
@@ -618,6 +618,7 @@ public class DatabaseAccess {
 
             for(int i =0; i<listTempQuery.size(); i++) {
 
+                tempoRicettaMinuti = 0;
                 tempoRicettaFromDB = listTempTempo.get(i);
                 parts = tempoRicettaFromDB.split(":");
                 oreFromDB = parts[0];
