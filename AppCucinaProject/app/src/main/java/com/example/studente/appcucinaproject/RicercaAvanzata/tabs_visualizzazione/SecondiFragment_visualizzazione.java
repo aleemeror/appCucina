@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.studente.appcucinaproject.Cards.MyCardAdapterRAvis;
+import com.example.studente.appcucinaproject.Cards.RicettaDetails;
 import com.example.studente.appcucinaproject.DatabaseAccess;
 import com.example.studente.appcucinaproject.R;
 
@@ -24,8 +25,8 @@ public class SecondiFragment_visualizzazione extends Fragment {
 
 
     private ArrayList<String> listResults = new ArrayList<>();
-    private ArrayList<String> listSecondi = new ArrayList<>();
-    private ArrayList<String> listSecondiTemp = new ArrayList<>();
+    private ArrayList<RicettaDetails> listSecondi = new ArrayList<RicettaDetails>();
+    private ArrayList<RicettaDetails> listSecondiTemp = new ArrayList<RicettaDetails>();
     private DatabaseAccess myDatabaseAccess;
     boolean creato = false;
 
@@ -47,14 +48,14 @@ public class SecondiFragment_visualizzazione extends Fragment {
                 myDatabaseAccess = DatabaseAccess.getInstance(this.getContext());
 
                 myDatabaseAccess.open();
-                listSecondi = myDatabaseAccess.getRicettaSeconda();
+                listSecondi = myDatabaseAccess.getRicettaSecondiConImage();
                 myDatabaseAccess.close();
 
                 for (int i = 0; i < listSecondi.size(); i++) {
 
                     for (int j = 0; j < listResults.size(); j++) {
                         if (listSecondi.get(i).equals(listResults.get(j))) {
-                            listSecondiTemp.add(listResults.get(j));
+                            listSecondiTemp.add(listSecondi.get(i));
                         }
                     }
 

@@ -7,7 +7,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
+import com.example.studente.appcucinaproject.Cards.RicettaDetails;
+
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +54,108 @@ public class DatabaseAccess {
             this.database.close();
         }
     }
+
+    public ArrayList<Bitmap> getImage() {
+        ArrayList<Bitmap> data = new ArrayList<Bitmap>();
+        Cursor cursor = database.rawQuery("SELECT immagini FROM ricetta", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            byte[] blob =(cursor.getBlob(0));
+            ByteArrayInputStream inputStream = new ByteArrayInputStream(blob);
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            data.add(bitmap);
+            cursor.moveToNext();
+            //break;  // Assumption: name is unique
+        }
+        cursor.close();
+        return data;
+    }
+
+    public ArrayList<RicettaDetails> getRicettaAntipastoConImage(){
+        ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();
+        RicettaDetails RICETTA;
+
+        Cursor cursor = database.rawQuery("SELECT nome,immagini FROM ricetta WHERE id_portata=1 ORDER BY nome", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            byte[] blob =(cursor.getBlob(1));
+            ByteArrayInputStream inputStream = new ByteArrayInputStream(blob);
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+
+            RICETTA = new RicettaDetails(bitmap,cursor.getString(0));
+            list.add(RICETTA);
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        return list;
+    }
+
+    public ArrayList<RicettaDetails> getRicettaPrimiConImage(){
+        ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();
+        RicettaDetails RICETTA;
+
+        Cursor cursor = database.rawQuery("SELECT nome,immagini FROM ricetta WHERE id_portata=2 ORDER BY nome", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            byte[] blob =(cursor.getBlob(1));
+            ByteArrayInputStream inputStream = new ByteArrayInputStream(blob);
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+
+            RICETTA = new RicettaDetails(bitmap,cursor.getString(0));
+            list.add(RICETTA);
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        return list;
+    }
+
+
+    public ArrayList<RicettaDetails> getRicettaSecondiConImage(){
+        ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();
+        RicettaDetails RICETTA;
+
+        Cursor cursor = database.rawQuery("SELECT nome,immagini FROM ricetta WHERE id_portata=3 ORDER BY nome", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            byte[] blob =(cursor.getBlob(1));
+            ByteArrayInputStream inputStream = new ByteArrayInputStream(blob);
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+
+            RICETTA = new RicettaDetails(bitmap,cursor.getString(0));
+            list.add(RICETTA);
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        return list;
+    }
+
+
+    public ArrayList<RicettaDetails> getRicettaDolciConImage(){
+        ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();
+        RicettaDetails RICETTA;
+
+        Cursor cursor = database.rawQuery("SELECT nome,immagini FROM ricetta WHERE id_portata=4 ORDER BY nome", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            byte[] blob =(cursor.getBlob(1));
+            ByteArrayInputStream inputStream = new ByteArrayInputStream(blob);
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+
+            RICETTA = new RicettaDetails(bitmap,cursor.getString(0));
+            list.add(RICETTA);
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        return list;
+    }
+
+
+
+
 
 
     public ArrayList<String> getRicettaAntipasto() {        //metodo per prendere tutti i nomi degli antipasti

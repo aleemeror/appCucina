@@ -40,7 +40,7 @@ public class MyCardAdapterHome extends RecyclerView.Adapter<MyCardAdapterHome.Co
     public void onBindViewHolder(final ContactViewHolder holder, int position) {
 
         RicettaDetails CON = ricette.get(position);
-        holder.person_img.setImageResource(CON.getImageRicetta());
+        holder.person_img.setImageBitmap(CON.getImageRicetta());
         holder.person_name.setText(CON.getTitle());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

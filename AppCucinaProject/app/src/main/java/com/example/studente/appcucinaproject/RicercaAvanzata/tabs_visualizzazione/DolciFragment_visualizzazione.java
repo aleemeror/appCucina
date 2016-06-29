@@ -12,8 +12,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.studente.appcucinaproject.Cards.MyCardAdapterRAvis;
+import com.example.studente.appcucinaproject.Cards.RicettaDetails;
 import com.example.studente.appcucinaproject.DatabaseAccess;
 import com.example.studente.appcucinaproject.R;
+import com.example.studente.appcucinaproject.Ricetta.Ricetta;
 
 import java.util.ArrayList;
 
@@ -23,8 +25,8 @@ import java.util.ArrayList;
 public class DolciFragment_visualizzazione extends Fragment {
 
     private ArrayList<String> listResults = new ArrayList<>();
-    private ArrayList<String> listDolci = new ArrayList<>();
-    private ArrayList<String> listDolciTemp = new ArrayList<>();
+    private ArrayList<RicettaDetails> listDolci = new ArrayList<>();
+    private ArrayList<RicettaDetails> listDolciTemp = new ArrayList<>();
     private DatabaseAccess myDatabaseAccess;
     boolean creato = false;
 
@@ -47,14 +49,15 @@ public class DolciFragment_visualizzazione extends Fragment {
                 myDatabaseAccess = DatabaseAccess.getInstance(this.getContext());
 
                 myDatabaseAccess.open();
-                listDolci = myDatabaseAccess.getRicettaDolce();
+                listDolci = myDatabaseAccess.getRicettaDolciConImage();
                 myDatabaseAccess.close();
 
                 for (int i = 0; i < listDolci.size(); i++) {
 
                     for (int j = 0; j < listResults.size(); j++) {
-                        if (listDolci.get(i).equals(listResults.get(j))) {
-                            listDolciTemp.add(listResults.get(j));
+                        if (listDolci.get(i).getTitle().equals(listResults.get(j))) {
+                            //listAntipastiTemp.add(listResults.get(j));
+                            listDolciTemp.add(listDolci.get(i));
                         }
                     }
 

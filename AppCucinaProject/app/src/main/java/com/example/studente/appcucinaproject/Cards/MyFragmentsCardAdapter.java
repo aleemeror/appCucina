@@ -38,7 +38,7 @@ public class MyFragmentsCardAdapter extends RecyclerView.Adapter<MyFragmentsCard
     public void onBindViewHolder(final ContactViewHolder holder, int position) {
 
         RicettaDetails CON = ricette[position];
-        holder.person_img.setImageResource(CON.getImageRicetta());
+        holder.person_img.setImageBitmap(CON.getImageRicetta());
         holder.person_name.setText(CON.getTitle());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

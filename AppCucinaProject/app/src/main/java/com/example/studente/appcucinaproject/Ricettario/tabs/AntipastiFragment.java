@@ -23,8 +23,6 @@ public class AntipastiFragment extends Fragment{
     RecyclerView recAntipasti;
     LinearLayoutManager layoutManager;
     private ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();
-    ArrayList<String> list_titoli= new ArrayList<>();
-    private RicettaDetails[] mDataset;
     boolean creato = false;
 
     DatabaseAccess databaseAccess;
@@ -46,18 +44,8 @@ public class AntipastiFragment extends Fragment{
             databaseAccess = DatabaseAccess.getInstance(this.getContext());
 
             databaseAccess.open();
-                list_titoli = databaseAccess.getRicettaAntipasto();
+                list= databaseAccess.getRicettaAntipastoConImage();
             databaseAccess.close();
-
-            int count =0;
-            for(count =0; count < list_titoli.size(); count++){ //String Name:title
-
-
-                String titolo = list_titoli.get(count);
-                RicettaDetails ricetta = new RicettaDetails(images[count],titolo);
-                //count++;
-                list.add(ricetta);
-            }
             creato = true;
         }
 

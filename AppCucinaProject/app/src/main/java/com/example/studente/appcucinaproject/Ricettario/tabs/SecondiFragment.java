@@ -25,8 +25,6 @@ public class SecondiFragment extends Fragment{
     RecyclerView recAntipasti;
     LinearLayoutManager layoutManager;
     private ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();
-    ArrayList<String> list_titoli= new ArrayList<>();
-    private String[] mDataset;
     boolean creato = false;
 
     int[] images = {R.drawable.r7};
@@ -47,18 +45,9 @@ public class SecondiFragment extends Fragment{
             databaseAccess = DatabaseAccess.getInstance(this.getContext());
 
             databaseAccess.open();
-            list_titoli = databaseAccess.getRicettaSeconda();
+            list= databaseAccess.getRicettaSecondiConImage();
             databaseAccess.close();
 
-            int count =0;
-            for(count =0; count < list_titoli.size(); count++){ //String Name:title
-
-
-                String titolo = list_titoli.get(count);
-                RicettaDetails ricetta = new RicettaDetails(images[count],titolo);
-                //count++;
-                list.add(ricetta);
-            }
             creato = true;
         }
 
@@ -69,7 +58,6 @@ public class SecondiFragment extends Fragment{
 
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
-
 
         // Inflate the layout for this fragment
         return rootView;

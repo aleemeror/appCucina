@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.studente.appcucinaproject.Cards.MyCardAdapterRAvis;
+import com.example.studente.appcucinaproject.Cards.RicettaDetails;
 import com.example.studente.appcucinaproject.DatabaseAccess;
 import com.example.studente.appcucinaproject.R;
 
@@ -23,8 +24,8 @@ import java.util.ArrayList;
 public class PrimiFragment_visualizzazione extends Fragment {
 
     private ArrayList<String> listResults = new ArrayList<>();
-    private ArrayList<String> listPrimi = new ArrayList<>();
-    private ArrayList<String> listPrimiTemp = new ArrayList<>();
+    private ArrayList<RicettaDetails> listPrimi = new ArrayList<RicettaDetails>();
+    private ArrayList<RicettaDetails> listPrimiTemp = new ArrayList<RicettaDetails>();
     private DatabaseAccess myDatabaseAccess;
     boolean creato = false;
 
@@ -46,14 +47,14 @@ public class PrimiFragment_visualizzazione extends Fragment {
                 myDatabaseAccess = DatabaseAccess.getInstance(this.getContext());
 
                 myDatabaseAccess.open();
-                listPrimi = myDatabaseAccess.getRicettaPrimo();
+                listPrimi = myDatabaseAccess.getRicettaPrimiConImage();
                 myDatabaseAccess.close();
 
                 for (int i = 0; i < listPrimi.size(); i++) {
 
                     for (int j = 0; j < listResults.size(); j++) {
                         if (listPrimi.get(i).equals(listResults.get(j))) {
-                            listPrimiTemp.add(listResults.get(j));
+                            listPrimiTemp.add(listPrimi.get(i));
                         }
                     }
 

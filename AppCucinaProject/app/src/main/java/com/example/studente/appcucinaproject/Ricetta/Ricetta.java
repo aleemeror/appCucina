@@ -2,6 +2,8 @@ package com.example.studente.appcucinaproject.Ricetta;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -24,6 +26,7 @@ import com.example.studente.appcucinaproject.Timer.TimerOverActivity;
 import com.github.clans.fab.FloatingActionMenu;
 import com.github.clans.fab.FloatingActionButton;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,7 +106,9 @@ public class Ricetta extends AppCompatActivity {
         */
 
         //prendo le info dall'intent
-        imageView.setImageResource(getIntent().getIntExtra("img_id",00));
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(getIntent().getByteArrayExtra("img_id"));
+        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+        imageView.setImageBitmap(bitmap);
         txtname.setText(getIntent().getStringExtra("name"));
         myDatabaseAccess = DatabaseAccess.getInstance(this);
         myDatabaseAccess.open();
@@ -117,8 +122,10 @@ public class Ricetta extends AppCompatActivity {
         txtIngredienti.setText("");
         for(int i=0;i<list_ingredienti.size();i++)
         {
-            String ingredienti = txtIngredienti.getText().toString() + "," + list_ingredienti.get(i);
-            txtIngredienti.setText(ingredienti);
+            //String ingredienti = txtIngredienti.getText().toString() + "," + list_ingredienti.get(i);
+            //txtIngredienti.setText(ingredienti);
+            String ingredienti = list_ingredienti.get(i);
+            txtIngredienti.append("•"+ingredienti+"\n");
         }
         myDatabaseAccess.close();
 

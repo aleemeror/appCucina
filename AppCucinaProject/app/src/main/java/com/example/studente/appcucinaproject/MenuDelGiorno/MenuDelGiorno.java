@@ -65,7 +65,7 @@ public class MenuDelGiorno extends AppCompatActivity implements NavigationView.O
         setTitle("Menu del giorno");
 
 
-        title = getResources().getStringArray(R.array.ricetta_name);
+        /*title = getResources().getStringArray(R.array.ricetta_name);
 
         int count =0;
         for(String Name:title){
@@ -80,7 +80,7 @@ public class MenuDelGiorno extends AppCompatActivity implements NavigationView.O
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         adapter = new MyCardAdapterHome(list,MenuDelGiorno.this);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);*/
     }
 
     @Override

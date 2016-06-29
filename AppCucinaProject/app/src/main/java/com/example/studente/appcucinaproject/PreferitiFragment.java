@@ -41,7 +41,7 @@ public class PreferitiFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_preferiti, container, false);
 
 
-        if(!creato) {
+        /*if(!creato) {
             //list.clear();
             String[] title = getResources().getStringArray(R.array.ricetta_name);
             int count = 0;
@@ -62,7 +62,7 @@ public class PreferitiFragment extends Fragment {
         rv.setAdapter(adapter);
 
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        rv.setLayoutManager(llm);
+        rv.setLayoutManager(llm);*/
 
 
         return rootView;

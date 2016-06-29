@@ -26,8 +26,6 @@ public class DolciFragment extends Fragment{
     RecyclerView recAntipasti;
     LinearLayoutManager layoutManager;
     private ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();
-    ArrayList<String> list_titoli= new ArrayList<>();
-    private RicettaDetails[] mDataset;
     boolean creato = false;
 
     int[] images = {R.drawable.dolce,R.drawable.dolce,R.drawable.dolce,R.drawable.dolce};
@@ -44,25 +42,14 @@ public class DolciFragment extends Fragment{
         View rootView = inflater.inflate(R.layout.fragment_dolci, container, false);
 
         if(!creato) {
-
             databaseAccess = DatabaseAccess.getInstance(this.getContext());
 
             databaseAccess.open();
-            list_titoli = databaseAccess.getRicettaDolce();
+            list= databaseAccess.getRicettaDolciConImage();
             databaseAccess.close();
 
-            int count =0;
-            for(count =0; count < list_titoli.size(); count++){ //String Name:title
-
-
-                String titolo = list_titoli.get(count);
-                RicettaDetails ricetta = new RicettaDetails(images[count],titolo);
-                //count++;
-                list.add(ricetta);
-            }
             creato = true;
         }
-
             RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.recview_dolci);
             rv.setHasFixedSize(true);
             MyCardAdapter adapter = new MyCardAdapter(list, this.getContext());

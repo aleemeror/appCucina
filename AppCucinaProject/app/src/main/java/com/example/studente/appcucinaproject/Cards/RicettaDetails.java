@@ -1,5 +1,6 @@
 package com.example.studente.appcucinaproject.Cards;
 
+import android.graphics.Bitmap;
 import android.media.Image;
 
 /**
@@ -9,10 +10,15 @@ public class RicettaDetails {
 
     private String titleRicetta;
     private String descrRicetta;
-    private int imgRicettaID;
+    private Bitmap imgRicettaID;
     private boolean isPreferito;
 
-    public RicettaDetails(int imgRicetta,String title) {
+    /*public RicettaDetails(int imgRicetta,String title) {
+        this.setTitle(title);
+        this.setImageRicetta(imgRicetta);
+    }*/
+
+    public RicettaDetails(Bitmap imgRicetta, String title) {
         this.setTitle(title);
         this.setImageRicetta(imgRicetta);
     }
@@ -25,11 +31,11 @@ public class RicettaDetails {
         this.titleRicetta = msg;
     }
     
-    public int getImageRicetta(){
+    public Bitmap getImageRicetta(){
         return imgRicettaID;
     }
 
-    public void setImageRicetta(int imgID){
+    public void setImageRicetta(Bitmap imgID){
         this.imgRicettaID = imgID;
     }
 

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.studente.appcucinaproject.Cards.MyCardAdapter;
 import com.example.studente.appcucinaproject.Cards.MyCardAdapterRAvis;
+import com.example.studente.appcucinaproject.Cards.RicettaDetails;
 import com.example.studente.appcucinaproject.DatabaseAccess;
 import com.example.studente.appcucinaproject.R;
 
@@ -27,8 +28,9 @@ import java.util.List;
 public class AntipastiFragment_visualizzazione extends Fragment {
 
     private ArrayList<String> listResults = new ArrayList<>();
-    private ArrayList<String> listAntipasti = new ArrayList<>();
-    private ArrayList<String> listAntipastiTemp = new ArrayList<>();
+    //private ArrayList<String> listAntipasti = new ArrayList<>();
+    private ArrayList<RicettaDetails> listAntipasti = new ArrayList<RicettaDetails>();
+    private ArrayList<RicettaDetails> listAntipastiTemp = new ArrayList<RicettaDetails>(); //String
     private DatabaseAccess myDatabaseAccess;
     boolean creato = false;
 
@@ -52,14 +54,15 @@ public class AntipastiFragment_visualizzazione extends Fragment {
                 myDatabaseAccess = DatabaseAccess.getInstance(this.getContext());
 
                 myDatabaseAccess.open();
-                listAntipasti = myDatabaseAccess.getRicettaAntipasto();
+                listAntipasti = myDatabaseAccess.getRicettaAntipastoConImage();
                 myDatabaseAccess.close();
 
                 for (int i = 0; i < listAntipasti.size(); i++) {
 
                     for (int j = 0; j < listResults.size(); j++) {
-                        if (listAntipasti.get(i).equals(listResults.get(j))) {
-                            listAntipastiTemp.add(listResults.get(j));
+                        if (listAntipasti.get(i).getTitle().equals(listResults.get(j))) {
+                            //listAntipastiTemp.add(listResults.get(j));
+                            listAntipastiTemp.add(listAntipasti.get(i));
                         }
                     }
 
