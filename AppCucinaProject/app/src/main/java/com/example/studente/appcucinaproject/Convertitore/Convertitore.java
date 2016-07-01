@@ -1,6 +1,7 @@
 package com.example.studente.appcucinaproject.Convertitore;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -80,6 +81,9 @@ public class Convertitore extends AppCompatActivity
         numero1 = "0";
         unitàdac=(TextView)findViewById(R.id.textView);
         unitàc=(TextView)findViewById(R.id.textView2);
+
+        //ROTAZIONE SCHERMO BLOCCATA
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         button0.setOnClickListener(new View.OnClickListener() {
             @Override

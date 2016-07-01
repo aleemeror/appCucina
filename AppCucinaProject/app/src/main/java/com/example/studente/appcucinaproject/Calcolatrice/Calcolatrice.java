@@ -1,6 +1,7 @@
 package com.example.studente.appcucinaproject.Calcolatrice;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -81,6 +82,9 @@ public class Calcolatrice extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         setTitle("Calcolatrice");
+
+        //ROTAZIONE SCHERMO BLOCCATA
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 
         button1=(Button)findViewById(R.id.button1);
