@@ -2,6 +2,7 @@ package com.example.studente.appcucinaproject.Ricetta;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -20,6 +21,8 @@ import android.widget.Toast;
 
 import com.example.studente.appcucinaproject.DatabaseAccess;
 import com.example.studente.appcucinaproject.R;
+import com.example.studente.appcucinaproject.ReadAndWriteXML.ReadXML;
+import com.example.studente.appcucinaproject.ReadAndWriteXML.WriteXML;
 import com.example.studente.appcucinaproject.Timer.Timer;
 import com.example.studente.appcucinaproject.Timer.TimerOverActivity;
 
@@ -42,6 +45,7 @@ public class Ricetta extends AppCompatActivity {
     TextView txtPortata;
     TextView txtIngredienti;
     TextView proc;
+    TextView ingr;
     TextView txtDifficolta;
 
     FloatingActionMenu materialDesignFAM;
@@ -54,6 +58,9 @@ public class Ricetta extends AppCompatActivity {
 
     private DatabaseAccess myDatabaseAccess;
 
+    WriteXML write_xml_preferito=new WriteXML();
+    ReadXML read_xml_preferito= new ReadXML();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +70,7 @@ public class Ricetta extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         Typeface custom_font_3 = Typeface.createFromAsset(getAssets(), "TCM.TTF"); //per modificare il font
 
@@ -75,6 +83,7 @@ public class Ricetta extends AppCompatActivity {
         txtPortata = (TextView) findViewById(R.id.textView15);
         txtIngredienti = (TextView) findViewById(R.id.ID_ingredienti);
         proc=(TextView) findViewById(R.id.textViewTitoloProcedimento);
+        ingr= (TextView) findViewById(R.id.textViewIngredient);
         txtDifficolta =(TextView) findViewById(R.id.textViewDifficolta);
 
 
@@ -93,6 +102,7 @@ public class Ricetta extends AppCompatActivity {
         txtPortata.setTypeface(custom_font_3);
         txtIngredienti.setTypeface(custom_font_3);
         proc.setTypeface(custom_font_3);
+        ingr.setTypeface(custom_font_3);
         txtDifficolta.setTypeface(custom_font_3);
 
         txtIngredienti.setMovementMethod(new ScrollingMovementMethod());
@@ -120,6 +130,7 @@ public class Ricetta extends AppCompatActivity {
         txtDescrizione.setText(myDatabaseAccess.getDescrizione(txtname.getText().toString()));
         list_ingredienti = myDatabaseAccess.getIngredienti(txtname.getText().toString());
         txtIngredienti.setText("");
+        txtIngredienti.setMovementMethod(new ScrollingMovementMethod());
         for(int i=0;i<list_ingredienti.size();i++)
         {
             //String ingredienti = txtIngredienti.getText().toString() + "," + list_ingredienti.get(i);
@@ -136,26 +147,62 @@ public class Ricetta extends AppCompatActivity {
         preferito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(preferito.isActivated()){
 
-                    preferito.setActivated(false);
-                    //preferito.setColorFilter(Color.argb(255, 255, 255, 255));
-                    preferito.setImageResource(R.drawable.white_star);
+                //if(read_xml_preferito.ReadXML_Particular_Object(nameRicetta)){
 
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast.makeText(getApplicationContext(), "Ricetta eliminata dai preferiti",
-                            Toast.LENGTH_LONG).show();
-
-                }
-                else{
-                    preferito.setImageResource(R.drawable.star);
+                    //preferito.setActivated(true);
+                    //preferito.setImageResource(R.drawable.star);
                     //preferito.setColorFilter(Color.argb(255, 255, 235, 59));
-                    preferito.setActivated(true);
 
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast.makeText(getApplicationContext(), "Ricetta aggiunta ai preferiti",
-                            Toast.LENGTH_LONG).show();
-                }
+
+                    if(preferito.isActivated()){
+
+                        preferito.setActivated(false);
+                        //preferito.setColorFilter(Color.argb(255, 255, 255, 255));
+                        preferito.setImageResource(R.drawable.white_star);
+
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast.makeText(getApplicationContext(), "Ricetta eliminata dai preferiti",
+                                Toast.LENGTH_LONG).show();
+
+                    }
+                    else{
+                        preferito.setImageResource(R.drawable.star);
+                        //preferito.setColorFilter(Color.argb(255, 255, 235, 59));
+                        preferito.setActivated(true);
+
+                        write_xml_preferito.WriteObjectToXML(nameRicetta);
+
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast.makeText(getApplicationContext(), "Ricetta aggiunta ai preferiti",
+                                Toast.LENGTH_LONG).show();
+                    }
+
+                /*}else{
+                    if(preferito.isActivated()){
+
+                        preferito.setActivated(false);
+                        //preferito.setColorFilter(Color.argb(255, 255, 255, 255));
+                        preferito.setImageResource(R.drawable.white_star);
+
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast.makeText(getApplicationContext(), "Ricetta eliminata dai preferiti",
+                                Toast.LENGTH_LONG).show();
+
+                    }
+                    else{
+                        preferito.setImageResource(R.drawable.star);
+                        //preferito.setColorFilter(Color.argb(255, 255, 235, 59));
+                        preferito.setActivated(true);
+
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast.makeText(getApplicationContext(), "Ricetta aggiunta ai preferiti",
+                                Toast.LENGTH_LONG).show();
+                    }
+
+                }*/
+
+
             }
         });
 

@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 
 import com.example.studente.appcucinaproject.Cards.MyCardAdapter;
 import com.example.studente.appcucinaproject.Cards.RicettaDetails;
+import com.example.studente.appcucinaproject.ReadAndWriteXML.ReadXML;
+import com.example.studente.appcucinaproject.ReadAndWriteXML.WriteXML;
 
 import java.util.ArrayList;
 
@@ -24,7 +26,7 @@ public class PreferitiFragment extends Fragment {
     RecyclerView recAntipasti;
     LinearLayoutManager layoutManager;
     private ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();
-    private RicettaDetails[] mDataset;
+    ReadXML read_xml= new ReadXML();
     boolean creato = false;
 
     int[] images = {R.drawable.dolce, R.drawable.dolce, R.drawable.dolce, R.drawable.dolce};
@@ -43,6 +45,8 @@ public class PreferitiFragment extends Fragment {
 
         /*if(!creato) {
             //list.clear();
+            list=read_xml.ReadXMLtoObject();
+
             String[] title = getResources().getStringArray(R.array.ricetta_name);
             int count = 0;
             for (String Name : title) {

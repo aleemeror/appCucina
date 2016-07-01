@@ -47,9 +47,11 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ContactVie
         if(imageCheck != null){
             holder.person_img.setImageBitmap(CON.getImageRicetta());
             holder.person_name.setText(CON.getTitle());
+            holder.descr.setText(CON.getDescrRicetta());
         }else{
             holder.person_img.setImageResource(R.drawable.ic_ricettario);
             holder.person_name.setText(CON.getTitle());
+            holder.descr.setText(CON.getDescrRicetta());
         }
 
 
@@ -84,11 +86,13 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ContactVie
     public static class ContactViewHolder extends RecyclerView.ViewHolder{
         ImageView person_img;
         TextView person_name;
+        TextView descr;
 
         public ContactViewHolder(View view){
             super(view);
             person_img = (ImageView) view.findViewById(R.id.imgMsg); //M
             person_name = (TextView) view.findViewById(R.id.txtMesg); //M
+            descr = (TextView)view.findViewById(R.id.txtDesc); //M
 
         }
 

@@ -75,7 +75,7 @@ public class DatabaseAccess {
         ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();
         RicettaDetails RICETTA;
 
-        Cursor cursor = database.rawQuery("SELECT nome,immagini FROM ricetta WHERE id_portata=1 ORDER BY nome", null);
+        Cursor cursor = database.rawQuery("SELECT nome,immagini,descrizione FROM ricetta WHERE id_portata=1 ORDER BY nome", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             byte[] blob =(cursor.getBlob(1));
@@ -83,6 +83,7 @@ public class DatabaseAccess {
             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
 
             RICETTA = new RicettaDetails(bitmap,cursor.getString(0));
+            RICETTA.setDescrRicetta(cursor.getString(2));
             list.add(RICETTA);
             cursor.moveToNext();
         }
@@ -95,7 +96,7 @@ public class DatabaseAccess {
         ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();
         RicettaDetails RICETTA;
 
-        Cursor cursor = database.rawQuery("SELECT nome,immagini FROM ricetta WHERE id_portata=2 ORDER BY nome", null);
+        Cursor cursor = database.rawQuery("SELECT nome,immagini,descrizione FROM ricetta WHERE id_portata=2 ORDER BY nome", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             byte[] blob =(cursor.getBlob(1));
@@ -103,6 +104,8 @@ public class DatabaseAccess {
             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
 
             RICETTA = new RicettaDetails(bitmap,cursor.getString(0));
+
+            RICETTA.setDescrRicetta(cursor.getString(2));
             list.add(RICETTA);
             cursor.moveToNext();
         }
@@ -116,7 +119,7 @@ public class DatabaseAccess {
         ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();
         RicettaDetails RICETTA;
 
-        Cursor cursor = database.rawQuery("SELECT nome,immagini FROM ricetta WHERE id_portata=3 ORDER BY nome", null);
+        Cursor cursor = database.rawQuery("SELECT nome,immagini,descrizione FROM ricetta WHERE id_portata=3 ORDER BY nome", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             byte[] blob =(cursor.getBlob(1));
@@ -124,6 +127,7 @@ public class DatabaseAccess {
             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
 
             RICETTA = new RicettaDetails(bitmap,cursor.getString(0));
+            RICETTA.setDescrRicetta(cursor.getString(2));
             list.add(RICETTA);
             cursor.moveToNext();
         }
@@ -137,7 +141,7 @@ public class DatabaseAccess {
         ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();
         RicettaDetails RICETTA;
 
-        Cursor cursor = database.rawQuery("SELECT nome,immagini FROM ricetta WHERE id_portata=4 ORDER BY nome", null);
+        Cursor cursor = database.rawQuery("SELECT nome,immagini,descrizione FROM ricetta WHERE id_portata=4 ORDER BY nome", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             byte[] blob =(cursor.getBlob(1));
@@ -145,6 +149,7 @@ public class DatabaseAccess {
             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
 
             RICETTA = new RicettaDetails(bitmap,cursor.getString(0));
+            RICETTA.setDescrRicetta(cursor.getString(2));
             list.add(RICETTA);
             cursor.moveToNext();
         }

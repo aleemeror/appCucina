@@ -64,132 +64,137 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginBottom="10dp" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="n persone"
+                    android:id="@+id/textView11"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="20dp"/>
+
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tempoRicetta"
                     android:src="@drawable/time"
-                    android:layout_below="@+id/nPersone"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp" />
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/nPersone"
+                    android:layout_toEndOf="@+id/nPersone"
+                    android:layout_marginLeft="37dp"
+                    android:layout_marginStart="37dp"
+                    android:layout_marginRight="37dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="tempo"
+                    android:id="@+id/textView12"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="55dp" />
+
+
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/difficoltaRicetta"
                     android:src="@drawable/difficolta"
-                    android:layout_below="@+id/tempoRicetta"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp" />
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_toRightOf="@+id/tempoRicetta"
+                    android:layout_toEndOf="@+id/tempoRicetta"
+                    android:layout_marginLeft="37dp"
+                    android:layout_marginRight="37dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="difficoltà"
+                    android:id="@+id/textViewDifficolta"
+                    android:layout_below="@+id/difficoltaRicetta"
+                    android:layout_alignLeft="@+id/difficoltaRicetta"
+                    android:layout_alignStart="@+id/difficoltaRicetta"  />
+
+
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/calorie"
                     android:src="@drawable/calories"
-                    android:layout_below="@+id/difficoltaRicetta"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/portata"
-                    android:src="@drawable/portata"
-                    android:layout_below="@+id/calorie"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/ingredienti_img"
-                    android:src="@drawable/ingredienti"
-                    android:layout_below="@+id/portata"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="n persone"
-                    android:id="@+id/textView11"
-                    android:layout_alignBottom="@+id/nPersone"
-                    android:layout_toRightOf="@+id/nPersone"
-                    android:layout_toEndOf="@+id/nPersone"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginStart="24dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="tempo impiegato"
-                    android:id="@+id/textView12"
-                    android:layout_alignBottom="@+id/tempoRicetta"
-                    android:layout_toRightOf="@+id/tempoRicetta"
-                    android:layout_toEndOf="@+id/tempoRicetta"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginStart="24dp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="difficoltà"
-                    android:id="@+id/textViewDifficolta"
-                    android:layout_alignBottom="@+id/difficoltaRicetta"
-                    android:layout_toRightOf="@+id/difficoltaRicetta"
-                    android:layout_toEndOf="@+id/difficoltaRicetta"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginStart="24dp" />
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/portata"
+                    android:layout_toStartOf="@+id/portata"
+                    android:layout_marginRight="39dp"
+                    android:layout_marginEnd="39dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="calorie"
                     android:id="@+id/textView14"
-                    android:layout_alignBottom="@+id/calorie"
-                    android:layout_toRightOf="@+id/calorie"
-                    android:layout_toEndOf="@+id/calorie"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginStart="24dp" />
+                    android:layout_below="@+id/calorie"
+                    android:layout_alignLeft="@+id/calorie"
+                    android:layout_alignStart="@+id/calorie" />
+
+
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/portata"
+                    android:src="@drawable/portata"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="31dp"
+                    android:layout_marginEnd="31dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="portata"
                     android:id="@+id/textView15"
-                    android:layout_alignBottom="@+id/portata"
-                    android:layout_toRightOf="@+id/portata"
-                    android:layout_toEndOf="@+id/portata"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginStart="24dp" />
+                    android:layout_below="@+id/portata"
+                    android:layout_marginLeft="250dp"/>
+            </RelativeLayout>
 
 
-                <android.support.v4.widget.NestedScrollView
+            <Space android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:id="@+id/space2"/>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ingredienti:"
+                    android:id="@+id/textViewIngredient"
+                    android:textAlignment="center"
+                    style="@style/Base.TextAppearance.AppCompat.Title"
+                    android:textSize="20sp"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/ingredienti_img"
-                    android:layout_toRightOf="@+id/ingredienti_img"
-                    android:layout_toEndOf="@+id/ingredienti_img"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginStart="24dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:id="@+id/ID_ingredienti"
-                        android:layout_alignLeft="@+id/textView12"
-                        android:text="Ingrediente 1"
-                        android:maxLines="4"
-                        android:scrollbars="vertical"/>
-
-                </android.support.v4.widget.NestedScrollView>
-
-
+                    android:id="@+id/ID_ingredienti"
+                    android:layout_below="@+id/textViewIngredient"
+                    android:text="Ingrediente 1"
+                    android:textSize="15sp"
+                    />
             </RelativeLayout>
+
+
+
 
             <Space android:layout_width="match_parent"
                 android:layout_height="10dp"

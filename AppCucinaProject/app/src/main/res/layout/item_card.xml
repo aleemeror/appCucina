@@ -8,8 +8,8 @@
     android:layout_margin="10dp"
     android:clickable="true"
     android:focusable="true"
-    card_view:cardElevation="6dp"
-    card_view:cardMaxElevation="10dp"
+    card_view:cardElevation="3dp"
+    card_view:cardMaxElevation="8dp"
     card_view:cardCornerRadius="5dp">
 
         <RelativeLayout
@@ -46,7 +46,10 @@
                 android:layout_below="@id/txtMesg"
                 android:layout_toRightOf="@id/imgMsg"
                 android:text="@string/action_settings"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:ellipsize="end"/>
 
         </RelativeLayout>
 
