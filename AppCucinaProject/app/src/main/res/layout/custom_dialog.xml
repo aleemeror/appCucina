@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="150dp"
+    android:layout_height="250dp"
+    android:weightSum="1">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:scaleType="center"
+        android:text="@string/app_name"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center_vertical|fill_vertical|center_horizontal"
+        android:textColor="#ffffff"
+        android:textSize="30dp"
+        android:id="@+id/textView13" />
+    <TextView
+        android:id="@+id/suggerimento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Moltiplica la quantità degli ingredienti della ricetta per questo numero:"
+        android:textSize="15dp"
+        android:layout_below="@+id/textView13"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/calolaTeglia_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="30dp" />
+</LinearLayout>

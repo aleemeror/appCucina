@@ -1,10 +1,14 @@
 package com.example.studente.appcucinaproject.CalcolaTeglia;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,6 +23,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.studente.appcucinaproject.Calcolatrice.Calcolatrice;
 import com.example.studente.appcucinaproject.Convertitore.Convertitore;
@@ -34,7 +39,7 @@ import com.example.studente.appcucinaproject.Timer.Timer;
 import java.math.BigDecimal;
 
 public class CalcolaTeglia extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener{
 
     Button calcola;
     RadioGroup scelta;
@@ -51,6 +56,7 @@ public class CalcolaTeglia extends AppCompatActivity
     EditText diametro2;
 
     TextView risultato;
+    private RisultatoDialogFragment dialog= new RisultatoDialogFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +97,7 @@ public class CalcolaTeglia extends AppCompatActivity
         larghezza2 = (EditText)findViewById(R.id.editText5);
         diametro2 = (EditText)findViewById(R.id.editText6);
 
-        risultato = (TextView)findViewById(R.id.textView3);
+        //risultato = (TextView)findViewById(R.id.textView3);
 
         diametro1.setVisibility(View.INVISIBLE);
 
@@ -181,85 +187,74 @@ public class CalcolaTeglia extends AppCompatActivity
         calcola.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 int selezionato = scelta.getCheckedRadioButtonId();
                 int selezionato2 = scelta2.getCheckedRadioButtonId();
-                double ris=0;
-                double lung1=0;
-                double larg1=0;
-                double diam1=0;
-                double lung2=0;
-                double larg2=0;
-                double diam2=0;
+                double ris = 0;
+                double lung1 = 0;
+                double larg1 = 0;
+                double diam1 = 0;
+                double lung2 = 0;
+                double larg2 = 0;
+                double diam2 = 0;
                 double pgreco = 3.14;
 
-                if (selezionato == rettangolare.getId() && selezionato2 == rettangolare2.getId())
-                {
-                    try
-                    {
-                        lung1=Double.parseDouble(lunghezza1.getText().toString());
-                        larg1=Double.parseDouble(larghezza1.getText().toString());
-                        lung2=Double.parseDouble(lunghezza2.getText().toString());
-                        larg2=Double.parseDouble(larghezza2.getText().toString());
-                        ris=(lung2*larg2)/(lung1*larg1);
-                        risultato.setText(Double.toString(roundDecimal(ris)));
-                    }
-                    catch(Exception E)
-                    {
+                if(scelta.isEnabled()==true && scelta2.isEnabled()==true && ((!lunghezza1.getText().equals(null) && !larghezza1.getText().equals(null))||!diametro1.getText().equals(null)) && ((!lunghezza2.getText().equals(null) && !larghezza2.getText().equals(null))||!diametro2.getText().equals(null)) ){
+
+                if (selezionato == rettangolare.getId() && selezionato2 == rettangolare2.getId()) {
+                    try {
+                        lung1 = Double.parseDouble(lunghezza1.getText().toString());
+                        larg1 = Double.parseDouble(larghezza1.getText().toString());
+                        lung2 = Double.parseDouble(lunghezza2.getText().toString());
+                        larg2 = Double.parseDouble(larghezza2.getText().toString());
+                        ris = (lung2 * larg2) / (lung1 * larg1);
+                        //risultato.setText(Double.toString(roundDecimal(ris)));
+                    } catch (Exception E) {
                         System.out.println("errore");
                     }
-                }
+                } else if (selezionato == rettangolare.getId() && selezionato2 == rotonda2.getId()) {
+                    try {
+                        lung1 = Double.parseDouble(lunghezza1.getText().toString());
+                        larg1 = Double.parseDouble(larghezza1.getText().toString());
+                        diam2 = Double.parseDouble(diametro2.getText().toString());
 
-                else if(selezionato == rettangolare.getId() && selezionato2==rotonda2.getId())
-                {
-                    try
-                    {
-                        lung1=Double.parseDouble(lunghezza1.getText().toString());
-                        larg1=Double.parseDouble(larghezza1.getText().toString());
-                        diam2=Double.parseDouble(diametro2.getText().toString());
-
-                        ris = (pgreco * ((diam2/2) * (diam2/2)))/(lung1 * larg1);
-                        risultato.setText(Double.toString(roundDecimal(ris)));
-                    }
-                    catch(Exception E)
-                    {
+                        ris = (pgreco * ((diam2 / 2) * (diam2 / 2))) / (lung1 * larg1);
+                        //risultato.setText(Double.toString(roundDecimal(ris)));
+                    } catch (Exception E) {
                         System.out.println("errore");
                     }
-                }
-
-                else if(selezionato == rotonda.getId() && selezionato2==rettangolare2.getId())
-                {
-                    try
-                    {
+                } else if (selezionato == rotonda.getId() && selezionato2 == rettangolare2.getId()) {
+                    try {
                         lung2 = Double.parseDouble(lunghezza2.getText().toString());
                         larg2 = Double.parseDouble(larghezza2.getText().toString());
                         diam1 = Double.parseDouble(diametro1.getText().toString());
 
-                        ris = (lung2 * larg2) / (pgreco * ((diam1/2) * (diam1/2)));
-                        risultato.setText(Double.toString(roundDecimal(ris)));
-                    }
-                    catch(Exception E)
-                    {
+                        ris = (lung2 * larg2) / (pgreco * ((diam1 / 2) * (diam1 / 2)));
+                        //risultato.setText(Double.toString(roundDecimal(ris)));
+                    } catch (Exception E) {
                         System.out.println("errore");
                     }
-                }
-
-                else if(selezionato == rotonda.getId() && selezionato2==rotonda2.getId())
-                {
-                    try
-                    {
+                } else if (selezionato == rotonda.getId() && selezionato2 == rotonda2.getId()) {
+                    try {
                         diam2 = Double.parseDouble(diametro2.getText().toString());
                         diam1 = Double.parseDouble(diametro1.getText().toString());
 
-                        ris = (pgreco * ((diam2/2) * (diam2/2))) / (pgreco * ((diam1/2) * (diam1/2)));
-                        risultato.setText(Double.toString(roundDecimal(ris)));
-                    }
-                    catch(Exception E)
-                    {
+                        ris = (pgreco * ((diam2 / 2) * (diam2 / 2))) / (pgreco * ((diam1 / 2) * (diam1 / 2)));
+                        //risultato.setText(Double.toString(roundDecimal(ris)));
+                    } catch (Exception E) {
                         System.out.println("errore");
                     }
                 }
+
+
+                onCreateDialog(ris);
+
+
+            } else{
+                Toast.makeText(getBaseContext(), "Campi incompleti",
+                        Toast.LENGTH_SHORT).show();
+            }
+
             }
         });
 
@@ -351,5 +346,32 @@ public class CalcolaTeglia extends AppCompatActivity
 
         return bd.doubleValue();
     }
+
+
+    public Dialog onCreateDialog(double result) {   //metodo per visualizzare il risultato in una dialog
+        // Use the Builder class for convenient dialog construction
+        AlertDialog.Builder builder = new AlertDialog.Builder(CalcolaTeglia.this);
+        LayoutInflater inflater = getLayoutInflater();
+        View customView = inflater.inflate(R.layout.custom_dialog, null);
+
+
+        TextView dialog_suggerimento = (TextView)findViewById(id.suggerimento);
+        TextView dialog_reselut = (TextView)customView.findViewById(id.calolaTeglia_result);
+
+
+        builder.setView(customView);
+
+        dialog_reselut.setText(Double.toString(result));
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                });
+        // Create the AlertDialog object and return it
+        builder.create();
+
+        return builder.show();
+    }
+
 
 }

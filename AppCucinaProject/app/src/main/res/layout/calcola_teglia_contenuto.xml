@@ -181,17 +181,6 @@
         android:layout_column="0"
         android:hint="Diametro" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:id="@+id/textView3"
-            android:layout_row="10"
-            android:layout_column="0"
-            android:layout_rowSpan="3"
-            android:textSize="30dp"
-            android:background="#bdb8f2"
-            android:textColor="#000000"
-            android:textAlignment="center" />
 
         <Button
             android:layout_width="match_parent"
@@ -199,7 +188,11 @@
             android:text="Calcola"
             android:id="@+id/calcola"
             android:layout_row="13"
-            android:layout_column="0" />
+            android:layout_column="0"
+            android:background="@drawable/button_rect"
+            android:layout_marginTop="10dp"
+            android:textColor="#ffffff"
+            android:textSize="20dp" />
 
         </LinearLayout>
 
