@@ -26,7 +26,7 @@ public class ReadXML {
     public ArrayList<RicettaDetails> ReadXMLtoObject(){
         try {
 
-            File fXmlFile = new File(Environment.getExternalStorageDirectory()+"\\preferiti.xml");
+            File fXmlFile = new File(Environment.getExternalStorageDirectory()+"\\preferiti.xml");  //File fXmlFile = new File(Environment.getExternalStorageDirectory()+File.separator + "AppCucina"+File.separator+"preferiti.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(fXmlFile);
@@ -76,7 +76,7 @@ public class ReadXML {
 
         try {
 
-            File fXmlFile = new File(Environment.getExternalStorageDirectory()+"\\preferiti.xml");
+            File fXmlFile = new File(Environment.getExternalStorageDirectory()+"\\preferiti.xml");      //File fXmlFile = new File(Environment.getExternalStorageDirectory()+File.separator + "AppCucina"+File.separator+"preferiti");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(fXmlFile);

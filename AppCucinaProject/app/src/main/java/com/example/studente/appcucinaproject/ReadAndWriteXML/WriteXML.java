@@ -27,6 +27,18 @@ public class WriteXML {
     public void WriteObjectToXML(String titolo){
         try {
 
+            File folder = new File(Environment.getExternalStorageDirectory() +
+                    File.separator + "AppCucina");
+            boolean success = true;
+            if (!folder.exists()) {
+                success = folder.mkdir();
+            }
+            if (success) {
+                // Do something on success
+                //METTERE QUI QUELLO CHE C'E' SOTTO
+            }
+
+
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 
@@ -52,20 +64,6 @@ public class WriteXML {
             firstname.appendChild(doc.createTextNode(titolo));
             ricetta.appendChild(firstname);
 
-            /*// lastname elements
-            Element lastname = doc.createElement("lastname");
-            lastname.appendChild(doc.createTextNode("mook kim"));
-            ricetta.appendChild(lastname);
-
-            // nickname elements
-            Element nickname = doc.createElement("nickname");
-            nickname.appendChild(doc.createTextNode("mkyong"));
-            ricetta.appendChild(nickname);
-
-            // salary elements
-            Element salary = doc.createElement("salary");
-            salary.appendChild(doc.createTextNode("100000"));
-            ricetta.appendChild(salary);*/
 
             // write the content into xml file
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
