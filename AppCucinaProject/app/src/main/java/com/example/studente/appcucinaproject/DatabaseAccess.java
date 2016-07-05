@@ -619,9 +619,9 @@ public class DatabaseAccess {
         if(!nomeRicettaParam.isEmpty()){
             //se la prima lettera non è maiuscola la metto maiuscola
             if(!Character.isUpperCase(nomeRicettaParam.charAt(0)))
-                nomeRicettaParam = nomeRicettaParam.substring(0, 1).toUpperCase() + nomeRicettaParam.substring(1);
+                nomeRicettaParam = nomeRicettaParam.substring(0, 1).toUpperCase() + nomeRicettaParam.substring(1).toLowerCase();
 
-            mySQLQuery = mySQLQuery.concat("AND r.nome ='" + nomeRicettaParam +"' ");
+            mySQLQuery = mySQLQuery.concat("AND r.nome LIKE'%" + nomeRicettaParam +"%' ");
         }
 
         //String ingrediente1Param, String ingrediente2Param, String ingrediente3Param
@@ -667,24 +667,24 @@ public class DatabaseAccess {
         if(!ingrediente1Param.isEmpty()){
             //se la prima lettera non è maiuscola la metto maiuscola
             if(!Character.isUpperCase(ingrediente1Param.charAt(0)))
-                ingrediente1Param = ingrediente1Param.substring(0, 1).toUpperCase() + ingrediente1Param.substring(1);
+                ingrediente1Param = ingrediente1Param.substring(0, 1).toUpperCase() + ingrediente1Param.substring(1).toLowerCase();
 
             mySQLQuery = mySQLQuery.concat("AND r.id_ricetta IN (SELECT a.id_ricetta " +
                                             "FROM appartenere a, ingrediente i " +
                                             "WHERE a.id_ingrediente = i.id_ingrediente " +
-                                            "AND i.nome= '" + ingrediente1Param + "') ");
+                                            "AND i.nome LIKE '%" + ingrediente1Param + "%') ");
         }
 
         //restituisce tutte le ricette con ingrediente 2
         if(!ingrediente2Param.isEmpty()){
             //se la prima lettera non è maiuscola la metto maiuscola
             if(!Character.isUpperCase(ingrediente2Param.charAt(0)))
-                ingrediente2Param = ingrediente2Param.substring(0, 1).toUpperCase() + ingrediente2Param.substring(1);
+                ingrediente2Param = ingrediente2Param.substring(0, 1).toUpperCase() + ingrediente2Param.substring(1).toLowerCase();
 
             mySQLQuery = mySQLQuery.concat("AND r.id_ricetta IN (SELECT a.id_ricetta " +
                                             "FROM appartenere a, ingrediente i " +
                                             "WHERE a.id_ingrediente = i.id_ingrediente " +
-                                            "AND i.nome= '" + ingrediente2Param + "') ");
+                                            "AND i.nome LIKE '%" + ingrediente2Param + "%') ");
         }
 
 
@@ -692,12 +692,12 @@ public class DatabaseAccess {
         if(!ingrediente3Param.isEmpty()){
             //se la prima lettera non è maiuscola la metto maiuscola
             if(!Character.isUpperCase(ingrediente3Param.charAt(0)))
-                ingrediente3Param = ingrediente3Param.substring(0, 1).toUpperCase() + ingrediente3Param.substring(1);
+                ingrediente3Param = ingrediente3Param.substring(0, 1).toUpperCase() + ingrediente3Param.substring(1).toLowerCase();
 
             mySQLQuery = mySQLQuery.concat("AND r.id_ricetta IN (SELECT a.id_ricetta " +
                                         "FROM appartenere a, ingrediente i " +
                                         "WHERE a.id_ingrediente = i.id_ingrediente " +
-                                        "AND i.nome= '" + ingrediente3Param + "') ");
+                                        "AND i.nome LIKE '%" + ingrediente3Param + "%') ");
         }
 
         mySQLQuery = mySQLQuery.concat("ORDER BY r.calorie, r.nome ");
