@@ -42,34 +42,38 @@ public class PrimiFragment_visualizzazione extends Fragment {
 
         listResults = ((Activity)container.getRootView().getContext()).getIntent().getStringArrayListExtra("risultati");
 
-        if(listResults != null && !listResults.isEmpty()) {
-            if(!creato) {
-                myDatabaseAccess = DatabaseAccess.getInstance(this.getContext());
+        if(listResults != null) {
+            if (!listResults.isEmpty()) {
+                if (!creato) {
+                    myDatabaseAccess = DatabaseAccess.getInstance(this.getContext());
 
-                myDatabaseAccess.open();
-                listPrimi = myDatabaseAccess.getRicettaPrimiConImage();
-                myDatabaseAccess.close();
+                    myDatabaseAccess.open();
+                    listPrimi = myDatabaseAccess.getRicettaPrimiConImage();
+                    myDatabaseAccess.close();
 
-                for (int i = 0; i < listPrimi.size(); i++) {
+                    for (int i = 0; i < listPrimi.size(); i++) {
 
-                    for (int j = 0; j < listResults.size(); j++) {
-                        if (listPrimi.get(i).equals(listResults.get(j))) {
-                            listPrimiTemp.add(listPrimi.get(i));
+                        for (int j = 0; j < listResults.size(); j++) {
+                            if (listPrimi.get(i).equals(listResults.get(j))) {
+                                listPrimiTemp.add(listPrimi.get(i));
+                            }
                         }
+
                     }
-
+                    creato = true;
                 }
-                creato = true;
+
+                RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.recview_primi_RAV);
+                rv.setHasFixedSize(true);
+                MyCardAdapterRAvis adapter = new MyCardAdapterRAvis(listPrimiTemp, this.getContext());
+                rv.setAdapter(adapter);
+
+                LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+                rv.setLayoutManager(llm);
             }
+        }
 
-            RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.recview_primi_RAV);
-            rv.setHasFixedSize(true);
-            MyCardAdapterRAvis adapter = new MyCardAdapterRAvis(listPrimiTemp, this.getContext());
-            rv.setAdapter(adapter);
-
-            LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-            rv.setLayoutManager(llm);
-        } else{
+        if(listResults == null || listResults.isEmpty()){   //se la lista è vuota o nulla
             Toast.makeText(getContext(), "Nessun risultato", Toast.LENGTH_SHORT).show();
         }
 
