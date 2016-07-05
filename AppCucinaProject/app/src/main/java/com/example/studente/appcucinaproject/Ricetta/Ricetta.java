@@ -171,11 +171,16 @@ public class Ricetta extends AppCompatActivity {
                         //preferito.setColorFilter(Color.argb(255, 255, 235, 59));
                         preferito.setActivated(true);
 
-                        write_xml_preferito.WriteObjectToXML(nameRicetta);
+                        if(write_xml_preferito.WriteObjectToXML(nameRicetta)){
 
-                        int duration = Toast.LENGTH_SHORT;
-                        Toast.makeText(getApplicationContext(), "Ricetta aggiunta ai preferiti",
-                                Toast.LENGTH_LONG).show();
+                            int duration = Toast.LENGTH_SHORT;
+                            Toast.makeText(getApplicationContext(), "Ricetta aggiunta ai preferiti",
+                                    Toast.LENGTH_LONG).show();
+                        }else{
+                            int duration = Toast.LENGTH_SHORT;
+                            Toast.makeText(getApplicationContext(), "Ricetta NON aggiunta ai preferiti",
+                                    Toast.LENGTH_LONG).show();
+                        }
                     }
 
                 /*}else{

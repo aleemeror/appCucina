@@ -29,8 +29,6 @@ public class PreferitiFragment extends Fragment {
     ReadXML read_xml= new ReadXML();
     boolean creato = false;
 
-    int[] images = {R.drawable.dolce, R.drawable.dolce, R.drawable.dolce, R.drawable.dolce};
-
     public PreferitiFragment() {
         // Required empty public constructor
     }
@@ -43,30 +41,31 @@ public class PreferitiFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_preferiti, container, false);
 
 
-        /*if(!creato) {
+        if(!creato) {
             //list.clear();
             list=read_xml.ReadXMLtoObject();
 
-            String[] title = getResources().getStringArray(R.array.ricetta_name);
+            /*String[] title = getResources().getStringArray(R.array.ricetta_name);
             int count = 0;
             for (String Name : title) {
 
                 RicettaDetails ricetta = new RicettaDetails(images[count], Name);
                 count++;
                 list.add(ricetta);
-            }
+            }*/
 
             creato = true;
         }
 
+        if(list!=null){
+            recAntipasti = (RecyclerView) rootView.findViewById(R.id.recview_preferiti);
+            recAntipasti.setHasFixedSize(true);
+            MyCardAdapter adapter = new MyCardAdapter(list, this.getContext());
+            recAntipasti.setAdapter(adapter);
 
-        RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.recview_preferiti);
-        rv.setHasFixedSize(true);
-        MyCardAdapter adapter = new MyCardAdapter(list, this.getContext());
-        rv.setAdapter(adapter);
-
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        rv.setLayoutManager(llm);*/
+            LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+            recAntipasti.setLayoutManager(llm);
+        }
 
 
         return rootView;

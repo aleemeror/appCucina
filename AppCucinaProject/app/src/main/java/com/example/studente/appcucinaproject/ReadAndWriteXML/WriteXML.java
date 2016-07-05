@@ -23,64 +23,107 @@ import org.w3c.dom.Element;
 
 public class WriteXML {
 
+    public boolean CheckFolderAndFile(){ //da richiamare sempre quando si fa operazione su file
 
-    public void WriteObjectToXML(String titolo){
+        File folder = new File(Environment.getExternalStorageDirectory() +
+                File.separator + "AppCucina");
+        boolean success_folder;
+        boolean success_file;
+        if (!folder.exists()) {
+            success_folder = folder.mkdir();
+
+            File fileXML = new File(Environment.getExternalStorageDirectory() +
+                    File.separator + "AppCucina"+File.separator + "preferiti.xml");
+            try {
+                success_file=fileXML.createNewFile();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+                success_file=false;
+            }
+        }else{
+            success_folder=true;
+
+            File fileXML = new File(Environment.getExternalStorageDirectory() +
+                    File.separator + "AppCucina"+File.separator + "preferiti.xml");
+
+            if(!fileXML.exists()){
+                try {
+                    success_file=fileXML.createNewFile();
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                    success_file=false;
+                }
+            }else{
+                success_file=true;
+            }
+
+        }
+        if (success_folder && success_file) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+    public boolean WriteObjectToXML(String titolo){
         try {
 
-            File folder = new File(Environment.getExternalStorageDirectory() +
-                    File.separator + "AppCucina");
-            boolean success = true;
-            if (!folder.exists()) {
-                success = folder.mkdir();
-            }
-            if (success) {
-                // Do something on success
-                //METTERE QUI QUELLO CHE C'E' SOTTO
-            }
+            boolean check = CheckFolderAndFile();
 
+            if(check){
 
-            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+                DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 
-            // root elements
-            Document doc = docBuilder.newDocument();
-            Element rootElement = doc.createElement("preferiti");
-            doc.appendChild(rootElement);
+                // root elements
+                Document doc = docBuilder.newDocument();
+                Element rootElement = doc.createElement("preferiti");
+                doc.appendChild(rootElement);
 
-            // staff elements
-            Element ricetta = doc.createElement("ricetta");
-            rootElement.appendChild(ricetta);
+                // staff elements
+                Element ricetta = doc.createElement("ricetta");
+                rootElement.appendChild(ricetta);
 
-            // set attribute to staff element
+                // set attribute to staff element
             /*Attr attr = doc.createAttribute("title");
             attr.setValue("1");
             ricetta.setAttributeNode(attr);*/
 
-            // shorten way
-            // staff.setAttribute("id", "1");
+                // shorten way
+                // staff.setAttribute("id", "1");
 
-            // firstname elements
-            Element firstname = doc.createElement("titolo");
-            firstname.appendChild(doc.createTextNode(titolo));
-            ricetta.appendChild(firstname);
+                // firstname elements
+                Element firstname = doc.createElement("titolo");
+                firstname.appendChild(doc.createTextNode(titolo));
+                ricetta.appendChild(firstname);
 
 
-            // write the content into xml file
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
-            DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File(Environment.getExternalStorageDirectory()+"\\preferiti.xml")); //per mettere il file nella cartella di default di Android
+                // write the content into xml file
+                TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                Transformer transformer = transformerFactory.newTransformer();
+                DOMSource source = new DOMSource(doc);
+                StreamResult result = new StreamResult(new File(Environment.getExternalStorageDirectory()+File.separator+"AppCucina"+File.separator+"preferiti.xml")); //per mettere il file nella cartella di default di Android
 
-            // Output to console for testing
-            // StreamResult result = new StreamResult(System.out);
+                // Output to console for testing
+                // StreamResult result = new StreamResult(System.out);
 
-            transformer.transform(source, result);
+                 transformer.transform(source, result);
+
+                return true;
+            }
+             else{
+                return false;
+            }
 
         } catch (ParserConfigurationException pce) {
             pce.printStackTrace();
         } catch (TransformerException tfe) {
             tfe.printStackTrace();
         }
+        return false;
     }
 
 }

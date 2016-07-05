@@ -79,7 +79,10 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ContactVie
 
     @Override
     public int getItemCount() {
-        return ricette.size();
+        if(ricette.size()>0) {
+            return ricette.size();
+        }else{return 0;
+        }
     }
 
 

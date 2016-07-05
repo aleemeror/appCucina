@@ -15,50 +15,63 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 
 
 public class ReadXML {
 
     ArrayList<RicettaDetails> listPreferiti;
-    RicettaDetails ricetta= new RicettaDetails(null,null);
+    RicettaDetails ricetta;
+    WriteXML checkWrite;
+
+    public ReadXML(){   //COSTRUTTORE
+        ricetta= new RicettaDetails(null,null);
+        checkWrite = new WriteXML();
+        listPreferiti= new ArrayList<RicettaDetails>();
+    }
+
 
     public ArrayList<RicettaDetails> ReadXMLtoObject(){
         try {
 
-            File fXmlFile = new File(Environment.getExternalStorageDirectory()+"\\preferiti.xml");  //File fXmlFile = new File(Environment.getExternalStorageDirectory()+File.separator + "AppCucina"+File.separator+"preferiti.xml");
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(fXmlFile);
+            if(checkWrite.CheckFolderAndFile()){
 
-            //optional, but recommended
-            //read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
-            doc.getDocumentElement().normalize();
+                File fXmlFile = new File(Environment.getExternalStorageDirectory()+File.separator + "AppCucina"+File.separator+"preferiti.xml"); //File fXmlFile = new File(Environment.getExternalStorageDirectory()+File.separator + "AppCucina"+File.separator+"preferiti.xml");
 
-            NodeList nList = doc.getElementsByTagName("ricetta");
+                FileReader fr = new FileReader(fXmlFile);
+                if (fr.read()==-1){
+                    fr.close();
+                    return null;
+                } else{
+                    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+                    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+                    Document doc = dBuilder.parse(fXmlFile);
 
+                    //optional, but recommended
+                    //read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
+                    doc.getDocumentElement().normalize();
 
-            //CREO LA LISTA DI OGGETTI
-            listPreferiti= new ArrayList<RicettaDetails>();
+                    NodeList nList = doc.getElementsByTagName("ricetta");
 
-            for (int temp = 0; temp < nList.getLength(); temp++) {
+                    for (int temp = 0; temp < nList.getLength(); temp++) {
 
-                Node nNode = nList.item(temp);
+                        Node nNode = nList.item(temp);
 
-                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
-                    Element eElement = (Element) nNode;
+                            Element eElement = (Element) nNode;
 
-                    //QUI CREARE LA LISTA DI OGGETTI
+                            //QUI CREARE LA LISTA DI OGGETTI
 
-                    ricetta.setTitle(eElement.getElementsByTagName("titolo").item(0).getTextContent());
-                    listPreferiti.add(ricetta);
+                            ricetta.setTitle(eElement.getElementsByTagName("titolo").item(0).getTextContent());
+                            listPreferiti.add(ricetta);
 
-                    /*System.out.println("Staff id : " + eElement.getAttribute("id"));
-                    System.out.println("First Name : " + eElement.getElementsByTagName("firstname").item(0).getTextContent());
-                    System.out.println("Last Name : " + eElement.getElementsByTagName("lastname").item(0).getTextContent());
-                    System.out.println("Nick Name : " + eElement.getElementsByTagName("nickname").item(0).getTextContent());
-                    System.out.println("Salary : " + eElement.getElementsByTagName("salary").item(0).getTextContent());*/
+                        }
+                    }
+
+                    fr.close();
+                    return listPreferiti;
 
                 }
             }
@@ -66,11 +79,11 @@ public class ReadXML {
             e.printStackTrace();
         }
 
-        return listPreferiti;
+        return null;
     }
 
 
-    public boolean ReadXML_Particular_Object(String titolo){    //metodo che ritorna TRUE se il titolo di ricetta immesso corrispondea quello trovato nel file XML
+    /*public boolean ReadXML_Particular_Object(String titolo){    //metodo che ritorna TRUE se il titolo di ricetta immesso corrispondea quello trovato nel file XML
 
         boolean checkPreferito=false;
 
@@ -104,7 +117,7 @@ public class ReadXML {
         }
 
         return checkPreferito;
-    }
+    }*/
 
 
 }
