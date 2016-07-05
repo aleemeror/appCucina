@@ -144,6 +144,13 @@ public class Ricetta extends AppCompatActivity {
         nameRicetta = getIntent().getStringExtra("name");
 
 
+        if(read_xml_preferito.ReadXML_Particular_Object(nameRicetta)){
+            preferito.setImageResource(R.drawable.star);
+            preferito.setColorFilter(Color.argb(255, 255, 235, 59));
+            preferito.setActivated(true);
+        }
+
+
         preferito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

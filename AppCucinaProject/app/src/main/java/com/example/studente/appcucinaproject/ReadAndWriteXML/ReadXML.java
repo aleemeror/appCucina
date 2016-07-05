@@ -83,41 +83,60 @@ public class ReadXML {
     }
 
 
-    /*public boolean ReadXML_Particular_Object(String titolo){    //metodo che ritorna TRUE se il titolo di ricetta immesso corrispondea quello trovato nel file XML
-
-        boolean checkPreferito=false;
+    public boolean ReadXML_Particular_Object(String titolo){    //metodo che ritorna TRUE se il titolo di ricetta immesso corrispondea quello trovato nel file XML
+        boolean check=false;
 
         try {
 
-            File fXmlFile = new File(Environment.getExternalStorageDirectory()+"\\preferiti.xml");      //File fXmlFile = new File(Environment.getExternalStorageDirectory()+File.separator + "AppCucina"+File.separator+"preferiti");
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(fXmlFile);
+            if(checkWrite.CheckFolderAndFile()){
 
-            doc.getDocumentElement().normalize();
+                File fXmlFile = new File(Environment.getExternalStorageDirectory()+File.separator + "AppCucina"+File.separator+"preferiti.xml"); //File fXmlFile = new File(Environment.getExternalStorageDirectory()+File.separator + "AppCucina"+File.separator+"preferiti.xml");
 
-            NodeList nList = doc.getElementsByTagName("ricetta");
+                FileReader fr = new FileReader(fXmlFile);
+                if (fr.read()==-1){
+                    fr.close();
+                    check=false;
+                    return check;
+                } else{
+                    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+                    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+                    Document doc = dBuilder.parse(fXmlFile);
 
-            for (int temp = 0; temp < nList.getLength(); temp++) {
+                    //optional, but recommended
+                    //read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
+                    doc.getDocumentElement().normalize();
 
-                Node nNode = nList.item(temp);
+                    NodeList nList = doc.getElementsByTagName("ricetta");
 
-                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                    for (int temp = 0; temp < nList.getLength(); temp++) {
 
-                    Element eElement = (Element) nNode;
+                        Node nNode = nList.item(temp);
 
-                    if(eElement.getElementsByTagName("titolo").item(0).getTextContent().equals(titolo)){ //controllo se l'elemento trovato è quello che ho immesso come parametro
-                        checkPreferito = true;
-                        break;
+                        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+                            Element eElement = (Element) nNode;
+
+                            //QUI CREARE LA LISTA DI OGGETTI
+
+                            if(eElement.getElementsByTagName("titolo").item(0).getTextContent().equals(titolo)){
+                                check=true;
+                                break;
+                            }
+
+                        }
                     }
+
+                    fr.close();
+                    return check;
+
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return checkPreferito;
-    }*/
+        return check;
+    }
 
 
 }
