@@ -55,15 +55,14 @@ public class DatabaseAccess {
         }
     }
 
-    public ArrayList<Bitmap> getImage() {
-        ArrayList<Bitmap> data = new ArrayList<Bitmap>();
-        Cursor cursor = database.rawQuery("SELECT immagini FROM ricetta", null);
+    public Bitmap getImage(String nome_ricetta) {
+        Bitmap data = null;
+        Cursor cursor = database.rawQuery("SELECT immagini FROM ricetta WHERE nome='" + nome_ricetta +"' ", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             byte[] blob =(cursor.getBlob(0));
             ByteArrayInputStream inputStream = new ByteArrayInputStream(blob);
-            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-            data.add(bitmap);
+            data = BitmapFactory.decodeStream(inputStream);
             cursor.moveToNext();
             //break;  // Assumption: name is unique
         }

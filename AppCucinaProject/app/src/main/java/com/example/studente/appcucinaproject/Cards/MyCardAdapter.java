@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.studente.appcucinaproject.DatabaseAccess;
 import com.example.studente.appcucinaproject.R;
 import com.example.studente.appcucinaproject.Ricetta.Ricetta;
 
@@ -24,6 +25,7 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ContactVie
     //Activity a;
 
     Context ctx;//M
+    private DatabaseAccess myDatabaseAccess;
 
     public MyCardAdapter(ArrayList<RicettaDetails> ricette, Context a){     //M-Activity a
 
@@ -51,7 +53,12 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ContactVie
             holder.descr.setText(CON.getDescrRicetta());
             check=true;
         }else{
-            holder.person_img.setImageResource(R.drawable.portata);
+
+            myDatabaseAccess = DatabaseAccess.getInstance(ctx);
+            myDatabaseAccess.open();
+            holder.person_img.setImageBitmap(myDatabaseAccess.getImage(CON.getTitle()));
+            CON.setImageRicetta(myDatabaseAccess.getImage(CON.getTitle()));
+            myDatabaseAccess.close();
             holder.person_name.setText(CON.getTitle());
             holder.descr.setText(CON.getDescrRicetta());
             check=false;
