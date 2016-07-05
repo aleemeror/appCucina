@@ -235,9 +235,9 @@ public class RicercaAV extends AppCompatActivity
         if (ID_RadioGroup == R.id.radioButton3){
             ID_Difficolta = 3;
         }
-
+        //DIFFICOLTA' QUALSIASI
         if (ID_RadioGroup == R.id.radioButton4){
-            ID_Difficolta = 4;
+            ID_Difficolta = -1; //Scelgo -1 per possibili aggiunte di diffciltà nel database
         }
     }
 
