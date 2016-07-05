@@ -43,15 +43,18 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ContactVie
 
         RicettaDetails CON = ricette.get(position);
         Bitmap imageCheck = CON.getImageRicetta();
+        boolean check=false;
 
         if(imageCheck != null){
             holder.person_img.setImageBitmap(CON.getImageRicetta());
             holder.person_name.setText(CON.getTitle());
             holder.descr.setText(CON.getDescrRicetta());
+            check=true;
         }else{
-            holder.person_img.setImageResource(R.drawable.ic_ricettario);
+            holder.person_img.setImageResource(R.drawable.portata);
             holder.person_name.setText(CON.getTitle());
             holder.descr.setText(CON.getDescrRicetta());
+            check=false;
         }
 
 
