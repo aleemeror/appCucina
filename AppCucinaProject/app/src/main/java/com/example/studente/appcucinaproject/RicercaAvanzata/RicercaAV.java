@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.KeyEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,11 +17,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.example.studente.appcucinaproject.CalcolaTeglia.CalcolaTeglia;
 import com.example.studente.appcucinaproject.Calcolatrice.Calcolatrice;
@@ -97,8 +100,6 @@ public class RicercaAV extends AppCompatActivity
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
-
 
         myNomeRicetta = "";
         myIngrediente1 = "";
@@ -216,7 +217,6 @@ public class RicercaAV extends AppCompatActivity
 
             }
         });
-
     }
 
     private void findDifficoltaID(){
@@ -235,11 +235,12 @@ public class RicercaAV extends AppCompatActivity
         if (ID_RadioGroup == R.id.radioButton3){
             ID_Difficolta = 3;
         }
-
+        //DIFFICOLTA' QUALSIASI
         if (ID_RadioGroup == R.id.radioButton4){
-            ID_Difficolta = 4;
+            ID_Difficolta = -1; //Scelgo -1 per possibili aggiunte di diffciltà nel database
         }
     }
+
 
     @Override
     public void onBackPressed() {
