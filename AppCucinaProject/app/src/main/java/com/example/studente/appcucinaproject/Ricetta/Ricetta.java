@@ -155,11 +155,6 @@ public class Ricetta extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //if(read_xml_preferito.ReadXML_Particular_Object(nameRicetta)){
-
-                    //preferito.setActivated(true);
-                    //preferito.setImageResource(R.drawable.star);
-                    //preferito.setColorFilter(Color.argb(255, 255, 235, 59));
 
 
                     if(preferito.isActivated()){
@@ -189,31 +184,6 @@ public class Ricetta extends AppCompatActivity {
                                     Toast.LENGTH_LONG).show();
                         }
                     }
-
-                /*}else{
-                    if(preferito.isActivated()){
-
-                        preferito.setActivated(false);
-                        //preferito.setColorFilter(Color.argb(255, 255, 255, 255));
-                        preferito.setImageResource(R.drawable.white_star);
-
-                        int duration = Toast.LENGTH_SHORT;
-                        Toast.makeText(getApplicationContext(), "Ricetta eliminata dai preferiti",
-                                Toast.LENGTH_LONG).show();
-
-                    }
-                    else{
-                        preferito.setImageResource(R.drawable.star);
-                        //preferito.setColorFilter(Color.argb(255, 255, 235, 59));
-                        preferito.setActivated(true);
-
-                        int duration = Toast.LENGTH_SHORT;
-                        Toast.makeText(getApplicationContext(), "Ricetta aggiunta ai preferiti",
-                                Toast.LENGTH_LONG).show();
-                    }
-
-                }*/
-
 
             }
         });
