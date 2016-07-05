@@ -7,6 +7,8 @@ package com.example.studente.appcucinaproject.ReadAndWriteXML;
 import android.os.Environment;
 
 import java.io.File;
+import java.io.FileReader;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -22,6 +24,8 @@ import org.w3c.dom.Element;
 
 
 public class WriteXML {
+
+    Document doc;
 
     public boolean CheckFolderAndFile(){ //da richiamare sempre quando si fa operazione su file
 
@@ -75,53 +79,97 @@ public class WriteXML {
 
             if(check){
 
-                DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-                DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+                File fXmlFile = new File(Environment.getExternalStorageDirectory()+File.separator+"AppCucina"+File.separator+"preferiti.xml");
+                FileReader fr = new FileReader(fXmlFile);
+                if (fr.read()==-1){//il file è vuoto
+                    fr.close();
 
-                // root elements
-                Document doc = docBuilder.newDocument();
-                Element rootElement = doc.createElement("preferiti");
-                doc.appendChild(rootElement);
+                    DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+                    DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 
-                // staff elements
-                Element ricetta = doc.createElement("ricetta");
-                rootElement.appendChild(ricetta);
+                    // root elements
+                    doc = docBuilder.newDocument();
+                    Element rootElement = doc.createElement("preferiti");
+                    doc.appendChild(rootElement);
 
-                // set attribute to staff element
+                    // staff elements
+                    Element ricetta = doc.createElement("ricetta");
+                    rootElement.appendChild(ricetta);
+
+                    // set attribute to staff element
             /*Attr attr = doc.createAttribute("title");
             attr.setValue("1");
             ricetta.setAttributeNode(attr);*/
 
-                // shorten way
-                // staff.setAttribute("id", "1");
+                    // shorten way
+                    // staff.setAttribute("id", "1");
 
-                // firstname elements
-                Element firstname = doc.createElement("titolo");
-                firstname.appendChild(doc.createTextNode(titolo));
-                ricetta.appendChild(firstname);
+                    // firstname elements
+                    Element firstname = doc.createElement("titolo");
+                    firstname.appendChild(doc.createTextNode(titolo));
+                    ricetta.appendChild(firstname);
 
 
-                // write the content into xml file
-                TransformerFactory transformerFactory = TransformerFactory.newInstance();
-                Transformer transformer = transformerFactory.newTransformer();
-                DOMSource source = new DOMSource(doc);
-                StreamResult result = new StreamResult(new File(Environment.getExternalStorageDirectory()+File.separator+"AppCucina"+File.separator+"preferiti.xml")); //per mettere il file nella cartella di default di Android
+                    // write the content into xml file
+                    TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                    Transformer transformer = transformerFactory.newTransformer();
+                    DOMSource source = new DOMSource(doc);
+                    StreamResult result = new StreamResult(new File(Environment.getExternalStorageDirectory()+File.separator+"AppCucina"+File.separator+"preferiti.xml")); //per mettere il file nella cartella di default di Android
 
-                // Output to console for testing
-                // StreamResult result = new StreamResult(System.out);
+                    // Output to console for testing
+                    // StreamResult result = new StreamResult(System.out);
 
-                 transformer.transform(source, result);
+                    transformer.transform(source, result);
 
-                return true;
+                    return true;
+
+                } else{//il file è pieno
+                    fr.close();
+                    DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+                    DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+                    // root elements
+                    Element rootElement = doc.createElement("preferiti");
+                    doc.appendChild(rootElement);
+
+                    // staff elements
+                    Element ricetta = doc.createElement("ricetta");
+                    rootElement.appendChild(ricetta);
+
+                    // set attribute to staff element
+                    /*Attr attr = doc.createAttribute("title");
+                    attr.setValue("1");
+                    ricetta.setAttributeNode(attr);*/
+
+                    // shorten way
+                    // staff.setAttribute("id", "1");
+
+                    // firstname elements
+                    Element firstname = doc.createElement("titolo");
+                    firstname.appendChild(doc.createTextNode(titolo));
+                    ricetta.appendChild(firstname);
+
+
+                    // write the content into xml file
+                    TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                    Transformer transformer = transformerFactory.newTransformer();
+                    DOMSource source = new DOMSource(doc);
+                    StreamResult result = new StreamResult(new File(Environment.getExternalStorageDirectory()+File.separator+"AppCucina"+File.separator+"preferiti.xml")); //per mettere il file nella cartella di default di Android
+
+                    // Output to console for testing
+                    // StreamResult result = new StreamResult(System.out);
+
+                    transformer.transform(source, result);
+
+                    return true;
+                }
             }
              else{
                 return false;
             }
 
-        } catch (ParserConfigurationException pce) {
-            pce.printStackTrace();
-        } catch (TransformerException tfe) {
-            tfe.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }
