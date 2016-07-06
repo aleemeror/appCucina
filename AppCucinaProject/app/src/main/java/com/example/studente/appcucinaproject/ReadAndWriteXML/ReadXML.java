@@ -26,7 +26,6 @@ public class ReadXML {
     WriteXML checkWrite;
 
     public ReadXML(){   //COSTRUTTORE
-        ricetta= new RicettaDetails(null,null);
         checkWrite = new WriteXML();
         listPreferiti= new ArrayList<RicettaDetails>();
     }
@@ -63,10 +62,9 @@ public class ReadXML {
                             Element eElement = (Element) nNode;
 
                             //QUI CREARE LA LISTA DI OGGETTI
-
+                            ricetta = new RicettaDetails(null,null);
                             ricetta.setTitle(eElement.getElementsByTagName("titolo").item(0).getTextContent());
                             listPreferiti.add(ricetta);
-
                         }
                     }
 

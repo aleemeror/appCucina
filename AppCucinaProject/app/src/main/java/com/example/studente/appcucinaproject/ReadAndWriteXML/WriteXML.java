@@ -21,6 +21,8 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 
 public class WriteXML {
@@ -124,13 +126,15 @@ public class WriteXML {
                     return true;
 
                 } else{//il file è pieno
-                    fr.close();
+                    //fr.close();
                     DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
                     DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 
                     // root elements
-                    Element rootElement = doc.createElement("preferiti");
-                    doc.appendChild(rootElement);
+                    doc = docBuilder.parse(fXmlFile);
+                    Element rootElement = doc.getDocumentElement();
+                            //doc.createElement("preferiti");
+                    //doc.appendChild(rootElement);
 
                     // staff elements
                     Element ricetta = doc.createElement("ricetta");
@@ -172,6 +176,67 @@ public class WriteXML {
             e.printStackTrace();
         }
         return false;
+    }
+
+
+
+    public boolean DeleteObjectToXML(String titolo){
+        boolean check=false;
+
+        try {
+
+            if(CheckFolderAndFile()){
+
+                File fXmlFile = new File(Environment.getExternalStorageDirectory()+File.separator + "AppCucina"+File.separator+"preferiti.xml"); //File fXmlFile = new File(Environment.getExternalStorageDirectory()+File.separator + "AppCucina"+File.separator+"preferiti.xml");
+
+                FileReader fr = new FileReader(fXmlFile);
+                if (fr.read()==-1){
+                    fr.close();
+                    check=false;
+                    return check;
+                } else{
+                    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+                    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+                    Document doc = dBuilder.parse(fXmlFile);
+
+                    //optional, but recommended
+                    //read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
+                    doc.getDocumentElement().normalize();
+
+                    NodeList nList = doc.getElementsByTagName("ricetta");
+
+                    for (int temp = 0; temp < nList.getLength(); temp++) {
+
+                        Node nNode = nList.item(temp);
+
+                        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+                            Element eElement = (Element) nNode;
+
+                            //QUI CREARE LA LISTA DI OGGETTI
+
+                            if(eElement.getElementsByTagName("titolo").item(0).getTextContent().equals(titolo)){
+                               Element e = (Element) doc.getElementsByTagName("ricetta").item(0);
+                                       //doc.getElementsByTagName("link").item(0);
+                                e.getParentNode().removeChild(e);
+                                //doc.removeChild(e);
+                                check=true;
+                                break;
+                            }
+
+                        }
+                    }
+
+                    fr.close();
+                    return check;
+
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return check;
     }
 
 }

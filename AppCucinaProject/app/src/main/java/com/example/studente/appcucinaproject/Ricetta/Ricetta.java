@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.studente.appcucinaproject.DatabaseAccess;
+import com.example.studente.appcucinaproject.DatiCondivisi;
 import com.example.studente.appcucinaproject.R;
 import com.example.studente.appcucinaproject.ReadAndWriteXML.ReadXML;
 import com.example.studente.appcucinaproject.ReadAndWriteXML.WriteXML;
@@ -163,6 +164,8 @@ public class Ricetta extends AppCompatActivity {
                         //preferito.setColorFilter(Color.argb(255, 255, 255, 255));
                         preferito.setImageResource(R.drawable.white_star);
 
+                        write_xml_preferito.DeleteObjectToXML(nameRicetta);
+
                         int duration = Toast.LENGTH_SHORT;
                         Toast.makeText(getApplicationContext(), "Ricetta eliminata dai preferiti",
                                 Toast.LENGTH_LONG).show();
@@ -172,6 +175,7 @@ public class Ricetta extends AppCompatActivity {
                         preferito.setImageResource(R.drawable.star);
                         //preferito.setColorFilter(Color.argb(255, 255, 235, 59));
                         preferito.setActivated(true);
+
 
                         if(write_xml_preferito.WriteObjectToXML(nameRicetta)){
 

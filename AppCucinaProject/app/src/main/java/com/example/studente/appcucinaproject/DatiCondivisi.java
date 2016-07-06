@@ -16,7 +16,7 @@ public class DatiCondivisi {
     public ArrayList<String> primiVis;
     public ArrayList<String> secondiVis;
     public ArrayList<String> dolciVis;
-
+    public ArrayList<String> PreferitiTitoli;
     Context cx;
 
     private DatabaseAccess myDatabaseAccess;
@@ -28,6 +28,28 @@ public class DatiCondivisi {
 
     public ArrayList<String> getRicetteVis() {
         return ricetteVis;
+    }
+
+
+    public ArrayList<String> getPreferitiTitoli() {
+        return PreferitiTitoli;
+    }
+
+    public void setPreferitiTitoli(ArrayList<String> preferitiTitoli) {
+        PreferitiTitoli = preferitiTitoli;
+    }
+
+    public void deleteOnePreferito(String titolo){  //per eliminare un certo elemento dai preferiti
+        boolean check=false;
+        int i=0;
+
+        while(!check && i<PreferitiTitoli.size()){
+            if(PreferitiTitoli.get(i).equals(titolo)){
+                PreferitiTitoli.remove(i);
+                check=true;
+            }
+        }
+
     }
 
     public void setRicetteVis(ArrayList<String> ricette_vis) {
