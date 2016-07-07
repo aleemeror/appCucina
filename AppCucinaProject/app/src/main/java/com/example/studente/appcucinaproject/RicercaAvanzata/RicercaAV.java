@@ -101,6 +101,8 @@ public class RicercaAV extends AppCompatActivity
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
+        ID_Difficolta = -1; //Inizializzata a "QUALSIASI"
+
         myNomeRicetta = "";
         myIngrediente1 = "";
         myIngrediente2 = "";
@@ -178,10 +180,10 @@ public class RicercaAV extends AppCompatActivity
                 findDifficoltaID();
 
                 //CON IL TRIM TOLGO TUTTI GLI SPAZI PRIMA E DOPO LA STRINGA SENZA ALTERARE QUELLI IN MEZZO
-                myNomeRicetta = nomeRicetta.getText().toString().trim();
-                myIngrediente1 = ingrediente1.getText().toString().trim();
-                myIngrediente2 = ingrediente2.getText().toString().trim();
-                myIngrediente3 = ingrediente3.getText().toString().trim();
+                myNomeRicetta = nomeRicetta.getText().toString().trim().replaceAll(" +", " ");
+                myIngrediente1 = ingrediente1.getText().toString().trim().replaceAll(" +", " ");
+                myIngrediente2 = ingrediente2.getText().toString().trim().replaceAll(" +", " ");
+                myIngrediente3 = ingrediente3.getText().toString().trim().replaceAll(" +", " ");
 
                 isAntipastoChecked = antipastoCB.isChecked();
                 isPrimoCBChecked = primoCB.isChecked();
