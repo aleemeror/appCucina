@@ -623,8 +623,6 @@ public class DatabaseAccess {
             mySQLQuery = mySQLQuery.concat("AND r.nome LIKE'%" + nomeRicettaParam +"%' ");
         }
 
-        //String ingrediente1Param, String ingrediente2Param, String ingrediente3Param
-
         //se la difficoltà non è -1 ovvero qualsiasi
         if(ID_DifficoltaParam != -1){
             String idDiffConvert = Integer.toString(ID_DifficoltaParam);
@@ -669,8 +667,9 @@ public class DatabaseAccess {
                 ingrediente1Param = ingrediente1Param.substring(0, 1).toUpperCase() + ingrediente1Param.substring(1).toLowerCase();
 
             mySQLQuery = mySQLQuery.concat("AND r.id_ricetta IN (SELECT a.id_ricetta " +
-                                            "FROM appartenere a, ingrediente i " +
-                                            "WHERE a.id_ingrediente = i.id_ingrediente " +
+                                            "FROM appartenere a " +
+                                            "INNER JOIN ingrediente i " +
+                                            "ON a.id_ingrediente = i.id_ingrediente " +
                                             "AND i.nome LIKE '%" + ingrediente1Param + "%') ");
         }
 
@@ -681,8 +680,9 @@ public class DatabaseAccess {
                 ingrediente2Param = ingrediente2Param.substring(0, 1).toUpperCase() + ingrediente2Param.substring(1).toLowerCase();
 
             mySQLQuery = mySQLQuery.concat("AND r.id_ricetta IN (SELECT a.id_ricetta " +
-                                            "FROM appartenere a, ingrediente i " +
-                                            "WHERE a.id_ingrediente = i.id_ingrediente " +
+                                            "FROM appartenere a " +
+                                            "INNER JOIN ingrediente i " +
+                                            "ON a.id_ingrediente = i.id_ingrediente " +
                                             "AND i.nome LIKE '%" + ingrediente2Param + "%') ");
         }
 
@@ -694,8 +694,9 @@ public class DatabaseAccess {
                 ingrediente3Param = ingrediente3Param.substring(0, 1).toUpperCase() + ingrediente3Param.substring(1).toLowerCase();
 
             mySQLQuery = mySQLQuery.concat("AND r.id_ricetta IN (SELECT a.id_ricetta " +
-                                        "FROM appartenere a, ingrediente i " +
-                                        "WHERE a.id_ingrediente = i.id_ingrediente " +
+                                        "FROM appartenere a" +
+                                        "INNER HOIN ingrediente i " +
+                                        "ON a.id_ingrediente = i.id_ingrediente " +
                                         "AND i.nome LIKE '%" + ingrediente3Param + "%') ");
         }
 
