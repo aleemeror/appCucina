@@ -164,11 +164,18 @@ public class Ricetta extends AppCompatActivity {
                         //preferito.setColorFilter(Color.argb(255, 255, 255, 255));
                         preferito.setImageResource(R.drawable.white_star);
 
-                        write_xml_preferito.DeleteObjectToXML(nameRicetta);
+                        boolean c= write_xml_preferito.DeleteObjectToXML(nameRicetta);
 
-                        int duration = Toast.LENGTH_SHORT;
-                        Toast.makeText(getApplicationContext(), "Ricetta eliminata dai preferiti",
-                                Toast.LENGTH_LONG).show();
+                        if(c){
+                            int duration = Toast.LENGTH_SHORT;
+                            Toast.makeText(getApplicationContext(), "Ricetta eliminata dai preferiti",
+                                    Toast.LENGTH_LONG).show();
+                        }else{
+                            int duration = Toast.LENGTH_SHORT;
+                            Toast.makeText(getApplicationContext(), "Ricetta NON eliminata dai preferiti",
+                                    Toast.LENGTH_LONG).show();
+                        }
+
 
                     }
                     else{

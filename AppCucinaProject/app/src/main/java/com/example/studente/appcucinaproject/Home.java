@@ -26,6 +26,7 @@ import com.example.studente.appcucinaproject.Cards.MyCardAdapterHome;
 import com.example.studente.appcucinaproject.Cards.RicettaDetails;
 import com.example.studente.appcucinaproject.Convertitore.Convertitore;
 import com.example.studente.appcucinaproject.MenuDelGiorno.MenuDelGiorno;
+import com.example.studente.appcucinaproject.ReadAndWriteXML.WriteXML;
 import com.example.studente.appcucinaproject.RicercaAvanzata.RicercaAV;
 import com.example.studente.appcucinaproject.Ricettario.Ricettario;
 import com.example.studente.appcucinaproject.Spesa.Spesa;
@@ -82,12 +83,12 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     }
 
     //PER TOGLIERE I 3 PUNTINI DALLA TOOLBAR
-   /* @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home, menu);
         return true;
-    }*/
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -97,7 +98,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.delete_preferiti) {
+            WriteXML w = new WriteXML();
+            w.DeleteAllObjectsXML();
             return true;
         }
 

@@ -6,8 +6,11 @@ package com.example.studente.appcucinaproject.ReadAndWriteXML;
 
 import android.os.Environment;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -23,6 +26,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 
 public class WriteXML {
@@ -218,6 +222,7 @@ public class WriteXML {
                             if(eElement.getElementsByTagName("titolo").item(0).getTextContent().equals(titolo)){
                                Element e = (Element) doc.getElementsByTagName("ricetta").item(0);
                                        //doc.getElementsByTagName("link").item(0);
+
                                 e.getParentNode().removeChild(e);
                                 //doc.removeChild(e);
                                 check=true;
@@ -237,6 +242,57 @@ public class WriteXML {
         }
 
         return check;
+    }
+
+
+    public void DeleteAllObjectsXML(){  //Per eliminare tutti gli elementi dalla lista
+        File fXmlFile = new File(Environment.getExternalStorageDirectory()+File.separator + "AppCucina"+File.separator+"preferiti.xml");
+
+        FileWriter fw = null;
+        try {
+            fw = new FileWriter(fXmlFile.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write("");
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+        /*DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = null;
+        try {
+            dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.newDocument();
+
+
+            //doc.getDocumentElement().setTextContent("");
+            NodeList nList = doc.getElementsByTagName("preferiti");
+
+            for (int temp = 0; temp < nList.getLength(); temp++) {
+
+                Node nNode = nList.item(temp);
+
+                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+                    Element eElement = (Element) nNode;
+
+                    //QUI CREARE LA LISTA DI OGGETTI
+
+                        Element e = (Element) doc.getElementsByTagName("preferiti").item(0);
+                        //doc.getElementsByTagName("link").item(0);
+                        //e.getParentNode().removeChild(e);
+                        e.removeChild(e);
+                        //doc.removeChild(e);
+
+                }
+            }
+
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        }*/
+
     }
 
 }

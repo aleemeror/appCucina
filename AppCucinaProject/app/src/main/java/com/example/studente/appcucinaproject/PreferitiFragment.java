@@ -67,7 +67,6 @@ public class PreferitiFragment extends Fragment {
             recAntipasti.setLayoutManager(llm);
         }
 
-
         return rootView;
     }
 
