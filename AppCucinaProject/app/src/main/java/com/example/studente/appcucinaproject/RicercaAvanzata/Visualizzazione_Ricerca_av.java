@@ -16,6 +16,7 @@ import com.example.studente.appcucinaproject.RicercaAvanzata.tabs_visualizzazion
 import com.example.studente.appcucinaproject.RicercaAvanzata.tabs_visualizzazione.DolciFragment_visualizzazione;
 import com.example.studente.appcucinaproject.RicercaAvanzata.tabs_visualizzazione.PrimiFragment_visualizzazione;
 import com.example.studente.appcucinaproject.RicercaAvanzata.tabs_visualizzazione.SecondiFragment_visualizzazione;
+import com.example.studente.appcucinaproject.Ricettario.tabs.DolciFragment;
 
 import java.util.ArrayList;
 
@@ -29,6 +30,11 @@ public class Visualizzazione_Ricerca_av extends AppCompatActivity {
     private ArrayList<String> listPrimis = new ArrayList<>();
     private ArrayList<String> listSecondi = new ArrayList<>();
     private ArrayList<String> listDolci = new ArrayList<>();
+
+    AntipastiFragment_visualizzazione ant = new AntipastiFragment_visualizzazione();
+    PrimiFragment_visualizzazione prim = new PrimiFragment_visualizzazione();
+    SecondiFragment_visualizzazione sec = new SecondiFragment_visualizzazione();
+    DolciFragment_visualizzazione dolci = new DolciFragment_visualizzazione();
 
     DatiCondivisi dc;
 
@@ -55,18 +61,45 @@ public class Visualizzazione_Ricerca_av extends AppCompatActivity {
         setTitle("Risultati");
 
         listResults = getIntent().getStringArrayListExtra("risultati");
+
+        /////////////////////
+
+        Bundle argsAntipasti = new Bundle();    //funziona come il "putExtra" dell'intent, solo che non fa l'intent
+        argsAntipasti.putStringArrayList("listaResultPerAntipasti", listResults);
+        ant.setArguments(argsAntipasti);
+
+        Bundle argsPrimi = new Bundle();
+        argsPrimi.putStringArrayList("listaResultPerPrimi", listResults);
+        prim.setArguments(argsAntipasti);
+
+        Bundle argsSecondi = new Bundle();
+        argsSecondi.putStringArrayList("listaResultPerSecondi", listResults);
+        sec.setArguments(argsAntipasti);
+
+        Bundle argsDolci = new Bundle();
+        argsDolci.putStringArrayList("listaResultPerDolci", listResults);
+        dolci.setArguments(argsAntipasti);
     }
 
 
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(ant, "Antipasti");
+        adapter.addFragment(prim, "Primi");
+        adapter.addFragment(sec, "Secondi");
+        adapter.addFragment(dolci, "Dolci");
+        viewPager.setAdapter(adapter);
+    }
+
+    /*private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new AntipastiFragment_visualizzazione(), "Antipasti");
         adapter.addFragment(new PrimiFragment_visualizzazione(), "Primi");
         adapter.addFragment(new SecondiFragment_visualizzazione(), "Secondi");
         adapter.addFragment(new DolciFragment_visualizzazione(), "Dolci");
         viewPager.setAdapter(adapter);
-    }
+    }*/
 
 
    /*@Override

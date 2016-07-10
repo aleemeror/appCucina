@@ -40,7 +40,9 @@ public class PrimiFragment_visualizzazione extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_primi_fragment_visualizzazione, container, false);
 
-        listResults = ((Activity)container.getRootView().getContext()).getIntent().getStringArrayListExtra("risultati");
+        //listResults = ((Activity)container.getRootView().getContext()).getIntent().getStringArrayListExtra("risultati");
+        Bundle args = getArguments();
+        listResults = args.getStringArrayList("listaResultPerPrimi");
 
         if(listResults != null) {
             if (!listResults.isEmpty()) {

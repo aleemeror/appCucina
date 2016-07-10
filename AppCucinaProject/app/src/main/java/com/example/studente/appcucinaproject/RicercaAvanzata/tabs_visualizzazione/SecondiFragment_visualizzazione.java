@@ -54,7 +54,7 @@ public class SecondiFragment_visualizzazione extends Fragment {
                 for (int i = 0; i < listSecondi.size(); i++) {
 
                     for (int j = 0; j < listResults.size(); j++) {
-                        if (listSecondi.get(i).equals(listResults.get(j))) {
+                        if (listSecondi.get(i).getTitle().equals(listResults.get(j))) {
                             listSecondiTemp.add(listSecondi.get(i));
                         }
                     }

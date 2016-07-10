@@ -46,7 +46,12 @@ public class AntipastiFragment_visualizzazione extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_antipasti_fragment_visualizzazione, container, false);
 
-        listResults = ((Activity)container.getRootView().getContext()).getIntent().getStringArrayListExtra("risultati");
+        Bundle args = getArguments();
+
+       listResults = args.getStringArrayList("listaResultPerAntipasti");
+
+
+        //listResults = ((Activity)container.getRootView().getContext()).getIntent().getStringArrayListExtra("risultati");
 
         if(listResults != null && !listResults.isEmpty()) {
 
@@ -86,3 +91,48 @@ public class AntipastiFragment_visualizzazione extends Fragment {
     }
 
 }
+
+
+
+/*
+View rootView = inflater.inflate(R.layout.fragment_antipasti_fragment_visualizzazione, container, false);
+
+        listResults = ((Activity)container.getRootView().getContext()).getIntent().getStringArrayListExtra("risultati");
+
+        if(listResults != null && !listResults.isEmpty()) {
+
+            if(!creato) {
+                myDatabaseAccess = DatabaseAccess.getInstance(this.getContext());
+
+                myDatabaseAccess.open();
+                listAntipasti = myDatabaseAccess.getRicettaAntipastoConImage();
+                myDatabaseAccess.close();
+
+                for (int i = 0; i < listAntipasti.size(); i++) {
+
+                    for (int j = 0; j < listResults.size(); j++) {
+                        if (listAntipasti.get(i).getTitle().equals(listResults.get(j))) {
+                            //listAntipastiTemp.add(listResults.get(j));
+                            listAntipastiTemp.add(listAntipasti.get(i));
+                        }
+                    }
+
+                }
+                creato = true;
+            }
+
+            RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.recview_antipasti_RAV);
+            rv.setHasFixedSize(true);
+            MyCardAdapterRAvis adapter = new MyCardAdapterRAvis(listAntipastiTemp, this.getContext());
+            rv.setAdapter(adapter);
+
+            LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+            rv.setLayoutManager(llm);
+        } else{
+            Toast.makeText(getContext(), "Nessun risultato", Toast.LENGTH_SHORT).show();
+        }
+
+
+        return rootView;
+
+ */
