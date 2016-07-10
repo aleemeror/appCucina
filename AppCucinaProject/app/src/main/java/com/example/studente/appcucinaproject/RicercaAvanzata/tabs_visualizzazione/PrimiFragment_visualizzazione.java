@@ -54,7 +54,7 @@ public class PrimiFragment_visualizzazione extends Fragment {
                     for (int i = 0; i < listPrimi.size(); i++) {
 
                         for (int j = 0; j < listResults.size(); j++) {
-                            if (listPrimi.get(i).equals(listResults.get(j))) {
+                            if (listPrimi.get(i).getTitle().equals(listResults.get(j))) {
                                 listPrimiTemp.add(listPrimi.get(i));
                             }
                         }
