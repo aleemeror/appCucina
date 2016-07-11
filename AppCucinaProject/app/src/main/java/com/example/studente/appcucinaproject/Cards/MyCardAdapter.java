@@ -41,7 +41,7 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ContactVie
     }
 
     @Override
-    public void onBindViewHolder(final ContactViewHolder holder, int position) {
+    public void onBindViewHolder(final ContactViewHolder holder, int position) {  //Si implementa l'unione degli elementi grafici con ciò che si deve inserire al loro interno
 
         RicettaDetails CON = ricette.get(position);
         Bitmap imageCheck = CON.getImageRicetta();
@@ -67,7 +67,7 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ContactVie
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {   //Implementazione dell'onClickListener
                 int position = holder.getAdapterPosition();  //prendo le info della posizione
                 RicettaDetails ricetta = ricette.get(position);
                 Bitmap bmp = ricetta.getImageRicetta();
@@ -96,7 +96,7 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ContactVie
     }
 
 
-    public static class ContactViewHolder extends RecyclerView.ViewHolder{
+    public static class ContactViewHolder extends RecyclerView.ViewHolder{  //si istanziano gli oggetti grafici della Card
         ImageView person_img;
         TextView person_name;
         TextView descr;

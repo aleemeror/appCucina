@@ -1,6 +1,8 @@
 package com.example.studente.appcucinaproject.MenuDelGiorno;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import com.example.studente.appcucinaproject.CalcolaTeglia.CalcolaTeglia;
 import com.example.studente.appcucinaproject.Calcolatrice.Calcolatrice;
@@ -29,6 +32,7 @@ import com.example.studente.appcucinaproject.Ricettario.Ricettario;
 import com.example.studente.appcucinaproject.Spesa.Spesa;
 import com.example.studente.appcucinaproject.Timer.Timer;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 public class MenuDelGiorno extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -38,6 +42,19 @@ public class MenuDelGiorno extends AppCompatActivity implements NavigationView.O
     RecyclerView.LayoutManager layoutManager;
     CardView cardv;
     ArrayList<RicettaDetails> list = new ArrayList<RicettaDetails>();
+
+    CardView cardAntipasto;
+    CardView cardAPrimo;
+    CardView cardSecondo;
+    CardView cardDolce;
+
+    ImageView img_antipasto;
+    ImageView img_primo;
+    ImageView img_secondo;
+    ImageView img_dolce;
+
+    String portata=null;
+
 
 
     int[] images = {R.drawable.antipasto,R.drawable.primo,R.drawable.secondo,R.drawable.dolce};
@@ -61,26 +78,78 @@ public class MenuDelGiorno extends AppCompatActivity implements NavigationView.O
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
         setTitle("Menu del giorno");
 
+        cardAntipasto = (CardView)findViewById(R.id.card_antipasto_mymenu);
+        cardAPrimo = (CardView)findViewById(R.id.card_primo_mymenu);
+        cardSecondo = (CardView)findViewById(R.id.card_secondo_mymenu);
+        cardDolce = (CardView)findViewById(R.id.card_dolce_mymenu);
 
-        /*title = getResources().getStringArray(R.array.ricetta_name);
 
-        int count =0;
-        for(String Name:title){
+        img_antipasto=(ImageView)findViewById(R.id.imageViewAntipastomymenu);
+        img_primo=(ImageView)findViewById(R.id.imageViewPrimomymenu);
+        img_secondo=(ImageView)findViewById(R.id.imageViewSecondomymenu);
+        img_dolce=(ImageView)findViewById(R.id.imageViewDolcemymenu);
 
-            RicettaDetails ricetta = new RicettaDetails(images[count],Name);
-            count++;
-            list.add(ricetta);
+        cardAntipasto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getBaseContext(), AntipastiMyMenu.class);
+                startActivity(intent);
+            }
+        });
+
+        cardAPrimo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*Intent intent = new Intent(getBaseContext(), AntipastiMyMenu.class);
+                startActivity(intent);*/
+            }
+        });
+
+        cardSecondo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*Intent intent = new Intent(getBaseContext(), AntipastiMyMenu.class);
+                startActivity(intent);*/
+            }
+        });
+
+        cardDolce.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*Intent intent = new Intent(getBaseContext(), AntipastiMyMenu.class);
+                startActivity(intent);*/
+            }
+        });
+
+        //portata = getIntent().getStringExtra("tipoPiattoScelto");
+
+        /*if(getIntent().getStringExtra("tipoPiattoScelto").toString().equals("Antipasto")){
+            ByteArrayInputStream inputStream = new ByteArrayInputStream(getIntent().getByteArrayExtra("img_id"));
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            img_antipasto.setImageBitmap(bitmap);
         }
+        else if(getIntent().getStringExtra("tipoPiattoScelto").toString().equals("Primo")){
+            ByteArrayInputStream inputStream = new ByteArrayInputStream(getIntent().getByteArrayExtra("img_id"));
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            img_primo.setImageBitmap(bitmap);
 
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerViewMenuDelGG);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
-        adapter = new MyCardAdapterHome(list,MenuDelGiorno.this);
-        recyclerView.setAdapter(adapter);*/
+        }
+        else if(getIntent().getStringExtra("tipoPiattoScelto").toString().equals("Secondo")){
+            ByteArrayInputStream inputStream = new ByteArrayInputStream(getIntent().getByteArrayExtra("img_id"));
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            img_secondo.setImageBitmap(bitmap);
+
+        }
+        else if(getIntent().getStringExtra("tipoPiattoScelto").toString().equals("Dolce")){
+            ByteArrayInputStream inputStream = new ByteArrayInputStream(getIntent().getByteArrayExtra("img_id"));
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            img_dolce.setImageBitmap(bitmap);
+
+        }*/
+
     }
 
     @Override

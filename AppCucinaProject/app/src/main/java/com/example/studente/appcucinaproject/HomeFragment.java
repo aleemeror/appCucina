@@ -33,8 +33,6 @@ public class HomeFragment extends Fragment {
 
         Typeface custom_font_3 = Typeface.createFromAsset(getActivity().getAssets(), "TCM.TTF");
 
-        //title = getResources().getStringArray(R.array.ricetta_name);
-
         tx = (TextView)v.findViewById(R.id.textView9);
         frase = (TextView)v.findViewById(R.id.textView10);
 

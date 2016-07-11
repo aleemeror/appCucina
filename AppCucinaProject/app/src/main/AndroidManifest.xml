@@ -136,6 +136,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.studente.appcucinaproject.Home" />
         </activity>
+        <activity android:name=".MenuDelGiorno.AntipastiMyMenu"></activity>
     </application>
 
 </manifest>

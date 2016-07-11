@@ -42,18 +42,7 @@ public class PreferitiFragment extends Fragment {
 
 
         if(!creato) {
-            //list.clear();
             list=read_xml.ReadXMLtoObject();
-
-            /*String[] title = getResources().getStringArray(R.array.ricetta_name);
-            int count = 0;
-            for (String Name : title) {
-
-                RicettaDetails ricetta = new RicettaDetails(images[count], Name);
-                count++;
-                list.add(ricetta);
-            }*/
-
             creato = true;
         }
 

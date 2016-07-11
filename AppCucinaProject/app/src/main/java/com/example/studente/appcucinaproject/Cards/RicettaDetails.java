@@ -3,6 +3,8 @@ package com.example.studente.appcucinaproject.Cards;
 import android.graphics.Bitmap;
 import android.media.Image;
 
+import com.example.studente.appcucinaproject.Ricettario.tabs.SecondiFragment;
+
 /**
  * Created by Mattia on 22/04/2016.
  */
@@ -12,6 +14,7 @@ public class RicettaDetails {
     private String descrRicetta;
     private Bitmap imgRicettaID;
     private boolean isPreferito;
+    private String portata;
 
     /*public RicettaDetails(int imgRicetta,String title) {
         this.setTitle(title);
@@ -55,4 +58,13 @@ public class RicettaDetails {
     public void setPreferito(boolean preferito) {
         isPreferito = preferito;
     }       //settare il preferito
+
+
+    public String getPortata() {
+        return portata;
+    }
+
+    public void setPortata(String portata) {
+        this.portata = portata;
+    }
 }
